@@ -1,0 +1,53 @@
+/* Appliquer l'image de fond à la section principale */
+.home-section {
+    background: url('../data/bg.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* Ajout d'un padding pour décaler le contenu vers la gauche */
+    padding-left: 5%;
+  }
+  
+  /* Conteneur du contenu pour limiter la largeur et aligner le texte à gauche */
+  .home-section .content {
+    max-width: 600px;
+    text-align: left;
+    color: #fff;
+  }
+  
+  /* Styles des titres et du texte */
+  .home-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .home-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Bouton simple */
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--btn-bg);
+    color: var(--btn-hover-bg);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: var(--btn-hover-bg);
+  }
+
+    /* Style basique pour le footer */
+    footer {
+        padding: 20px;
+        text-align: center;
+        background-color: var(--primary-color);
+        color: var(--accent-color);
+      }
+      

@@ -1,0 +1,37 @@
+/* Fichier : formation.css */
+
+/* Styles pour la section "Mon BTS" */
+.bts-section {
+    padding: 60px 20px;
+    background-color: #fff; /* Ou #f8f8f8, selon le rendu souhaité */
+    color: #333;
+    text-align: center; /* Centre le titre */
+  }
+  
+  .bts-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Sous-titre (h3) et texte plus classique */
+  .bts-section h3 {
+    font-size: 1.3rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  /* Limiter la largeur du texte et l'aligner à gauche */
+  .bts-section p,
+  .bts-section ul {
+    max-width: 800px;
+    margin: 0 auto 1.5rem; /* Centre le bloc, ajoute une marge en bas */
+    text-align: left;      /* Texte à gauche */
+    line-height: 1.6;      /* Améliore la lisibilité */
+  }
+  
+  /* Ajustement du style des listes */
+  .bts-section ul {
+    list-style-type: disc;
+    padding-left: 40px; /* Indentation pour la liste */
+  }
+  

@@ -1,0 +1,50 @@
+/* Fichier : competences.css */
+
+/* Styles de base pour la section compétences */
+.competences-section {
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Titre principal de la section */
+  .competences-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Conteneur qui organise les compétences de manière flexible */
+  .competences-content {
+    display: flex;           /* On utilise Flexbox */
+    flex-wrap: wrap;         /* Les blocs vont passer à la ligne si besoin */
+    justify-content: center; /* Centre les blocs horizontalement */
+    gap: 2rem;               /* Espace entre les blocs */
+    margin-top: 2rem;
+  }
+  
+  /* Chaque bloc de compétences */
+  .bloc {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+    /* Largeur adaptable pour un positionnement dynamique */
+    flex: 1 1 300px;  
+    max-width: 400px; /* Largeur max d'un bloc */
+  }
+  
+  /* Sous-titres pour chaque bloc */
+  .bloc h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  /* Paragraphe dans chaque bloc */
+  .bloc p {
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+  

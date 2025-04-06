@@ -1,0 +1,27 @@
+/* Importation de la police depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600&display=swap');
+
+/* Reset et styles de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat Alternates', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Variables globales */
+:root {
+  --primary-color: #1b75ebc7;  /* Bleu */
+  --accent-color: #fff;        /* Blanc */
+  --btn-bg: #000;              /* Fond bouton */
+  --btn-hover-bg: #A4F8FF;      /* Bouton au survol */
+}
