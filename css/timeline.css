@@ -2,13 +2,13 @@
 
 *,
 *::before,
-#competences *::after {
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-#competences body {
+body {
   --color: rgba(30, 30, 30);
   --bgColor: rgba(245, 245, 245);
   min-height: 100vh;
@@ -21,11 +21,11 @@
   background: var(--bgColor);
 }
 
-#competences h1 {
+h1 {
   text-align: center;
 }
 
-#competences ul {
+ul {
   --col-gap: 2rem;
   --row-gap: 2rem;
   --line-w: 0.25rem;
@@ -39,7 +39,7 @@
 }
 
 /* line */
-#competences ul::before {
+ul::before {
   content: "";
   grid-column: 1;
   grid-row: 1 / span 20;
@@ -50,12 +50,12 @@
 /* columns*/
 
 /* row gaps */
-#competences ul li:not(:last-child) {
+ul li:not(:last-child) {
   margin-bottom: var(--row-gap);
 }
 
 /* card */
-#competences ul li {
+ul li {
   grid-column: 2;
   --inlineP: 1.5rem;
   margin-inline: var(--inlineP);
@@ -65,7 +65,7 @@
 }
 
 /* date */
-#competences ul li .date {
+ul li .date {
   --dateH: 3rem;
   height: var(--dateH);
   margin-inline: calc(var(--inlineP) * -1);
@@ -85,7 +85,7 @@
 }
 
 /* date flap */
-#competences ul li .date::before {
+ul li .date::before {
   content: "";
   width: var(--inlineP);
   aspect-ratio: 1;
@@ -99,7 +99,7 @@
 }
 
 /* circle */
-#competences ul li .date::after {
+ul li .date::after {
   content: "";
   position: absolute;
   width: 2rem;
@@ -115,25 +115,25 @@
 
 /* title descr */
 ul li .title,
-#competences ul li .descr {
+ul li .descr {
   background: var(--bgColor);
   position: relative;
   padding-inline: 1.5rem;
 }
-#competences ul li .title {
+ul li .title {
   overflow: hidden;
   padding-block-start: 1.5rem;
   padding-block-end: 1rem;
   font-weight: 500;
 }
-#competences ul li .descr {
+ul li .descr {
   padding-block-end: 1.5rem;
   font-weight: 300;
 }
 
 /* shadows */
 ul li .title::before,
-#competences ul li .descr::before {
+ul li .descr::before {
   content: "";
   position: absolute;
   width: 90%;
@@ -144,52 +144,52 @@ ul li .title::before,
   filter: blur(4px);
   transform: translate(-50%, 50%);
 }
-#competences ul li .title::before {
+ul li .title::before {
   bottom: calc(100% + 0.125rem);
 }
 
-#competences ul li .descr::before {
+ul li .descr::before {
   z-index: -1;
   bottom: 0.25rem;
 }
 
 @media (min-width: 40rem) {
-#competences ul {
+  ul {
     grid-template-columns: 1fr var(--line-w) 1fr;
   }
-#competences ul::before {
+  ul::before {
     grid-column: 2;
   }
-#competences ul li:nth-child(odd) {
+  ul li:nth-child(odd) {
     grid-column: 1;
   }
-#competences ul li:nth-child(even) {
+  ul li:nth-child(even) {
     grid-column: 3;
   }
 
   /* start second card */
-#competences ul li:nth-child(2) {
+  ul li:nth-child(2) {
     grid-row: 2/4;
   }
 
-#competences ul li:nth-child(odd) .date::before {
+  ul li:nth-child(odd) .date::before {
     clip-path: polygon(0 0, 100% 0, 100% 100%);
     left: 0;
   }
 
-#competences ul li:nth-child(odd) .date::after {
+  ul li:nth-child(odd) .date::after {
     transform: translate(-50%, -50%);
     left: calc(100% + var(--col-gap) + var(--line-w) / 2);
   }
-#competences ul li:nth-child(odd) .date {
+  ul li:nth-child(odd) .date {
     border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
   }
 }
 
-#competences .credits {
+.credits {
   margin-top: 1rem;
   text-align: right;
 }
-#competences .credits a {
+.credits a {
   color: var(--color);
 }
