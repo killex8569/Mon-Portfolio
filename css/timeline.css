@@ -129,7 +129,7 @@
   position: absolute;
   width: 90%;
   height: 0.5rem;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /*Effet d'ombre sous les titres et date ICI */
   left: 50%;
   border-radius: 50%;
   filter: blur(4px);
