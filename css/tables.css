@@ -1,0 +1,44 @@
+/* TABLEAU E5 - STYLE LOCALISE UNIQUEMENT ICI */
+#tableaux-e5 .e5-table-wrapper {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow-x: auto;
+  }
+  
+  #tableaux-e5 .e5-table-wrapper h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #222;
+    text-align: center;
+  }
+  
+  #tableaux-e5 .e5-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+  }
+  
+  #tableaux-e5 .e5-table thead {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  #tableaux-e5 .e5-table th,
+  #tableaux-e5 .e5-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  #tableaux-e5 .e5-table tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+  }
+  
+  #tableaux-e5 .e5-table tbody tr:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+  }
+  
