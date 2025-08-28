@@ -1,35 +1,47 @@
-// Mise à jour de mon activité Github sur mon portfolio
+// github.js
 async function fetchGitHubActivity() {
     const username = "killex8569"; // Ton pseudo GitHub
-    const response = await fetch(`https://api.github.com/users/${username}/events/public`);
-    
-    if (!response.ok) {
-        console.error("Erreur API GitHub:", response.status);
-        document.getElementById("github-activity").innerText = "Impossible de charger l'activité GitHub.";
-        return;
-    }
+    const activityContainer = document.getElementById("github-activity");
 
-    const events = await response.json();
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}/events/public`);
 
-    // On récupère uniquement les événements de type "PushEvent" (commits)
-    const pushes = events.filter(event => event.type === "PushEvent");
+        if (!response.ok) {
+            throw new Error(`Erreur API GitHub: ${response.status}`);
+        }
 
-    if (pushes.length > 0) {
-        const latest = pushes[0]; // Dernier push
-        const repo = latest.repo.name;
-        const commits = latest.payload.commits.map(c => `- ${c.message}`).join("<br>");
+        const events = await response.json();
+        const push = events.find(event => event.type === "PushEvent"); // Prend le dernier push uniquement
 
-        document.getElementById("github-activity").innerHTML = `
+        if (!push) {
+            activityContainer.innerHTML = "<p>Aucune activité récente trouvée.</p>";
+            return;
+        }
+
+        const repo = push.repo.name;
+        const date = new Date(push.created_at).toLocaleString("fr-FR", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+        const lastCommit = push.payload.commits.slice(-1)[0]?.message || "Pas de message de commit";
+
+        activityContainer.innerHTML = `
             <h2>Dernière activité GitHub</h2>
-            <p>
-                📂 Repo : <a href="https://github.com/${repo}" target="_blank">${repo}</a><br>
-                📝 Commits :<br>${commits}
-            </p>
+            <div class="activity-card">
+                <p><span class="emoji">📂</span> <a href="https://github.com/${repo}" target="_blank">${repo}</a></p>
+                <p><span class="emoji">🕒</span> ${date}</p>
+                <p><span class="emoji">📝</span> ${lastCommit}</p>
+            </div>
         `;
-    } else {
-        document.getElementById("github-activity").innerText = "Aucune activité récente trouvée.";
+    } catch (error) {
+        console.error(error);
+        activityContainer.innerHTML = "<p>Erreur lors du chargement de l'activité GitHub.</p>";
     }
 }
 
-// Exécute la fonction au chargement de la page
 document.addEventListener("DOMContentLoaded", fetchGitHubActivity);
