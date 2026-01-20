@@ -18,10 +18,3 @@ Concernant les documents présents dans mon portfolio, on peut y retrouver :
 - Mes Expériences
 - Les technologies que je maitrise
 
-# FAQ 
-
-- Peut-on réutiliser ce modèle de portfolio pour notre utilisation ? | "Oui"
-- Ou est-ce que ce portfolio est hébergé ? | "Sur Github et bientôt autre part"
-- A-t-il été en partie créer à l'IA ? | "J'ai repris comme base mon ancien projet que j'avais créer tout seul, j'ai simplement utiliser des templates d'autres personnes open-source (comme la timeline ou encore les accordions dans l'index.html). Cependant pour certains script comme pour celui de github par exemple, l'ia m'a aider à corriger mes erreurs.
-- Y'a-t-il des easter-egg dans ce portfolio ? | "Oui"
-- Y'aura-t-il des référence à tes projets perso ? | "Oui"
