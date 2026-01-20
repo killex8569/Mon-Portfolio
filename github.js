@@ -1,6 +1,6 @@
 // github.js
 async function fetchGitHubActivity() {
-    const username = "killex8569"; // Ton pseudo GitHub
+    const username = "killex8569"; // Pseudo GitHub
     const activityContainer = document.getElementById("github-activity");
 
     try {
@@ -11,8 +11,7 @@ async function fetchGitHubActivity() {
         }
 
         const events = await response.json();
-        const push = events.find(event => event.type === "PushEvent"); // Prend le dernier push uniquement
-
+        const push = events.find(event => event.type === "PushEvent"); 
         if (!push) {
             activityContainer.innerHTML = "<p>Aucune activité récente trouvée.</p>";
             return;
