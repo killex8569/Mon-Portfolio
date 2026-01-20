@@ -18,3 +18,12 @@ Concernant les documents présents dans mon portfolio, on peut y retrouver :
 - Mes Expériences
 - Les technologies que je maitrise
 
+## Update
+
+Refonte du portoflio en Vue.Js en cours !
+
+
+# Pour plus tard 
+--> Ajouter le nouveau CV
+--> Refaire le site en Vue.js
+
