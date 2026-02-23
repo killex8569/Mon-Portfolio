@@ -1,23 +1,113 @@
 :root {
-  --text-red: #b2452f;      /* Le texte rouge/rose */
-  --placeholder-gray: #D9D9D9;
-  --accent-primary: #4a6b4b; /* Le vert mousse du header/footer */
-  --bg-primary: #f4efe1;      /* Le fond des cartes */
-  --accent-secondary: #ffffff80;
-  --text-color-dark: #4A4A4A;
-  --text-color-light: #f2f2f2;
-  --accent-underline: #ffffff; /*Soulignement des liens cliquable */ 
-  --background: #FAF9F6;
+  /* ===== Palette Fond Spatial ===== */
+  --bg-deep-space: #0B0F1A;
+  --bg-space-secondary: #0F172A;
+  --bg-card: rgba(15, 23, 42, 0.6);
+
+  /* ===== Couleurs Nébuleuse / Accent ===== */
+  --accent-cosmic-purple: #7C3AED;
+  --accent-electric-cyan: #06B6D4;
+  --accent-nebula-pink: #EC4899;
+
+  /* ===== Dégradé principal ===== */
+  --gradient-cosmic: linear-gradient(
+    135deg,
+    #7C3AED 0%,
+    #06B6D4 50%,
+    #EC4899 100%
+  );
+
+  /* ===== Texte ===== */
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* ===== Effets ===== */
+  --glow-purple: 0 0 40px rgba(124, 58, 237, 0.4);
+  --glow-cyan: 0 0 40px rgba(6, 182, 212, 0.4);
+
+  /* ===== Borders / Glass ===== */
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --blur-glass: blur(12px);
 }
 
+/* Reset propre */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* ===== Background Global ===== */
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: var(--background);
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   padding-top: 90px;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(124, 58, 237, 0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(6, 182, 212, 0.15),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #0B0F1A, #0F172A);
+
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ===== Cartes effet glassmorphism ===== */
+.card {
+  background: var(--bg-card);
+  backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--glow-purple);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--glow-cyan);
+}
+
+/* ===== Bouton cosmique ===== */
+.btn-cosmic {
+  background: var(--gradient-cosmic);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-cosmic:hover {
+  transform: scale(1.05);
+  box-shadow: var(--glow-purple);
+}
+
+/* ========================= */
+/* ===== STAR BACKGROUND ==== */
+/* ========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 70% 80%, white, transparent),
+    radial-gradient(1.5px 1.5px at 40% 60%, white, transparent),
+    radial-gradient(1px 1px at 90% 20%, white, transparent),
+    radial-gradient(2px 2px at 10% 90%, white, transparent);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 0.4;
+  z-index: -2;
+  pointer-events: none;
 }
