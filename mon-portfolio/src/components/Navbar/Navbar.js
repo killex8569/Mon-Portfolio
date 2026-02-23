@@ -33,8 +33,8 @@ function Navbar() {
           <Link to="/" className={ActiveLink === 0 ? "active-link" : ""} onClick={() => { setActiveLink(0) }}>Accueil</Link>
           <Link to="/competences" className={ActiveLink === 1 ? "active-link" : ""} onClick={() => { setActiveLink(1) }}>Mes compétences</Link>
           <Link to="/projet" className={ActiveLink === 2 ? "active-link" : ""} onClick={() => { setActiveLink(2) }}>Mes projets</Link>
-          <Link to="/parcours" className={ActiveLink === 2 ? "active-link" : ""} onClick={() => { setActiveLink(2) }}>Mon parcours</Link>
-          <Link to="/about" className={ActiveLink === 3 ? "active-link" : ""} onClick={() => { setActiveLink(3) }}>A propos</Link>
+          <Link to="/parcours" className={ActiveLink === 3 ? "active-link" : ""} onClick={() => { setActiveLink(3) }}>Mon parcours</Link>
+          <Link to="/about" className={ActiveLink === 4 ? "active-link" : ""} onClick={() => { setActiveLink(4) }}>A propos</Link>
         </div>
 
         {/* This button only shows up on small screens. It is used to open the mobile menu */}

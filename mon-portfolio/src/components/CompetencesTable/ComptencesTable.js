@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../bootstrap.min.css';
+import './CompetencesTable.css'
 
 function CompetencesTable({skillFamilyList, skillsDictionnary}) {
     const [active, setActive] = useState(skillFamilyList[0]);
