@@ -1,0 +1,260 @@
+.topnav {
+  height: 70px;
+  padding: 0px 20px;
+  
+  /* Positionnement fixe en haut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  /* Couleur de fond semi-transparente */
+  background: rgba(40, 140, 233, 0.6); /* Blanc très léger */
+  
+  /* L'effet de flou (Glassmorphism) */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Pour Safari */
+
+  /* Bordure légère pour définir la structure */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* IMPORTANT : Ajoute une marge en haut de ton body ou de ton container principal 
+ dans ton fichier App.css pour compenser la position: fixed de la navbar */
+/* body { padding-top: 70px; } */
+  
+/* Desktop Menu */
+.menu {
+  display: none;
+}
+
+.menu a {
+  position: relative; /* Positioning for the underline pseudo-element */
+  height: auto; /* Adjust height to content */
+  display: flex; /* Allows centering of link text */
+  text-align: center;
+  align-items: center;
+  margin: 0 20px;
+  color: var(--text-color-light);
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.menu a::after {
+  content: ''; /* Creates the underline element */
+  position: absolute;
+  left: 0; /* Initially positioned at the start of the link */
+  bottom: -5px; /* Adjust as necessary for spacing */
+  width: 100%; /* Full width for the underline */
+  height: 3px; /* Thickness of the underline */
+  background-color: var(--accent-underline); /* Color for the underline */
+  transform: scaleX(0); /* Hide by scaling down */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.menu a:hover::after,
+.menu a.active-link::after {
+  transform: scaleX(1); /* Show underline on hover or when active */
+  left: 0; /* Positioning for the active link */
+  /* Optionally adjust left property if you want different styling for active */
+}
+
+/* Mobile Menu Show & Close buttons */
+.show-mobile-menu-button {
+  align-items: center;
+  border: none;
+  background: transparent;
+  font-size: 36px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.close-mobile-menu-button {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  font-size: 50px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  transition: 0.3s;
+}
+
+.mobile-menu a {
+  padding: 10px 0px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* Media queries for responsiveness */
+@media screen and (min-width: 700px) {
+  .topnav {
+    justify-content: flex-start;
+  }
+
+  .show-mobile-menu-button {
+    display: none;
+  }
+
+  .menu {
+    height: 100%;
+    display: flex; /* Change from none to flex */
+    justify-content: center; /* Center elements horizontally */
+    align-items: center; /* Center elements vertically */
+    width: 100%; /* Make sure it takes the full width of the screen */
+    position: relative; /* Positioning context for the pseudo-element */
+  }
+}
+
+/* Other styles */
+.content {
+  padding: 40px 20px;
+  
+}
+  
+  
+  
+/* Desktop Menu */
+.menu {
+  display: none;
+}
+
+.menu a {
+  position: relative; /* Positioning for the underline pseudo-element */
+  height: auto; /* Adjust height to content */
+  display: flex; /* Allows centering of link text */
+  text-align: center;
+  align-items: center;
+  margin: 0 20px;
+  color: var(--text-color-light);
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.menu a::after {
+  content: ''; /* Creates the underline element */
+  position: absolute;
+  left: 0; /* Initially positioned at the start of the link */
+  bottom: -5px; /* Adjust as necessary for spacing */
+  width: 100%; /* Full width for the underline */
+  height: 3px; /* Thickness of the underline */
+  background-color: var(--accent-underline); /* Color for the underline */
+  transform: scaleX(0); /* Hide by scaling down */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.menu a:hover::after,
+.menu a.active-link::after {
+  transform: scaleX(1); /* Show underline on hover or when active */
+  left: 0; /* Positioning for the active link */
+  /* Optionally adjust left property if you want different styling for active */
+}
+
+/* Mobile Menu Show & Close buttons */
+.show-mobile-menu-button {
+  align-items: center;
+  border: none;
+  background: transparent;
+  font-size: 36px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.close-mobile-menu-button {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  font-size: 50px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  transition: 0.3s;
+}
+
+.mobile-menu a {
+  padding: 10px 0px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* Media queries for responsiveness */
+@media screen and (min-width: 700px) {
+  .topnav {
+    justify-content: flex-start;
+  }
+
+  .show-mobile-menu-button {
+    display: none;
+  }
+
+  .menu {
+    height: 100%;
+    display: flex; /* Change from none to flex */
+    justify-content: center; /* Center elements horizontally */
+    align-items: center; /* Center elements vertically */
+    width: 100%; /* Make sure it takes the full width of the screen */
+    position: relative; /* Positioning context for the pseudo-element */
+  }
+}
+
+/* Other styles */
+.content {
+  padding: 40px 20px;
+}
+  
+  

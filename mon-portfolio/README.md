@@ -8,4 +8,5 @@ Voici le détails des pages :
 - Mes compétences --> Présentation via un tableau mes compétences, 
 - Mon projets --> Présentation de mes principaux projets (github et autres)
 - Mes Certifications --> Certifications obtenues (Afficher sous forme de tableau)
+- Mon Parcours --> Timeline de mon évolution (Bac --> Chartreux (BTS) --> CPE (Ingénieur))
 - A propos --> Mes informations de contacts (Github, LinkedIn, CV etc...)

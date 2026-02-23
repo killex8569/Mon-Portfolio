@@ -1,0 +1,85 @@
+/* SwitchComponent.css */
+.competences-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: var(--text-color-dark);
+  }
+  
+  .competences-switch-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .competences-switch {
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .competences-switch-toggle {
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+  
+  .competences-switch.active .competences-switch-toggle {
+    transform: translateX(30px);
+  }
+  
+  .competences-label {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .competences-active-label {
+    color: #4CAF50;
+  }
+  
+  .competences-title-container {
+    text-align: center;
+  }
+
+  .competences-bold {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 800;
+  }
+  
+  .competences-title {
+    margin-block: 10px;
+    font-size: 30px;
+  }
+  
+
+.competences-shieldp {
+    margin-block: 15px;
+}
+
+.competences-shieldp > img {
+    margin-inline: 5px;
+    margin-top: 3px;
+}
+
+#competences-resume {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+#competences-resume-title {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
