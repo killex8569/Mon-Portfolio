@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         {/* Navigation */}
         <Navbar/>
-        <title>Notre site</title>
+        <title>Mon Portfolio</title>
 
         {/* Routes */}
         <Routes>

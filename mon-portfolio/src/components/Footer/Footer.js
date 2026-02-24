@@ -17,6 +17,7 @@ const Footer = () => (
                     <h4>Ce site est open-source</h4>
                     <ul>
                         <li><a target="_blank" href="https://react.dev/">React</a></li>
+                        <li><a target="_blank" href="https://github.com/killex8569/Mon-Portfolio">Github</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">

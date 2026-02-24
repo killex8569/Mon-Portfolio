@@ -1,5 +1,4 @@
 import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
 import './Accueil.css';
 
 
@@ -8,15 +7,19 @@ function Accueil() {
     <>
       <div className="accueil-container">
       <section className="accueil-profile-section">
-        <div className="accueil-inline-center">      
-          <div className="accueil-profile-item">
-            <img src="Alexandre.png" alt="Photo Alexandre FA" style={{height: 320}}/>
-            <h3>Alexandre F.A</h3>
-            <h5 style={{color: "red"}}>n'a pas encore de stage</h5>
-            <h5 style={{color: "red"}}>n'a pas encore d'alternance</h5>
+        {/* Texte central */}
+        <div className="accueil-inline-center accueil-feature-card">
+          <div className="accueil-central-info-box">
+            <h3>A l'école d'ingénieur CPE LYON</h3>
+            <br/>
+            <h4>A la recherche d'un stage de préférence à l'étranger du 8 juin au 26 août 2026</h4>
+            <h4>et d'une alternance de 2 ans à partir de septembre 2026</h4>
+            <br/>
+            <h5>Nous ne souhaitons pas particulièrement être embauchés ensemble, mais <strong> nous serions ravi si cela pouvait être le cas</strong>. Nous avons déjà l'habitude de travailler sur des projets communs.</h5>
           </div>
         </div>
-
+      </section>
+      <section className="accueil-profile-section">
         {/* Texte central */}
         <div className="accueil-inline-center accueil-feature-card">
           <img src="cpe-lyon.jpg" alt="CPE Lyon" style={{width: 400}}/>
