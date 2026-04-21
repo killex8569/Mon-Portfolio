@@ -1,0 +1,126 @@
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 20px 0;
+}
+
+/* Ligne centrale parfaitement centrée */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: var(--color-secondary);
+}
+
+/* Structure en 3 colonnes fixes */
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+/* Colonne centrale (dot) */
+.timeline-marker {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Box */
+.timeline-content {
+  background: white;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Gauche */
+.timeline-item.left .timeline-content {
+  grid-column: 1;
+  justify-self: end;
+  text-align: right;
+}
+
+/* Droite */
+.timeline-item.right .timeline-content {
+  grid-column: 3;
+  justify-self: start;
+  text-align: left;
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-item {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .timeline-marker {
+    grid-column: 1;
+  }
+
+  .timeline-content {
+    grid-column: 2;
+    text-align: left !important;
+    justify-self: start !important;
+    max-width: 100%;
+  }
+}
+
+.timeline-content h3 {
+  margin: 5px 0 10px 0; 
+}
+
+/* On retire la marge sous le paragraphe pour ne pas agrandir le bas de la box */
+.timeline-content p {
+  margin: 0;
+}
+
+.timeline-content, 
+.timeline-marker {
+  grid-row: 1;
+}
+
+.timeline-item.left .timeline-content {
+  grid-column: 1;
+  justify-self: end;
+  text-align: right;
+  margin-left: auto;
+}
+
+.timeline-item.right .timeline-content {
+  grid-column: 3;
+  justify-self: start;
+  text-align: left;
+  margin-right: auto;
+}

@@ -1,0 +1,10 @@
+https://ludovicwyffels.dev/blog/2019-04_react-timeline/
+
+
+
+Les points en Roses (notre terciaire)
+Les traits en bleu primarry (le bleu ciel la)
+La centrée sur la page
+Mettre en encadrement pour les zones de textes
+
+--> Essayer de revoirs les 

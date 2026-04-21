@@ -1,0 +1,95 @@
+.about-container {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .about-section {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  /* HERO */
+  .about-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+  
+  .about-hero-title {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .about-hero-subtitle {
+    color: var(--color-text-light);
+    font-weight: 400;
+  }
+  
+  /* CARD */
+  .about-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  /* CONTACT */
+  .about-values h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .about-values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .about-value-card {
+    background: white;
+    text-align: center;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    border-top: 3px solid var(--color-secondary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .about-value-card h4 {
+    margin-bottom: 20px;
+  }
+
+  .about-value-card svg {
+    margin-right: 8px;
+  }
+
+  .about-value-card a {
+    color: var(--color-text-dark);
+  }
+  
+  /* STACK */
+  .about-stack-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: var(--spacing-lg);
+    gap: var(--spacing-lg);
+  }
+  
+  .about-stack-box {
+    background: linear-gradient(135deg, rgba(0,150,200,0.05) 0%, rgba(30,43,80,0.05) 100%);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--color-primary);
+  }
+  
+  /* RESPONSIVE */
+  @media (min-width: 1024px) {
+    .about-values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .about-stack-content {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
