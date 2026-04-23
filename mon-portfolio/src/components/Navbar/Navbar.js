@@ -12,6 +12,7 @@ function Navbar() {
   const MobileMenu = () => {
     return (
       <div className='mobile-menu'>
+        
         {/* Because here isShown = true, calling toogleMobileMenu sets isShown to false in every case */}
         <Link to="/" onClick={toggleMobileMenu}>accueil</Link>
         <Link to="/competences" onClick={toggleMobileMenu}>compétences</Link>
@@ -26,9 +27,10 @@ function Navbar() {
   return (
     <>
       <div className='topnav'>
-
+      
         {/* Desktop Menu, which only appears on large screens */}
         <div className='menu'>
+          <div className='Title'>Alexandre Faubladier--Anette</div>
           <Link to="/" className={ActiveLink === 0 ? "active-link" : ""} onClick={() => { setActiveLink(0) }}>Accueil</Link>
           <Link to="/competences" className={ActiveLink === 1 ? "active-link" : ""} onClick={() => { setActiveLink(1) }}>compétences</Link>
           <Link to="/parcours" className={ActiveLink === 2 ? "active-link" : ""} onClick={() => { setActiveLink(2) }}>parcours</Link>

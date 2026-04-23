@@ -55,115 +55,85 @@
   
   .accueil-section {
     margin-bottom: var(--spacing-xl);
+    border-radius: 10px; 
+    
   }
-  
-  /* ========================================
-     HERO SECTION
-     ======================================== */
-  .accueil-hero {
-    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+ /* ========================================
+   HERO SECTION
+   ======================================== */
+   .accueil-hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 60%, var(--color-primary-light) 100%);
     padding: var(--spacing-xl) var(--spacing-lg);
     border-radius: var(--radius-md);
     margin-bottom: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* Orbes décoratifs en arrière-plan */
+  .accueil-hero::before,
+  .accueil-hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    pointer-events: none;
+  }
+  
+  .accueil-hero::before {
+    width: 300px;
+    height: 300px;
+    background: rgba(59, 130, 246, 0.4);
+    top: -100px;
+    right: -60px;
+  }
+  
+  .accueil-hero::after {
+    width: 220px;
+    height: 220px;
+    background: rgba(37, 99, 235, 0.3);
+    bottom: -70px;
+    left: -40px;
+  }
+  
+  /* Carte en verre au centre */
+  .accueil-hero__glass {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: var(--spacing-lg) var(--spacing-xl);
     text-align: center;
+    max-width: 1000px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    margin: 0 auto; /*Centre la div glass */
+  }
+  
+  .accueil-hero__divider {
+    width: 48px;
+    height: 3px;
+    background: var(--color-nav-accent);
+    border-radius: 2px;
+    margin: var(--spacing-md) auto;
   }
   
   .accueil-hero__title {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-xl);
-    min-height: 80px;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
+    color: var(--color-text-dark); /*Couleur du texte principal */
+    margin-bottom: var(--spacing-xs);
   }
   
-  .accueil-hero__title h1 {
-    animation: pulse 1s ease-in-out;
-  }
-  
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-  }
-  
-
-  .accueil-alonetitle h1 {
-    text-align: center;
-    font-size: 30px;
-    text-transform: uppercase;
-    margin-bottom: 40px;
-  }
-
-  /* ========================================
-     PROFILE CARDS
-     ======================================== */
-  .accueil-profiles {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
-  }
-  
-  .accueil-profile-card {
-    background: white;
-    border-radius: var(--radius-md);
-    padding: var(--spacing-md);
-    text-align: center;
-    border: 3px solid var(--color-primary);
-    transition: var(--transition);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-  }
-  
-  .accueil-profile-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border-color: var(--color-primary-light);
-  }
-  
-  .accueil-profile-card__image {
-    height: 280px;
-    object-fit: cover;
-    border-radius: var(--radius-sm);
-    margin-bottom: var(--spacing-md);
-    background-color: #e9e4d8;
-  }
-
-  @media screen and (min-width: 768px) {
-    .accueil-profile-card__image {
-      width: 100%;
-    }
-  }
-
-  .accueil-profile-card__subtitle {
-    color: var(--color-text-dark);
-    margin-bottom: var(--spacing-sm);
-    font-weight: 700;
-  }
-  
-  .accueil-profile-card__name {
-    color: var(--color-text-dark);
-    margin-bottom: var(--spacing-sm);
-  }
-  
-  .accueil-profile-card__status {
-    color: var(--color-danger);
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
-  
-  @media (min-width: 768px) {
-    .accueil-profiles {
-      flex-direction: row;
-      justify-content: center;
-      gap: var(--spacing-xl);
-    }
-  
-    .accueil-profile-card {
-      flex: 0 1 300px;
-    }
+  .accueil-hero__subtitle {
+    color: var(--color-text-dark); /*Couleur du sous titre */
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
   }
 
 /* ========================================
@@ -194,7 +164,7 @@
     background: white;
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
-    border: 3px solid var(--color-primary);
+    border: 1px solid var(--color-primary);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: center;
     text-decoration: none;
@@ -204,6 +174,7 @@
   
   .accueil-cv-card:hover {
     transform: translateY(-5px);
+    border: 3px solid var(--color-primary);
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     border-color: var(--color-primary-light);
   }
@@ -223,8 +194,8 @@
      ======================================== */
   .accueil-info-box {
     background: white;
-    border-left: 2px solid var(--color-primary);
-    border-right: 2px solid var(--color-primary);
+    /* border-left: 2px solid var(--color-primary);
+    border-right: 2px solid var(--color-primary);*/
     
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-xl);

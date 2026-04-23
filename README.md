@@ -10,3 +10,23 @@ Voici le détails des pages :
 - Mes Certifications --> Certifications obtenues (Afficher sous forme de tableau)
 - Mon Parcours --> Timeline de mon évolution (Bac --> Chartreux (BTS) --> CPE (Ingénieur))
 - A propos --> Mes informations de contacts (Github, LinkedIn, CV etc...)
+
+
+--> Ajouter les éléments suivants : 
+
+- Logiciels que j'ai utiliser (tous même les plus niche ou moins connu)
+- Langages de programmations
+- Frameworks que j'ai utiliser
+- Les technologies que je maitrises
+- Mon Parcours
+- Mes passions
+- Mes projets
+
+
+
+Ajouter un mode nuit
+
+ajouter les projets, une descriptions des modules etc...
+
+
+## A ajouter

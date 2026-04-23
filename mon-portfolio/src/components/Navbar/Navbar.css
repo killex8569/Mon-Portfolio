@@ -30,7 +30,7 @@
   display: flex; /* Allows centering of link text */
   text-align: center;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 30px; /* Espace entre les éléments*/
   color: var(--color-text-light);
   font-weight: bold;
   font-size: 20px;
@@ -44,7 +44,7 @@
   bottom: -5px; /* Adjust as necessary for spacing */
   width: 100%; /* Full width for the underline */
   height: 3px; /* Thickness of the underline */
-  background-color: var(--color-accent); /* Color for the underline */
+  background-color: var(--color-nav-accent); /* Color for the underline */
   transform: scaleX(0); /* Hide by scaling down */
   transition: transform 0.3s ease; /* Smooth transition */
 }
@@ -120,10 +120,11 @@
   .menu {
     height: 100%;
     display: flex; /* Change from none to flex */
-    justify-content: center; /* Center elements horizontally */
+    justify-content: flex-end; /* Center elements horizontally */
     align-items: center; /* Center elements vertically */
     width: 100%; /* Make sure it takes the full width of the screen */
     position: relative; /* Positioning context for the pseudo-element */
+    padding-right: 40px;
   }
 }
 
@@ -134,4 +135,12 @@
   
 .menu, .mobile-menu {
   text-transform: uppercase;
+}
+
+/* */
+.Title {
+  margin-right: auto; /*Place le texte à gauche */
+  color: var(--color-text-light);
+  font-size: 20px; /* taille du titre*/
+  font-weight: bold;
 }
