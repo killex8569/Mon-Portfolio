@@ -59,7 +59,7 @@
     display: inline;
   }
   
-  @media screen and (min-width: 450px) {
+  @media screen and (min-width: 1000px) {
     br.responsive {
       display: none;
     }

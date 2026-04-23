@@ -6,7 +6,8 @@ import Footer from './components/Footer/Footer';
 import Competences from './views/Competences/Competences';
 import About from './views/About/About';
 import NotFound from './views/not_found/not_found';
-import NotreParcours from './views/Parcours/NotreParcours';
+import Parcours from './views/Parcours/Parcours';
+import Projets from './views/Projects/projects';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Accueil />} />
           <Route path="/competences" element={<Competences />} />
-          <Route path="/parcours" element={<NotreParcours/>} />
+          <Route path="/parcours" element={<Parcours/>} />
+          <Route path="/projets" element={<Projets/>} />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>

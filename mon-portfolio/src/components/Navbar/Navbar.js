@@ -16,6 +16,7 @@ function Navbar() {
         {/* Because here isShown = true, calling toogleMobileMenu sets isShown to false in every case */}
         <Link to="/" onClick={toggleMobileMenu}>accueil</Link>
         <Link to="/competences" onClick={toggleMobileMenu}>compétences</Link>
+        <Link to="/projets" onClick={toggleMobileMenu}>projets</Link>
         <Link to="/parcours" onClick={toggleMobileMenu}>parcours</Link>
         <Link to="/about" onClick={toggleMobileMenu}>contact</Link>
       </div>
@@ -33,8 +34,9 @@ function Navbar() {
           <div className='Title'>Alexandre Faubladier--Anette</div>
           <Link to="/" className={ActiveLink === 0 ? "active-link" : ""} onClick={() => { setActiveLink(0) }}>Accueil</Link>
           <Link to="/competences" className={ActiveLink === 1 ? "active-link" : ""} onClick={() => { setActiveLink(1) }}>compétences</Link>
-          <Link to="/parcours" className={ActiveLink === 2 ? "active-link" : ""} onClick={() => { setActiveLink(2) }}>parcours</Link>
-          <Link to="/about" className={ActiveLink === 3 ? "active-link" : ""} onClick={() => { setActiveLink(3) }}>contact</Link>
+          <Link to="/projets" className={ActiveLink === 2 ? "active-link" : ""} onClick={() => { setActiveLink(2) }}>projets</Link>
+          <Link to="/parcours" className={ActiveLink === 3 ? "active-link" : ""} onClick={() => { setActiveLink(3) }}>parcours</Link>
+          <Link to="/about" className={ActiveLink === 4 ? "active-link" : ""} onClick={() => { setActiveLink(4) }}>contact</Link>
         </div>
 
         {/* This button only shows up on small screens. It is used to open the mobile menu */}

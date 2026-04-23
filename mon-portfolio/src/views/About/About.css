@@ -42,7 +42,7 @@
   }
   
   .about-values-grid {
-    display: grid;
+    display: center;
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
   }
