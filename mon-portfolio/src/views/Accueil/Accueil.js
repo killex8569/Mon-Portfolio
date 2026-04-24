@@ -27,7 +27,7 @@ function Accueil() {
     'Virtualisation (Proxmox, Hyper-V, vSphere, VMware)',
     'Wif (Ubiquiti)',
     'Active Directory (Active Directory, Déploiement WDS MDT (via PXE), base de donnée SQL, Hardening AD)',
-    'Maîtrise de Linux (Ubuntu, Fedora, Alma, Kali linux',
+    'Maîtrise de Linux (Ubuntu, Debian, Arch, Fedora, Alma, Kali linux, Alpine, NixOs)',
   ];
 
   const SkillsReseau = [
@@ -35,8 +35,6 @@ function Accueil() {
     'Infrastructures physiques et logicielles',
     'Sécurité des réseaux',
     '',
-
-
   ];
 
   const SkillCyber = [
@@ -92,16 +90,12 @@ function Accueil() {
       url : 'https://github.com/killex8569/L-algo-pour-les-pro',
       status: 'En cours',
     },
-
-    
   ];
 
   const typeAnimationSequence = despairPhrases.reduce((acc, phrase) => {
     acc.push(phrase, 2000);
     return acc;
   }, []);
-
-
 
   return (
     <div className="accueil-container">
@@ -150,27 +144,6 @@ function Accueil() {
       <section className="accueil-alonetitle">
       </section>
 
-      {/* PROFILE CARDS */}
-      {/* <section className="accueil-section">
-        <div className="accueil-profiles">
-          <a target="_blank" href="mailto:alexandre.faublanette@gmail.com" className="accueil-profile-card">
-            <article>
-              <img
-                src="Alexandre.png"
-                alt="Photo Alexandre FA"
-                className="accueil-profile-card__image"
-              />
-              <h3 className="accueil-profile-card__name">Alexandre F. Anette</h3>
-              <h5 className="accueil-profile-card__subtitle">Ingénieur Systèmes/Réseaux</h5>
-              <div className="accueil-profile-card__status">
-                <span>❌ cherche désespérément un stage</span>
-                <span>❌ cherche désespérément une alternance</span>
-              </div>
-            </article>
-          </a>
-
-      </div>
-      </section> */}
 
 
 

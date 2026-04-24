@@ -9,6 +9,7 @@ const Footer = () => (
                     <ul className="footer-ul">
                         <li><a target="_blank" href="/">Accueil</a></li>
                         <li><a target="_blank" href="/competences">Compétences</a></li>
+                        <li><a target="_blank" href="/projets">Projets</a></li>
                         <li><a target="_blank" href="/parcours">Mon parcours</a></li>
                         <li><a target="_blank" href="/about">A propos</a></li>
                     </ul>

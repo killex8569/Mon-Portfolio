@@ -1,8 +1,8 @@
 export const statusColor = {
-    'En cours':        '#EAB308',
-    'Terminé':         '#22C55E',
+    'En cours': '#EAB308',
+    'Terminé': '#22C55E',
     'En construction': '#F97316',
-    'En révision' :    '#7C84C4',
+    'En révision' : '#7C84C4',
   };
   
   export const StatusDot = ({ status }) => {

@@ -60,14 +60,14 @@ const projects = [
     desc: 'Application permettant de découvrir notre galaxie et l\'Univers.',
     url: 'https://github.com/killex8569/Kosmoz',
     status: 'En construction',
-    techs: ['3ème année', 'Vue.js', 'JavaScript', 'CSS'],
+    techs: ['3ème année', 'Vue.js', 'JavaScript', 'Web'],
   },
   {
     name: 'Mon Portfolio',
     desc: 'Ce site que vous consultez actuellement.',
     url: 'https://github.com/killex8569/Mon-Portfolio',
     status: 'Terminé',
-    techs: ['3ème année', 'React', 'CSS'],
+    techs: ['3ème année', 'React', 'Web'],
   },
   {
     name: 'Battleship',
@@ -81,14 +81,14 @@ const projects = [
     desc: "Exercices pour apprendre l'algorithmie progressivement.",
     url: 'https://github.com/killex8569/algo-en-27-exos',
     status: 'En révision',
-    techs: ['Python', 'Algorithmie', 'Java'],
+    techs: ['3ème année', 'Python', 'Algorithmie', 'Java'],
   },
   {
     name: 'DonnezNousUnStage',
     desc: 'Site réalisé avec un camarade pour aider à trouver une alternance ou un stage.',
     url: 'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance',
     status: 'Terminé',
-    techs: ['3ème année', 'React', 'CSS'],
+    techs: ['3ème année', 'React', 'Web'],
   },
   {
     name: 'Remake_Piment',
