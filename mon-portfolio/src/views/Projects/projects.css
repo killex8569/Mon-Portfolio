@@ -120,3 +120,96 @@
       grid-template-columns: 1fr;
     }
   }
+
+
+/* Partie barre de recherche */
+
+.pg-filter-box {
+    background: white;
+    border: 1px solid var(--color-bg-gray);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .pg-filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .pg-filter-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .pg-filter-clear {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-danger);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 8px;
+  }
+  
+  .pg-filter-search {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--color-bg-gray);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    margin-bottom: var(--spacing-xs);
+    outline: none;
+    transition: var(--transition);
+  }
+  
+  .pg-filter-search:focus {
+    border-color: var(--color-primary);
+  }
+  
+  .pg-filter-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .pg-filter-btn {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--color-bg-gray);
+    background: var(--color-bg-light);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .pg-filter-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  
+  .pg-filter-btn--active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
+  
+  .pg-tech--active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
+  
+  .pg-empty {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+  }

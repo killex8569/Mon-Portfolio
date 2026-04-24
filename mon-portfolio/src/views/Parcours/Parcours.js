@@ -20,7 +20,7 @@ function Parcours() {
     },
     {
       id: 3,
-      title: "Stage en système et réseau (2ème année de BTS) : Advolis Orfis",
+      title: "Stage en système et réseau (1er année de BTS) : Advolis Orfis",
       date: "juin - juillet 2024",
       description: "Stage de 6 semaines - Mise en place d'une solution de supervision, déplacements et interventions sur site client, création de documentation."
     },
