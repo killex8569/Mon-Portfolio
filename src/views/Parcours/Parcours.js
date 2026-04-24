@@ -1,5 +1,5 @@
 import Timeline from "../../components/Timeline/Timeline";
-import {Switch, LeftContent, RightContent} from '../../components/Switch/Switch'
+import {RightContent} from '../../components/Switch/Switch'
 import "./Parcours.css";
 
 function Parcours() {
