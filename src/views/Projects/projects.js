@@ -161,7 +161,7 @@ const projectSco = [
     desc: 'Mon premier PPE (Projet Personnalisé Encadré) s’est construit autour du déploiement d’OS WDS-MDT.',
     url: 'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance',
     status: 'Terminé',
-    techs: ['2ème année', 'AD', 'WDS', 'MDT', 'BDD SQL', 'PXE'],
+    techs: ['2ème année', 'AD', 'WDS', 'MDT', 'BDD', 'SQL', 'PXE'],
   },
   {
     name: 'PPE 2',
