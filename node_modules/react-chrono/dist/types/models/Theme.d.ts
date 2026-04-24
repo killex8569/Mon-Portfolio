@@ -1,0 +1,39 @@
+export interface Theme {
+    cardBgColor?: string;
+    cardDetailsBackGround?: string;
+    cardDetailsColor?: string;
+    cardMediaBgColor?: string;
+    cardSubtitleColor?: string;
+    cardTitleColor?: string;
+    detailsColor?: string;
+    iconBackgroundColor?: string;
+    nestedCardBgColor?: string;
+    nestedCardDetailsBackGround?: string;
+    nestedCardDetailsColor?: string;
+    nestedCardSubtitleColor?: string;
+    nestedCardTitleColor?: string;
+    primary?: string;
+    secondary?: string;
+    textColor?: string;
+    titleColor?: string;
+    titleColorActive?: string;
+    toolbarBgColor?: string;
+    toolbarBtnBgColor?: string;
+    toolbarTextColor?: string;
+    timelineBgColor?: string;
+    iconColor?: string;
+    buttonHoverBgColor?: string;
+    buttonActiveBgColor?: string;
+    buttonActiveIconColor?: string;
+    buttonBorderColor?: string;
+    buttonHoverBorderColor?: string;
+    buttonActiveBorderColor?: string;
+    shadowColor?: string;
+    glowColor?: string;
+    searchHighlightColor?: string;
+    darkToggleActiveBgColor?: string;
+    darkToggleActiveIconColor?: string;
+    darkToggleActiveBorderColor?: string;
+    darkToggleGlowColor?: string;
+}
+//# sourceMappingURL=Theme.d.ts.map

@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/jeveuxunstageouunealternance/static/css/main.1abcee20.css",
+    "main.js": "/jeveuxunstageouunealternance/static/js/main.d67d306a.js",
+    "static/js/453.7a6ce387.chunk.js": "/jeveuxunstageouunealternance/static/js/453.7a6ce387.chunk.js",
+    "index.html": "/jeveuxunstageouunealternance/index.html",
+    "main.1abcee20.css.map": "/jeveuxunstageouunealternance/static/css/main.1abcee20.css.map",
+    "main.d67d306a.js.map": "/jeveuxunstageouunealternance/static/js/main.d67d306a.js.map",
+    "453.7a6ce387.chunk.js.map": "/jeveuxunstageouunealternance/static/js/453.7a6ce387.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1abcee20.css",
+    "static/js/main.d67d306a.js"
+  ]
+}
