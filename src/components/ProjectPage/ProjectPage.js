@@ -31,9 +31,9 @@ export default function ProjectPage({
   next,
 }) {
   const STATUS_MAP = {
-    done:        { label: 'Terminé',     className: 'status-badge--done'        },
-    'in-progress':{ label: 'En cours',  className: 'status-badge--in-progress'  },
-    planned:     { label: 'Planifié',   className: 'status-badge--planned'      },
+    Termine:        { label: 'Terminé',     className: 'status-badge--done'        },
+    'En cours':{ label: 'En cours',  className: 'status-badge--in-progress'  },
+    'En construction' :     { label: 'En construction',   className: 'status-badge--planned'      },
   };
 
   const badge = STATUS_MAP[status] ?? STATUS_MAP.done;

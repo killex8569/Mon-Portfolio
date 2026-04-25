@@ -9,6 +9,7 @@ import NotFound from './views/not_found/not_found';
 import Parcours from './views/Parcours/Parcours';
 import Projets from './views/Projects/projects';
 import ProjetPortfolio from './views/Projects/ProjetDNSA'
+import Canpai from './views/Projects/ProjetCanpai'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/parcours" element={<Parcours/>} />
           <Route path="/projets" element={<Projets/>} />
           <Route path="/projets/dnsa" element={<ProjetPortfolio />}  />
+          <Route path="/projets/canpai" element={<Canpai />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>

@@ -3,9 +3,9 @@ import { useState, useRef } from 'react';
 import './Navbar.css';
 
 export const PROJECTS = [
-  { slug: 'DNSA',  label: 'DNSA',  status: 'done'        },
-  { slug: 'Canpai',   label: 'Canpai',   status: 'done' },
-  { slug: 'projet-3',   label: 'Projet 3',   status: 'planned'     },
+  { slug: 'DNSA',     label: 'DNSA',     status: 'done'            },
+  { slug: 'Canpai',   label: 'Canpai',   status: 'in-progress'     },
+  { slug: 'projet-3', label: 'Projet 3', status: 'en-construction' },
 ];
 
 function Navbar() {

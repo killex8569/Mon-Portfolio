@@ -5,7 +5,7 @@ export default function ProjetDNSA() {
     <ProjectPage
       title="DNSA"
       subtitle="Site vitrine développé avec un ami en React, présentant nos projets et nos compétences."
-      status="done"
+      status="Termine"
       period="Fév 2024 – Avr 2024"
       tags={['React', 'CSS', 'React Router', 'Responsive Design']}
       description={`Ce portfolio en commun a été conçu pour présenter notre parcours, nos compétences techniques
@@ -24,7 +24,7 @@ utilisateur fluide grâce à React Router et des transitions CSS soignées.`}
         { label: 'Code source', href: 'https://donneznousunstageouunealternance.vercel.app/' },
       ]}
       prev={null}
-      next={{ slug: 'projet-2', label: 'Projet 2' }}
+      next={{ slug: 'canpai', label: 'Canpai' }}
     />
   );
 }

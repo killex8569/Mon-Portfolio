@@ -1,6 +1,6 @@
 // Projets.jsx
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './projects.css';
 
 function getAllTechs(arr) {
@@ -8,6 +8,7 @@ function getAllTechs(arr) {
 }
 
 function ProjectGrid({ projects, statusClass, activeTechs }) {
+  const navigate = useNavigate();
   const filtered = activeTechs.length === 0
     ? projects
     : projects.filter(p => activeTechs.every(t => p.techs.includes(t)));
@@ -87,6 +88,7 @@ const projects = [
     name: 'DonnezNousUnStage',
     desc: 'Site réalisé avec un camarade pour aider à trouver une alternance ou un stage.',
     url: 'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance',
+    slug: 'dnsa',
     status: 'Terminé',
     techs: ['3ème année', 'React', 'Web'],
   },
@@ -118,6 +120,7 @@ const projectSco = [
     name: 'TP Canpai',
     desc: 'Canpai est un projet client serveur du jeu des batonets. Réaliser en C',
     url: 'https://github.com/killex8569/canpai/',
+    slug: 'canpai',
     status: 'Terminé',
     techs: ['3ème année', 'C', 'Socket', 'client', 'serveur'],
   },

@@ -236,9 +236,9 @@
   flex-shrink: 0;
 }
 
-.status--done         { background: #22C55E; }
-.status--in-progress  { background: var(--color-accent); }
-.status--planned      { background: #9CA3AF; }
+.status--done             { background: var(--status-done); }
+.status--in-progress      { background: var(--status-in-progress); }
+.status--en-construction  { background: var(--status-planned); }
 
 /* Lien "Voir tous" */
 .dropdown-all {
