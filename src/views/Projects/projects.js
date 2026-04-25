@@ -8,7 +8,7 @@ function getAllTechs(arr) {
 }
 
 function ProjectGrid({ projects, statusClass, activeTechs }) {
-  const navigate = useNavigate();
+  
   const filtered = activeTechs.length === 0
     ? projects
     : projects.filter(p => activeTechs.every(t => p.techs.includes(t)));
