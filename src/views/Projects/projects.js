@@ -75,7 +75,7 @@ const projects = [
     desc: 'Une bataille navale client-serveur réalisée en Java avec un camarade de classe.',
     url: 'https://github.com/killex8569/Battleship',
     status: 'En construction',
-    techs: ['3ème année', 'Java', 'Sockets', 'client', 'serveur', 'LibGDX'],
+    techs: ['3ème année', 'Java', 'Socket', 'client', 'serveur', 'LibGDX'],
   },
   {
     name: "L'algo en 27 exos",
@@ -104,7 +104,7 @@ const projects = [
     desc: 'Projet perso, l\'objectif était de mettre en place une infrastructure complète (Système, réseau, developpement). Ce repo reprend toutes les documentations que j\'ai créer',
     url: 'https://github.com/killex8569/Documentation-Homelab',
     status: 'En cours',
-    techs: ['3ème année', 'Markdown', 'Firewalling', 'Proxmox', 'Réseau', 'Système'],
+    techs: ['3ème année', 'Markdown', 'Firewalling', 'Proxmox', 'Réseau', 'Système', 'WDS', 'MDT', 'PXE', 'Ansible', 'Terraform', 'Supervision'],
   },
   {
     name: 'Loup garou',

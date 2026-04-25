@@ -32,9 +32,10 @@
     --transition: all 0.3s ease;
 
     /*Couleur Projets */
-    --status-done: #22C55E;
-    --status-in-progress: #F59E0B;
-    --status-planned: #9CA3AF; 
+    --status-termine: #22C55E;
+    --status-en-cours: #F59E0B;
+    --status-en-construction: #9CA3AF; 
+    --status-revision: #3C3489;
   }
   
   * {

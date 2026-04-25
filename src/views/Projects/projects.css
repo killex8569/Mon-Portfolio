@@ -72,10 +72,10 @@
     flex-shrink: 0;
   }
   
-  .pg-badge--done    { background: #EAF3DE; color: #27500A; }
-  .pg-badge--wip     { background: #FAEEDA; color: #633806; }
-  .pg-badge--review  { background: #E6F1FB; color: #0C447C; }
-  .pg-badge--build   { background: #EEEDFE; color: #3C3489; }
+  .pg-badge--done    { background: #EAF3DE; color: var(--status-termine); }
+  .pg-badge--wip     { background: #FAEEDA; color: var(--status-en-cours); }
+  .pg-badge--review  { background: #E6F1FB; color: var(--status-en-construction); }
+  .pg-badge--build   { background: #EEEDFE; color: var(--status-revision); }
   
   .pg-techs {
     display: flex;

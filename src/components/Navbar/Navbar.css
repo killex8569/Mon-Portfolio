@@ -236,9 +236,10 @@
   flex-shrink: 0;
 }
 
-.status--done             { background: var(--status-done); }
-.status--in-progress      { background: var(--status-in-progress); }
-.status--en-construction  { background: var(--status-planned); }
+.status--termine          { background: var(--status-termine); }
+.status--en-cours         { background: var(--status-en-cours); }
+.status--en-construction  { background: var(--status-en-construction); }
+.status--en-revision      { background: var(--status-revision); }
 
 /* Lien "Voir tous" */
 .dropdown-all {
