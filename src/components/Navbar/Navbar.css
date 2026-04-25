@@ -1,14 +1,14 @@
 .topnav {
-    z-index: 7;
-    height: 70px;
-    padding: 0px 20px;
-    background:var(--color-secondary);
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    position: sticky;
-    top: 0;
-    overflow: hidden;
+  z-index: 7;
+  height: 70px;
+  padding: 0px 20px;
+  background: var(--color-secondary);
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  position: sticky;
+  top: 0;
+  overflow: visible; /* ← était : overflow: hidden */
 }
 
 /*
@@ -22,6 +22,7 @@
 /* Desktop Menu */
 .menu {
   display: none;
+  overflow: visible;
 }
 
 .menu a {
@@ -125,6 +126,7 @@
     width: 100%; /* Make sure it takes the full width of the screen */
     position: relative; /* Positioning context for the pseudo-element */
     padding-right: 40px;
+    overflow: visible;
   }
 }
 
@@ -144,3 +146,115 @@
   font-size: 20px; /* taille du titre*/
   font-weight: bold;
 }
+
+/* ── Dropdown Projets ─────────────────────── */
+.dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-chevron {
+  width: 10px;
+  height: 6px;
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dropdown-wrapper.is-open .dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  min-width: 200px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 999;
+}
+
+.dropdown-wrapper.is-open .dropdown-panel {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Flèche pointant vers le haut */
+.dropdown-panel::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 6px;
+  background: #fff;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.dropdown-inner {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 5px;
+  font-size: 0.875rem !important; /* override .menu a */
+  font-weight: 500 !important;
+  color: var(--color-text-dark) !important;
+  text-decoration: none;
+  transition: background 0.15s ease;
+  text-transform: none;
+  margin: 0 !important; /* reset .menu a margin */
+}
+
+/* Annule le pseudo-element underline hérité de .menu a */
+.dropdown-item::after { display: none !important; }
+
+.dropdown-item:hover         { background: var(--color-bg-light); color: var(--color-primary) !important; }
+.dropdown-item--active       { background: rgba(37,99,235,0.07); color: var(--color-primary) !important; }
+
+/* Pastilles de statut */
+.dropdown-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status--done         { background: #22C55E; }
+.status--in-progress  { background: var(--color-accent); }
+.status--planned      { background: #9CA3AF; }
+
+/* Lien "Voir tous" */
+.dropdown-all {
+  display: block;
+  padding: 7px 12px;
+  margin-top: 2px;
+  border-top: 1px solid var(--color-bg-gray);
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: var(--color-primary) !important;
+  text-align: right;
+  text-decoration: none;
+  text-transform: none;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.dropdown-all::after  { display: none !important; }
+.dropdown-all:hover   { opacity: 0.75; }

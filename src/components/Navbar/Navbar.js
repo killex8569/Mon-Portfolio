@@ -1,51 +1,105 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import './Navbar.css'
+import { Link, useLocation } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import './Navbar.css';
+
+export const PROJECTS = [
+  { slug: 'DNSA',  label: 'DNSA',  status: 'done'        },
+  { slug: 'Canpai',   label: 'Canpai',   status: 'done' },
+  { slug: 'projet-3',   label: 'Projet 3',   status: 'planned'     },
+];
 
 function Navbar() {
   const [isShown, setIsShown] = useState(false);
-  const toggleMobileMenu = () => {
-    setIsShown(!isShown);
-  };
-
-  // Define MobileMenu component
-  const MobileMenu = () => {
-    return (
-      <div className='mobile-menu'>
-        
-        {/* Because here isShown = true, calling toogleMobileMenu sets isShown to false in every case */}
-        <Link to="/" onClick={toggleMobileMenu}>accueil</Link>
-        <Link to="/competences" onClick={toggleMobileMenu}>compétences</Link>
-        <Link to="/projets" onClick={toggleMobileMenu}>projets</Link>
-        <Link to="/parcours" onClick={toggleMobileMenu}>parcours</Link>
-        <Link to="/about" onClick={toggleMobileMenu}>contact</Link>
-      </div>
-    );
-  };
-
   const [ActiveLink, setActiveLink] = useState(0);
+  const [dropdownOpen, setDropdown] = useState(false);
+  const closeTimer = useRef(null);
+  const location = useLocation();
+
+  const toggleMobileMenu = () => setIsShown(!isShown);
+  const openDropdown     = () => { clearTimeout(closeTimer.current); setDropdown(true); };
+  const scheduleClose    = () => { closeTimer.current = setTimeout(() => setDropdown(false), 150); };
+
+  const isProjectActive = PROJECTS.some(p => location.pathname === `/projets/${p.slug}`)
+    || location.pathname === '/projets';
+
+  const MobileMenu = () => (
+    <div className='mobile-menu'>
+      <Link to="/"            onClick={toggleMobileMenu}>accueil</Link>
+      <Link to="/competences" onClick={toggleMobileMenu}>compétences</Link>
+      <Link to="/projets"     onClick={toggleMobileMenu}>projets</Link>
+      <Link to="/parcours"    onClick={toggleMobileMenu}>parcours</Link>
+      <Link to="/about"       onClick={toggleMobileMenu}>contact</Link>
+    </div>
+  );
 
   return (
     <>
       <div className='topnav'>
-      
-        {/* Desktop Menu, which only appears on large screens */}
+
+        {/* ── Desktop Menu ── */}
         <div className='menu'>
           <div className='Title'>Alexandre Faubladier--Anette</div>
-          <Link to="/" className={ActiveLink === 0 ? "active-link" : ""} onClick={() => { setActiveLink(0) }}>Accueil</Link>
-          <Link to="/competences" className={ActiveLink === 1 ? "active-link" : ""} onClick={() => { setActiveLink(1) }}>compétences</Link>
-          <Link to="/projets" className={ActiveLink === 2 ? "active-link" : ""} onClick={() => { setActiveLink(2) }}>projets</Link>
-          <Link to="/parcours" className={ActiveLink === 3 ? "active-link" : ""} onClick={() => { setActiveLink(3) }}>parcours</Link>
-          <Link to="/about" className={ActiveLink === 4 ? "active-link" : ""} onClick={() => { setActiveLink(4) }}>contact</Link>
+
+          <Link to="/" className={ActiveLink === 0 ? 'active-link' : ''} onClick={() => setActiveLink(0)}>
+            Accueil
+          </Link>
+
+          <Link to="/competences" className={ActiveLink === 1 ? 'active-link' : ''} onClick={() => setActiveLink(1)}>
+            compétences
+          </Link>
+
+          {/* ── Dropdown Projets ── */}
+          <div
+            className={`dropdown-wrapper ${dropdownOpen ? 'is-open' : ''}`}
+            onMouseEnter={openDropdown}
+            onMouseLeave={scheduleClose}
+          >
+            <Link
+              to="/projets"
+              className={ActiveLink === 2 || isProjectActive ? 'active-link' : ''}
+              onClick={() => { setActiveLink(2); setDropdown(false); }}
+            >
+              projets
+              <svg className="dropdown-chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+
+            <div className="dropdown-panel" onMouseEnter={openDropdown} onMouseLeave={scheduleClose}>
+              <div className="dropdown-inner">
+                {PROJECTS.map(p => (
+                  <Link
+                    key={p.slug}
+                    to={`/projets/${p.slug}`}
+                    className={`dropdown-item ${location.pathname === `/projets/${p.slug}` ? 'dropdown-item--active' : ''}`}
+                    onClick={() => { setActiveLink(2); setDropdown(false); }}
+                  >
+                    <span className={`dropdown-dot status--${p.status}`} />
+                    {p.label}
+                  </Link>
+                ))}
+                <Link to="/projets" className="dropdown-all" onClick={() => { setActiveLink(2); setDropdown(false); }}>
+                  Voir tous →
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <Link to="/parcours" className={ActiveLink === 3 ? 'active-link' : ''} onClick={() => setActiveLink(3)}>
+            parcours
+          </Link>
+
+          <Link to="/about" className={ActiveLink === 4 ? 'active-link' : ''} onClick={() => setActiveLink(4)}>
+            contact
+          </Link>
         </div>
 
-        {/* This button only shows up on small screens. It is used to open the mobile menu */}
+        {/* ── Burger mobile ── */}
         <button className='show-mobile-menu-button' onClick={toggleMobileMenu}>
           &#8801;
         </button>
       </div>
 
-      {/* The mobile menu and the close button */}
       {isShown && <MobileMenu />}
       {isShown && (
         <button className='close-mobile-menu-button' onClick={toggleMobileMenu}>

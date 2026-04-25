@@ -8,6 +8,8 @@ import About from './views/About/About';
 import NotFound from './views/not_found/not_found';
 import Parcours from './views/Parcours/Parcours';
 import Projets from './views/Projects/projects';
+import ProjetPortfolio from './views/Projects/ProjetDNSA'
+
 
 function App() {
   return (
@@ -22,11 +24,13 @@ function App() {
           <Route path="/competences" element={<Competences />} />
           <Route path="/parcours" element={<Parcours/>} />
           <Route path="/projets" element={<Projets/>} />
+          <Route path="/projets/dnsa" element={<ProjetPortfolio />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
+      
     </>
   );
 }
