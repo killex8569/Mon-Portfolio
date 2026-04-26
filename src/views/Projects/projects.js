@@ -68,6 +68,7 @@ const projects = [
     name: 'Mon Portfolio',
     desc: 'Ce site que vous consultez actuellement.',
     url: 'https://github.com/killex8569/Mon-Portfolio',
+    slug : 'portfolio',
     status: 'Terminé',
     techs: ['3ème année', 'React', 'Web'],
   },
@@ -82,6 +83,7 @@ const projects = [
     name: "L'algo en 27 exos",
     desc: "Exercices pour apprendre l'algorithmie progressivement. Réaliser avec l'aide d'un camarade",
     url: 'https://github.com/killex8569/algo-en-27-exos',
+    slug: 'algo',
     status: 'En révision',
     techs: ['3ème année', 'Python', 'Algorithmie', 'Java'],
   },
@@ -112,8 +114,9 @@ const projects = [
     name: 'HomeLab',
     desc: 'Projet perso, l\'objectif était de mettre en place une infrastructure complète (Système, réseau, developpement). Ce repo reprend toutes les documentations que j\'ai créer',
     url: 'https://github.com/killex8569/Documentation-Homelab',
+    slug: 'homelab',
     status: 'En cours',
-    techs: ['3ème année', 'Markdown', 'Firewalling', 'Proxmox', 'Réseau', 'Système', 'WDS', 'MDT', 'PXE', 'Ansible', 'Terraform', 'Supervision'],
+    techs: ['3ème année', 'Markdown', 'Firewalling', 'Proxmox', 'Réseau', 'Système', 'WDS', 'MDT', 'PXE', 'Ansible', 'Terraform', 'Supervision', 'SNMP', 'Wifi', 'Schéma Réseau'],
   },
   {
     name: 'Loup garou',
@@ -157,14 +160,14 @@ const projectSco = [
   {
     name: 'Developpement de la présence en ligne',
     desc: 'Tp réaliser en BTS SIO. L\'objectif était de créer et mettre en place une entreprise fictive (site, référencement, produit etc...) ',
-    url: 'https://github.com/killex8569/Mon-Portfolio',
+    slug: 'cms',
     status: 'Terminé',
     techs: ['1er année', 'SEO', 'Wordpress', 'E-mailling', 'Image de marque'],
   },
   {
     name: 'OCS',
     desc: 'TP réaliser en BTS SIO 2ème année. Ce TP consistant en l\'utilisation de GLPI et OCS.',
-    url: 'https://github.com/killex8569/Battleship',
+    slug: 'ocs',
     status: 'Terminé',
     techs: ['2ème année', 'OCS', 'glpi', 'Docker', 'Réseau', 'Système'],
   },
@@ -175,20 +178,19 @@ const projectSco = [
     status: 'Terminé',
     techs: ['2ème année', 'Veille', 'Documentation', 'Présentation'],
   },
-  
   {
     name: 'PPE 1',
     desc: 'Mon premier PPE (Projet Personnalisé Encadré) s’est construit autour du déploiement d’OS WDS-MDT.',
-    url: 'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance',
+    slug: 'ppe1',
     status: 'Terminé',
     techs: ['2ème année', 'AD', 'WDS', 'MDT', 'BDD', 'SQL', 'PXE'],
   },
   {
     name: 'PPE 2',
     desc: 'Mon deuxième PPE s’oriente autour de la mise en place de la supervision de Zabbix et Grafana.',
-    url: 'https://github.com/killex8569/Remake_Piment',
+    slug: 'ppe2',
     status: 'Terminé',
-    techs: ['2ème année', 'Supervision', 'Agents/Sondes', 'Réseau'],
+    techs: ['2ème année', 'Supervision', 'Agents/Sondes', 'Réseau', 'SNMP'],
   },
 
 ];

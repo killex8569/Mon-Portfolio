@@ -9,9 +9,7 @@ export default function MonProjet() {
       status="en-revision"
       period="Feb 2026 - Aujourd'hui"
       tags={['Markdown', 'GitHub', 'veille']}
-      description="Projet réaliser à 4, l'objectif principal était de couvrir plusieurs notions, notament le client serveur en C (via socket, multithreading etc.),
-      l'UI ainsi qu'un protocole de communication.
-      Notre application utilise pour l'interface graphique GKT et nous permet de jouer au jeux des batonnets, le client peut choisir de retirer un ou plusieurs batonnets (entre 1 et 3)."
+      description="L'objectif principal de ce projet est de mettre en avant les solutions logiciels européennes et open sources, ."
       highlights={[
         'Veille sur les différentes technologies Européennes ou open sources',
         'Souverainté des données',
@@ -21,7 +19,7 @@ export default function MonProjet() {
         { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
       ]}
       prev={{ slug: 'algo', label: 'Algo en 27 exos' }}
-      next={{slug: '', label:''}}
+      next={{slug: 'kosmoz', label:'Kosmoz'}}
     />
   );
 }

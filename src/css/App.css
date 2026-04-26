@@ -34,8 +34,8 @@
     /*Couleur Projets */
     --status-termine: #22C55E;
     --status-en-cours: #F59E0B;
-    --status-en-construction: #9CA3AF; 
-    --status-revision: #3C3489;
+    --status-en-construction: #7091f4; 
+    --status-revision: #1c1846;
   }
   
   * {

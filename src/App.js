@@ -17,6 +17,8 @@ import Algopourlespro from './views/Projects/ProjetAlgopro'
 import Algo from './views/Projects/ProjetAlgo'
 import EuroYourself from './views/Projects/ProjetEuroYourself'
 import Figfactor from './views/Projects/ProjetFigfactor'
+import Portfolio from './views/Projects/ProjetPortfolio'
+import Kosmoz from './views/Projects/ProjetKosmoz'
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
           <Route path="/projets/algopourlespro" element={<Algopourlespro />}  />
           <Route path="/projets/figfactor" element={<Figfactor />}  />
           <Route path="/projets/Europeanize-yourself" element={<EuroYourself />}  />
+          <Route path="/projets/portfolio" element={<Portfolio />}  />
+          <Route path="/projets/kosmoz" element={<Kosmoz />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>
