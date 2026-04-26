@@ -35,7 +35,8 @@
     --status-termine: #22C55E;
     --status-en-cours: #F59E0B;
     --status-en-construction: #7091f4; 
-    --status-revision: #1c1846;
+    --status-revision: #27c1f8;
+    --status-revision-txt: #7070d4;
   }
   
   * {

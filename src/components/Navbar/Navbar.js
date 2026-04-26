@@ -3,10 +3,14 @@ import { useState, useRef } from 'react';
 import './Navbar.css';
 
 export const PROJECTS = [
-  { slug: 'DNSA', label: 'DNSA', status: 'termine' },
-  { slug: 'Canpai', label: 'Canpai', status: 'en-cours' },
-  { slug: 'europeanize-yourself', label: 'Europeanize Yourself', status: 'en-construction' },
-  { slug: 'algopourlespro', label: 'l\'Algo pour les pros', status: 'en-revision' },
+  {slug: 'DNSA', label: 'DNSA', status: 'termine' },
+  {slug: 'Canpai', label: 'Canpai', status: 'en-cours' },
+  {slug: 'europeanize-yourself', label: 'Europeanize Yourself', status: 'en-cours' },
+  {slug: 'algopourlespro', label: 'L\'algo pour les pros', status: 'en-cours' },
+  {slug: 'kosmoz', label: 'Kosmoz', status: 'en-construction'},
+  {slug: 'portfolio', label :'Portfolio', status: 'termine'},
+  {slug: 'homelab', label: 'HomeLab', status: 'en-cours'},
+  {slug: 'piment', label: 'Piment', status: 'en-construction'},
 ];
 
 function Navbar() {

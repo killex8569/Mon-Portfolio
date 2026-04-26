@@ -75,7 +75,7 @@
   .pg-badge--done    { background: #EAF3DE; color: var(--status-termine); }
   .pg-badge--wip     { background: #FAEEDA; color: var(--status-en-cours); }
   .pg-badge--review  { background: #E6F1FB; color: var(--status-en-construction); }
-  .pg-badge--build   { background: #EEEDFE; color: var(--status-revision); }
+  .pg-badge--build   { background: #EEEDFE; color: var(--status-revision-txt); }
   
   .pg-techs {
     display: flex;

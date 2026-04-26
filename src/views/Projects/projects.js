@@ -273,19 +273,19 @@ function Projets() {
       </div>
 
       <h1 className="pg-title">Mes projets perso</h1>
-      <h4 className="pg-title">réalisés sur mon temps libre</h4>
+      <h4 className="pg-title">Réalisés sur mon temps libre</h4>
       <ProjectGrid projects={projects} statusClass={statusClass} activeTechs={activeTechs} />
 
       <br /><br /><br />
 
       <h1 className="pg-title">Mes projets scolaires</h1>
-      <h4 className="pg-title">réalisés sur mon temps scolaire</h4>
+      <h4 className="pg-title">Réalisés sur mon temps scolaire</h4>
       <ProjectGrid projects={projectSco} statusClass={statusClass} activeTechs={activeTechs} />
 
       <br /><br /><br />
 
       <h1 className="pg-title">Mes projets en entreprise</h1>
-      <h4 className="pg-title">réalisés sur mon temps de stage ou d'alternance</h4>
+      <h4 className="pg-title">Réalisés sur mon temps de stage ou d'alternance</h4>
       <ProjectGrid projects={projectPro} statusClass={statusClass} activeTechs={activeTechs} />
 
     </div>
