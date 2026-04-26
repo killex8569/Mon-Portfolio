@@ -4,7 +4,7 @@ import './Navbar.css';
 
 export const PROJECTS = [
   {slug: 'DNSA', label: 'DNSA', status: 'termine' },
-  {slug: 'Canpai', label: 'Canpai', status: 'en-cours' },
+  {slug: 'Canpai', label: 'Canpai', status: 'termine' },
   {slug: 'europeanize-yourself', label: 'Europeanize Yourself', status: 'en-cours' },
   {slug: 'algopourlespro', label: 'L\'algo pour les pros', status: 'en-cours' },
   {slug: 'kosmoz', label: 'Kosmoz', status: 'en-construction'},

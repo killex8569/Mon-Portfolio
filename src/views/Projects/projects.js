@@ -77,7 +77,7 @@ const projects = [
     desc: 'Une bataille navale client-serveur réalisée en Java avec un camarade de classe.',
     url: 'https://github.com/killex8569/Battleship',
     slug: 'battleship',
-    status: 'En construction',
+    status: 'En cours',
     techs: ['3ème année', 'Java', 'Socket', 'client', 'serveur', 'LibGDX'],
   },
   {
@@ -124,6 +124,7 @@ const projects = [
     desc: 'remake du clélèbre jeu du loup garou, fait en Java, permet de jouer dans le CLI et en ligne (architecture client, serveur)²',
     url: 'https://github.com/killex8569/Loup-garou',
     status: 'En construction',
+    slug: 'loup-garou',
     techs: ['3ème année', 'Java', 'client', 'serveur', 'CLI'],
   },
 ];
