@@ -80,6 +80,13 @@
     color: var(--color-text-muted);
   }
   .status-badge--planned::before     { background: #9CA3AF; }
+
+    
+  .status-badge--review {
+    background: rgba(129, 23, 205, 0.1);
+    color: #3C3489;
+  }
+  .status-badge--review::before        { background: #6d18e5; }
   
   /* ── Title / Subtitle ───────────────────── */
   .project-page__title {

@@ -7,7 +7,7 @@ export default function ProjetDNSA() {
       subtitle="Site vitrine développé avec un ami en React, présentant nos projets et nos compétences."
       status="Termine"
       period="Fév 2024 – Avr 2024"
-      tags={['React', 'CSS', 'React Router', 'Responsive Design']}
+      tags={['React', 'Portfolio commun', 'React Router', 'Responsive Design', 'CI/CD']}
       description={`Ce portfolio en commun a été conçu pour présenter notre parcours, nos compétences techniques
 et nos projets de manière claire et professionnelle. nos avons opté pour React afin de
 structurer l'interface en composants réutilisables, et mis l'accent sur une expérience
@@ -20,8 +20,8 @@ utilisateur fluide grâce à React Router et des transitions CSS soignées.`}
         'Déployé en continu via GitHub Pages / Vercel.',
       ]}
       links={[
-        { label: 'Voir le site', href: '', primary: true },
-        { label: 'Code source', href: 'https://donneznousunstageouunealternance.vercel.app/' },
+        { label: 'Voir le site', href: 'https://donneznousunstageouunealternance.vercel.app/', primary: true },
+        { label: 'Code source', href: 'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance' },
       ]}
       prev={null}
       next={{ slug: 'canpai', label: 'Canpai' }}

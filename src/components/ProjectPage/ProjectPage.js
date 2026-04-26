@@ -31,11 +31,12 @@ export default function ProjectPage({
   next,
 }) {
   const STATUS_MAP = {
-    Termine:        { label: 'Terminé',     className: 'status-badge--done'        },
-    'En cours':{ label: 'En cours',  className: 'status-badge--in-progress'  },
-    'En construction' :     { label: 'En construction',   className: 'status-badge--planned'      },
+    Termine: { label: 'Terminé', className: 'status-badge--done' },
+    'En cours':{ label: 'En cours', className: 'status-badge--in-progress' },
+    'En construction' : { label: 'En construction', className: 'status-badge--planned' },
+    'en-revision' : {label : 'En revision', className: 'status-badge--review'}
   };
-
+  
   const badge = STATUS_MAP[status] ?? STATUS_MAP.done;
 
   return (

@@ -30,7 +30,7 @@ ajouter les projets, une descriptions des modules etc...
 
 ## A ajouter
 
-
+- Automatiser la récupération des technos (tags) dans les view projet... (centralisation) actuellement il faut les copier coller
 
 
 

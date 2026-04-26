@@ -6,7 +6,7 @@ export const PROJECTS = [
   { slug: 'DNSA', label: 'DNSA', status: 'termine' },
   { slug: 'Canpai', label: 'Canpai', status: 'en-cours' },
   { slug: 'europeanize-yourself', label: 'Europeanize Yourself', status: 'en-construction' },
-  { slug: 'Algo-pour-les-pro', label: 'l\'Algo pour les pros', status: 'en-revision' },
+  { slug: 'algopourlespro', label: 'l\'Algo pour les pros', status: 'en-revision' },
 ];
 
 function Navbar() {
@@ -17,8 +17,8 @@ function Navbar() {
   const location = useLocation();
 
   const toggleMobileMenu = () => setIsShown(!isShown);
-  const openDropdown     = () => { clearTimeout(closeTimer.current); setDropdown(true); };
-  const scheduleClose    = () => { closeTimer.current = setTimeout(() => setDropdown(false), 150); };
+  const openDropdown = () => { clearTimeout(closeTimer.current); setDropdown(true); };
+  const scheduleClose = () => { closeTimer.current = setTimeout(() => setDropdown(false), 150); };
 
   const isProjectActive = PROJECTS.some(p => location.pathname === `/projets/${p.slug}`)
     || location.pathname === '/projets';
