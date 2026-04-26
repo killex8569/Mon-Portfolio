@@ -11,6 +11,7 @@ export const PROJECTS = [
   {slug: 'portfolio', label :'Portfolio', status: 'termine'},
   {slug: 'homelab', label: 'HomeLab', status: 'en-cours'},
   {slug: 'piment', label: 'Piment', status: 'en-construction'},
+  {slug: 'battleship', label: 'Battleship', status: 'en-cours'},
 ];
 
 function Navbar() {

@@ -1,8 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Accueil from './views/Accueil/Accueil'
-import Navbar from './components/Navbar/Navbar'
 import './css/App.css'
+
+/*Component*/
+import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer';
+
+/*Views */
+import Accueil from './views/Accueil/Accueil'
 import Competences from './views/Competences/Competences';
 import About from './views/About/About';
 import NotFound from './views/not_found/not_found';
@@ -19,6 +23,10 @@ import EuroYourself from './views/Projects/ProjetEuroYourself'
 import Figfactor from './views/Projects/ProjetFigfactor'
 import Portfolio from './views/Projects/ProjetPortfolio'
 import Kosmoz from './views/Projects/ProjetKosmoz'
+import Battleship from './views/Projects/ProjetBattleship'
+import Cms from './views/Projects/ProjetCms'
+import LoupGarou from './views/Projects/ProjetLoupGarou'
+import Piment from './views/Projects/ProjetPiment'
 
 function App() {
   return (
@@ -41,6 +49,10 @@ function App() {
           <Route path="/projets/Europeanize-yourself" element={<EuroYourself />}  />
           <Route path="/projets/portfolio" element={<Portfolio />}  />
           <Route path="/projets/kosmoz" element={<Kosmoz />}  />
+          <Route path="/projets/piment" element={<Piment />}  />
+          <Route path="/projets/loup-garou" element={<LoupGarou />}  />
+          <Route path="/projets/cms" element={<Cms />}  />
+          <Route path="/projets/battleship" element={<Battleship />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>

@@ -76,6 +76,7 @@ const projects = [
     name: 'Battleship',
     desc: 'Une bataille navale client-serveur réalisée en Java avec un camarade de classe.',
     url: 'https://github.com/killex8569/Battleship',
+    slug: 'battleship',
     status: 'En construction',
     techs: ['3ème année', 'Java', 'Socket', 'client', 'serveur', 'LibGDX'],
   },
