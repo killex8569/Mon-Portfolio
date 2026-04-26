@@ -8,7 +8,7 @@ export const PROJECTS = [
   {slug: 'europeanize-yourself', label: 'Europeanize Yourself', status: 'en-cours' },
   {slug: 'algopourlespro', label: 'L\'algo pour les pros', status: 'en-cours' },
   {slug: 'kosmoz', label: 'Kosmoz', status: 'en-construction'},
-  {slug: 'portfolio', label :'Portfolio', status: 'termine'},
+  {slug: 'portfolio', label :'Portfolio', status: 'en-cours'},
   {slug: 'homelab', label: 'HomeLab', status: 'en-cours'},
   {slug: 'piment', label: 'Piment', status: 'en-construction'},
   {slug: 'battleship', label: 'Battleship', status: 'en-cours'},

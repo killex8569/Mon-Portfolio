@@ -69,7 +69,7 @@ const projects = [
     desc: 'Ce site que vous consultez actuellement.',
     url: 'https://github.com/killex8569/Mon-Portfolio',
     slug : 'portfolio',
-    status: 'Terminé',
+    status: 'En cours',
     techs: ['3ème année', 'React', 'Web'],
   },
   {
