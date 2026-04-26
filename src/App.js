@@ -15,6 +15,7 @@ import Canpai from './views/Projects/ProjetCanpai'
 import Homelab from './views/Projects/ProjetHomelab'
 import Algopourlespro from './views/Projects/ProjetAlgopro'
 import Algo from './views/Projects/ProjetAlgo'
+import EuroYourself from './views/Projects/ProjetEuroYourself'
 import Figfactor from './views/Projects/ProjetFigfactor'
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/projets/algo" element={<Algo />}  />
           <Route path="/projets/algopourlespro" element={<Algopourlespro />}  />
           <Route path="/projets/figfactor" element={<Figfactor />}  />
+          <Route path="/projets/Europeanize-yourself" element={<EuroYourself />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>

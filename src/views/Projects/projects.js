@@ -53,8 +53,9 @@ const projects = [
     name: 'Europeanize Yourself!',
     desc: 'Document listant les alternatives européennes aux outils digitaux américains et asiatiques.',
     url: 'https://github.com/valentinRyckaert/Europeanize-yourself',
+    slug : 'Europeanize-yourself',
     status: 'En cours',
-    techs: ['3ème année', 'Markdown', 'GitHub'],
+    techs: ['3ème année', 'Markdown', 'GitHub', 'Veille'],
   },
   {
     name: 'Kosmoz',
@@ -133,6 +134,13 @@ const projectSco = [
     techs: ['3ème année', 'C', 'Socket', 'client', 'serveur'],
   },
   {
+    name: 'Ansible',
+    desc: 'TP ansible réaliser lors de mon cycle d\'ingénieur (3ème année)',
+    slug: 'ansible',
+    status: 'Terminé',
+    techs: ['3ème année', 'Ansible'],
+  },
+  {
     name: 'TP GLPI',
     desc: 'Lors de la réalisation de ce TP, nous avions une consigne qui nous demandait de suivre le fil du TP. La documentation est par conséquent un peu plus scolaire que les autres.',
     slug :'glpi',
@@ -167,6 +175,7 @@ const projectSco = [
     status: 'Terminé',
     techs: ['2ème année', 'Veille', 'Documentation', 'Présentation'],
   },
+  
   {
     name: 'PPE 1',
     desc: 'Mon premier PPE (Projet Personnalisé Encadré) s’est construit autour du déploiement d’OS WDS-MDT.',

@@ -93,3 +93,25 @@
       grid-template-columns: repeat(3, 1fr);
     }
   }
+
+/*CV */
+  
+.accueil-cv {
+  display: block;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 135px;
+}
+
+.accueil-cv a {
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 1000px) {
+  .accueil-cv {
+    display: flex;
+  }
+  .accueil-cv a {
+    margin-bottom: 0px;
+  }
+}

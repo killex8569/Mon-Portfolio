@@ -3,9 +3,9 @@ import ProjectPage from '../../components/ProjectPage/ProjectPage';
 export default function MonProjet() {
   return (
     <ProjectPage
-      title="Algo pour les pro"
+      title="Algo En 27 exo"
       subtitle="Ce projet à été réaliser en coopération avec un camarade à destination de notre promotion pour aider des personnes qui avais encore du mal dans la compréhension de l'algorithmie."
-      status="en-revision"
+      status="Termine"
       period="Feb 2026 - Aujourd'hui"
       tags={['C', 'Java', 'Algorithmie']}
       description="Projet réaliser à 4, l'objectif principal était de couvrir plusieurs notions, notament le client serveur en C (via socket, multithreading etc.),
@@ -19,7 +19,7 @@ export default function MonProjet() {
       links={[
         { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
       ]}
-      prev={{ slug: 'figfactor', label: 'Figfactor' }}
+      prev={{ slug: 'algopourlespro', label: 'Algo pour les pro' }}
       next={{slug: '', label:''}}
     />
   );
