@@ -3,9 +3,9 @@ import ProjectPage from '../../components/ProjectPage/ProjectPage';
 export default function MonProjet() {
   return (
     <ProjectPage
-      title="Battleship"
+      title="TP Ansible"
       subtitle="."
-      status="En cours"
+      status="Termine"
       period="Nov 2026 - Aujourd'hui"
       tags={['Web', 'Vue.js', 'Astronomie']}
       description="Kosmoz est une application web permettant de découvrir ou de redécouvrir la thématique de l'espace, avec des informations sur des systèmes solaires, des planètes, exoplanètes, des sondes, des découvertes majeurs ainsi que des informations plus globals."
@@ -17,8 +17,8 @@ export default function MonProjet() {
       links={[
         { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
       ]}
-      prev={{ slug: 'cms', label: 'Présence en ligne' }}
-      next={{slug: 'piment', label:'Piment'}}
+      prev={{ slug: 'loup-garou', label: 'Loup garou' }}
+      next={{slug: 'cms', label:'Présence en ligne'}}
     />
   );
 }

@@ -27,6 +27,7 @@ import Battleship from './views/Projects/ProjetBattleship'
 import Cms from './views/Projects/ProjetCms'
 import LoupGarou from './views/Projects/ProjetLoupGarou'
 import Piment from './views/Projects/ProjetPiment'
+import Ansible from './views/Projects/ProjetAnsible'
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="/projets/loup-garou" element={<LoupGarou />}  />
           <Route path="/projets/cms" element={<Cms />}  />
           <Route path="/projets/battleship" element={<Battleship />}  />
+          <Route path="/projets/ansible" element={<Ansible />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>

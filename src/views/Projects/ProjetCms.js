@@ -5,7 +5,7 @@ export default function MonProjet() {
     <ProjectPage
       title="CMS"
       subtitle="."
-      status="En construction"
+      status="Termine"
       period="Nov 2026 - Aujourd'hui"
       tags={['Web', 'Vue.js', 'Astronomie']}
       description="Kosmoz est une application web permettant de découvrir ou de redécouvrir la thématique de l'espace, avec des informations sur des systèmes solaires, des planètes, exoplanètes, des sondes, des découvertes majeurs ainsi que des informations plus globals."
@@ -17,8 +17,8 @@ export default function MonProjet() {
       links={[
         { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
       ]}
-      prev={{ slug: 'algopourlespro', label: 'Algo pour les pro' }}
-      next={{slug: 'europeanize-yourself', label:'Europeanize Yourself'}}
+      prev={{ slug: 'ansible', label: 'Ansible' }}
+      next={{slug: 'battleship', label:'Battleship'}}
     />
   );
 }

@@ -17,8 +17,8 @@ export default function MonProjet() {
       links={[
         { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
       ]}
-      prev={{ slug: 'algopourlespro', label: 'Algo pour les pro' }}
-      next={{slug: 'europeanize-yourself', label:'Europeanize Yourself'}}
+      prev={{ slug: 'portfolio', label: 'Mon portfolio' }}
+      next={{slug: 'ansible', label:'Ansible'}}
     />
   );
 }
