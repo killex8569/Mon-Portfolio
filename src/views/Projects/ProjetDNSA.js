@@ -17,7 +17,7 @@ utilisateur fluide grâce à React Router et des transitions CSS soignées.`}
         'Design system cohérent via des variables CSS globales.',
         'Composants réutilisables : Navbar, Timeline, CompetencesTable…',
         'Entièrement responsive — mobile, tablette, desktop.',
-        'Déployé en continu via GitHub Pages / Vercel.',
+        'Déployé en continu via GitHub Pages / Vercel (CI/CD).',
       ]}
       links={[
         { label: 'Voir le site', href: 'https://donneznousunstageouunealternance.vercel.app/', primary: true },

@@ -28,6 +28,8 @@ import Cms from './views/Projects/ProjetCms'
 import LoupGarou from './views/Projects/ProjetLoupGarou'
 import Piment from './views/Projects/ProjetPiment'
 import Ansible from './views/Projects/ProjetAnsible'
+import Stage1 from './views/Projects/ProjetStage'
+import Stage2 from './views/Projects/ProjetStage2'
 
 function App() {
   return (
@@ -55,6 +57,8 @@ function App() {
           <Route path="/projets/cms" element={<Cms />}  />
           <Route path="/projets/battleship" element={<Battleship />}  />
           <Route path="/projets/ansible" element={<Ansible />}  />
+          <Route path="/projets/stage1" element={<Stage1 />}  />
+          <Route path="/projets/stage2" element={<Stage2 />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>

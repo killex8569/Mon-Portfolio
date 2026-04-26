@@ -18,7 +18,7 @@ export default function MonProjet() {
         'Language C',
       ]}
       links={[
-        { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
+        { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: true },
       ]}
       prev={{ slug: 'dnsa', label: 'DNSA' }}
       next={{slug: 'homelab', label:'HomeLab'}}

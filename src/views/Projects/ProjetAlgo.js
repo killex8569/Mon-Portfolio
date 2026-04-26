@@ -8,12 +8,13 @@ export default function MonProjet() {
       status="en-revision"
       period="Feb 2026 - Aujourd'hui"
       tags={['C', 'Java', 'Algorithmie']}
-      description="Projet réaliser à 4, l'objectif principal était de couvrir plusieurs notions, notament le client serveur en C (via socket, multithreading etc.),
-      l'UI ainsi qu'un protocole de communication.
-      Notre application utilise pour l'interface graphique GKT et nous permet de jouer au jeux des batonnets, le client peut choisir de retirer un ou plusieurs batonnets (entre 1 et 3)."
+      description="Le repo de l'algo en 27 exos est une suite de documents qui suivent une progression linéaire basique, les premier exercices sont la pour nous introduire à l\algorithmie, les derniers seront utiles dans notre future métier en tant qu'ingénieur.'.
+      C'est la première étapes qui fournis les pré-requis et les bases pour comprendre la programmation."
       highlights={[
-        'Client UI (GKT',
-        'Serveur',
+        'Markdown avec expliquation des points techniques',
+        'Apprentissage de l\'algorithmie',
+        'Language Java',
+        'Introduction à la POO',
         'Language C',
       ]}
       links={[

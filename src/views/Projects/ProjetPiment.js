@@ -15,10 +15,10 @@ export default function MonProjet() {
         'Astronomie',
       ]}
       links={[
-        { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
+        { label: 'GitHub', href: 'https://github.com/killex8569/Remake_piment', primary: false },
       ]}
       prev={{ slug: 'battleship', label: 'Battleship' }}
-      next={{slug: '', label:''}}
+      next={{slug: 'stage1', label:'Stage première année'}}
     />
   );
 }
