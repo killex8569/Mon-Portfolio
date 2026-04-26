@@ -20,7 +20,7 @@ export default function MonProjet() {
         { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
       ]}
       prev={{ slug: 'figfactor', label: 'Figfactor' }}
-      next={{slug: 'algo', label:'Algo en 27 exo'}}
+      next={{slug: 'algo', label:'Algo en 27 exos'}}
     />
   );
 }

@@ -13,14 +13,14 @@ export default function MonProjet() {
       l'UI ainsi qu'un protocole de communication.
       Notre application utilise pour l'interface graphique GKT et nous permet de jouer au jeux des batonnets, le client peut choisir de retirer un ou plusieurs batonnets (entre 1 et 3)."
       highlights={[
-        'Client UI (GKT',
-        'Serveur',
-        'Language C',
+        'Veille sur les différentes technologies Européennes ou open sources',
+        'Souverainté des données',
+        'Open sources',
       ]}
       links={[
         { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
       ]}
-      prev={{ slug: 'homelab', label: 'HomeLab' }}
+      prev={{ slug: 'algo', label: 'Algo en 27 exos' }}
       next={{slug: '', label:''}}
     />
   );
