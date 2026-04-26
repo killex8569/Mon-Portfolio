@@ -5,7 +5,7 @@ export default function MonProjet() {
     <ProjectPage
       title="Algo pour les pro"
       subtitle="Ce projet à été réaliser en coopération avec un camarade à destination de notre promotion pour aider des personnes qui avais encore du mal dans la compréhension de l'algorithmie."
-      status="en-revision"
+      status="En cours"
       period="Feb 2026 - Aujourd'hui"
       tags={['C', 'Java', 'Algorithmie']}
       description="Projet réaliser à 4, l'objectif principal était de couvrir plusieurs notions, notament le client serveur en C (via socket, multithreading etc.),

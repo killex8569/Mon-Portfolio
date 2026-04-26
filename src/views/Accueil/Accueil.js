@@ -49,45 +49,45 @@ function Accueil() {
 
   const projects = [
     {
+      name: 'DonnezNousUnStageOuUneAlternance',
+      desc: 'Site réaliser avec un camarade de classe pour nous aider à trouver une alternance / Stage',
+      url : '/projets/dnsa',
+      status: 'Terminé',
+    },
+    {
       name: 'Europeanize Yourself!',
       desc: 'Document listant les alternatives européennes aux outils digitaux américains et asiatiques',
-      url : 'https://github.com/valentinRyckaert/Europeanize-yourself',
+      url : '/projets/europeanize-yourself',
       status: 'En cours',
     },
     {
       name: 'L\'algo en 27 exos',
       desc: 'Exercices pour apprendre l\'algorithmie',
-      url : 'https://github.com/killex8569/algo-en-27-exos',
+      url : '/projets/algo',
       status:'En révision',
     },
     {
       name: 'Kosmoz',
       desc: 'Application permettant de découvrir notre galaxie et l\'Univers (Vue.js)',
-      url : 'https://github.com/killex8569/Kosmoz',
+      url : '/projets/kosmoz',
       status: 'En construction',
-    },
-    {
-      name: 'DonnezNousUnStageOuUneAlternance',
-      desc: 'Site réaliser avec un camarade de classe pour nous aider à trouver une alternance / Stage',
-      url : 'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance',
-      status: 'Terminé',
     },
     {
       name: 'Mon-Portfolio',
       desc: 'Ce site que vous consultez !',
-      url : 'https://github.com/killex8569/Mon-Portfolio',
+      url : '/projets/portfolio',
       status: 'Terminé',
     },
     {
       name: 'Battleship',
       desc: 'Une bataille naval client serveur fait en Java avec l\'aide d\'un camarade de classe',
-      url : 'https://github.com/killex8569/Battleship',
-      status: 'En construction',
+      url : '/projets/battleship',
+      status: 'En cours',
     },
     {
       name: 'l\'algo pour les pro',
       desc: 'Un repo Github publique permettant d\'apprendre progressivement l\'agorithmie en partant de zéro, et en allant jusqu\'à des algorithmes plus complexes (ex: Dijkstra, A*, etc...)',
-      url : 'https://github.com/killex8569/L-algo-pour-les-pro',
+      url : '/projets/algopourlespro',
       status: 'En cours',
     },
   ];
@@ -202,7 +202,6 @@ function Accueil() {
               <StatusDot status={project.status} />
               <a
                 href={project.url}
-                target="_blank"
                 rel="noopener noreferrer"
                 className="accueil-project-link"
               >

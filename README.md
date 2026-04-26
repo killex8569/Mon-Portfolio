@@ -30,7 +30,7 @@ ajouter les projets, une descriptions des modules etc...
 
 ## A ajouter
 
-- Automatiser la récupération des technos ainsi que des status et les centraliser (tags, status) dans les view projet... (centralisation) actuellement il faut les copier coller
+- Automatiser la récupération des technos ainsi que des status et les centraliser ²(tags, status) dans les view projet... (centralisation) actuellement il faut les copier coller
 
 
 

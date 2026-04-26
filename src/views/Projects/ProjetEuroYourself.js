@@ -6,7 +6,7 @@ export default function MonProjet() {
       title="Europeanize Yourself"
       subtitle="Ce projet à est en cours de réalisation en coopération avec un camarade et présente les alternatives (open source ou propriétaire) de solution logicielles européennes.
       Ce document est réaliser et maintenu dans l'objectif et limiter / stopper notre dépendance aux produit américains et asiatiques en présentant des solutions robustes."
-      status="en-revision"
+      status="En cours"
       period="Feb 2026 - Aujourd'hui"
       tags={['Markdown', 'GitHub', 'veille']}
       description="L'objectif principal de ce projet est de mettre en avant les solutions logiciels européennes et open sources, ."

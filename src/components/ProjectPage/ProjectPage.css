@@ -65,28 +65,27 @@
   
   .status-badge--done {
     background: rgba(34, 197, 94, 0.1);
-    color: #16A34A;
+    color: var(--status-termine);
   }
-  .status-badge--done::before        { background: #22C55E; }
-  
-  .status-badge--in-progress {
-    background: rgba(245, 158, 11, 0.1);
-    color: #D97706;
-  }
-  .status-badge--in-progress::before { background: var(--color-accent); }
-  
-  .status-badge--planned {
-    background: var(--color-bg-gray);
-    color: var(--color-text-muted);
-  }
-  .status-badge--planned::before     { background: #9CA3AF; }
+  .status-badge--done::before { background: var(--status-termine); }
 
-    
-  .status-badge--review {
-    background: rgba(129, 23, 205, 0.1);
-    color: #3C3489;
-  }
-  .status-badge--review::before        { background: #6d18e5; }
+.status-badge--in-progress {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--status-en-cours);
+}
+.status-badge--in-progress::before { background: var(--status-en-cours); }
+
+.status-badge--en-construction {
+  background: rgba(92, 92, 186, 0.2);
+  color: var(--status-en-construction);
+}
+.status-badge--en-construction::before { background: var(--status-en-construction); }
+
+.status-badge--review {
+  background: rgba(39, 193, 248, 0.1);
+  color: var(--status-revision-txt);
+}
+.status-badge--review::before { background: var(--status-revision); }
   
   /* ── Title / Subtitle ───────────────────── */
   .project-page__title {
