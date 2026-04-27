@@ -8,7 +8,7 @@ import Legend from '../../components/Legend/legend'
 function Accueil() {
   const despairPhrases = [
     'le Système',
-    'le Réseaux',
+    'le Réseau',
     'le Web',
     'le Developpement Logiciel',
     'le developpement Mobile',
@@ -16,17 +16,17 @@ function Accueil() {
   ];
 
   const DevSkills = [
-    'Développement web (React, Vue.js)',
+    'Développement web (react, vue.js)',
     'Infrastructures logicielles (Apache, Docker...)',
-    'Developpement logicielle/mobile (Java, C, React natif)',
+    'Developpement logiciel/mobile (Java, C, react natif)',
     'Scripting (Bash, Python)',
   ];
 
   const SkillsSYS = [
     'Supervision',
     'Virtualisation (Proxmox, Hyper-V, vSphere, VMware)',
-    'Wifi (Ubiquiti)',
-    'Active Directory (Active Directory, Déploiement WDS MDT (via PXE), base de donnée SQL, Hardening AD)',
+    'Wif (Ubiquiti)',
+    'Active Directory (Active Directory, Déploiement WDS MDT (via PXE), base de données SQL, Hardening AD)',
     'Maîtrise de Linux (Ubuntu, Debian, Arch, Fedora, Alma, Kali linux, Alpine, NixOs)',
   ];
 
@@ -34,8 +34,7 @@ function Accueil() {
     'Mise en place d\'infrastructures réseaux (VLAN, technologie Cisco',
     'Infrastructures physiques et logicielles',
     'Sécurité des réseaux',
-    'Cisco',
-    
+    '',
   ];
 
   const SkillCyber = [
@@ -43,7 +42,7 @@ function Accueil() {
     'RootMe',
     'TryHackMe',
     'Kali Linux',
-    'Bonne pratiques cyber',
+    'Bonnes pratiques cyber',
   ];
 
 
@@ -51,7 +50,7 @@ function Accueil() {
   const projects = [
     {
       name: 'DonnezNousUnStageOuUneAlternance',
-      desc: 'Site réaliser avec un camarade de classe pour nous aider à trouver une alternance / Stage',
+      desc: 'Site réalisé avec un camarade de classe pour nous aider à trouver une alternance / Stage',
       url : '/projets/dnsa',
       status: 'Terminé',
     },
@@ -81,13 +80,13 @@ function Accueil() {
     },
     {
       name: 'Battleship',
-      desc: 'Une bataille naval client serveur fait en Java avec l\'aide d\'un camarade de classe',
+      desc: 'Une bataille naval client serveur faite en Java avec l\'aide d\'un camarade de classe',
       url : '/projets/battleship',
       status: 'En cours',
     },
     {
       name: 'l\'algo pour les pro',
-      desc: 'Un repo Github publique permettant d\'apprendre progressivement l\'agorithmie en partant de zéro, et en allant jusqu\'à des algorithmes plus complexes (ex: Dijkstra, A*, etc...)',
+      desc: 'Un repo Github publique permettant d\'apprendre progressivement l\'algorithmie en partant de zéro, et en allant jusqu\'à des algorithmes plus complexes (ex: Dijkstra, A*, etc...)',
       url : '/projets/algopourlespro',
       status: 'En cours',
     },
@@ -102,8 +101,13 @@ function Accueil() {
     <div className="accueil-container">
       {/* HERO SECTION */}
       <section className="accueil-section">
+        <div className='presentation'>
+        <h1>Alexandre FAUBLADIER--Anette</h1>
+        <h2 className="accueil-hero__subtitle">Actuellement en 3ème année d'école d'ingénieur</h2>
+        </div>
       <div className="accueil-hero__glass">
       <div className="accueil-hero__title">
+
           <h1>J'ai des compétences dans : </h1>
           <TypeAnimation
             sequence={typeAnimationSequence}
@@ -113,6 +117,7 @@ function Accueil() {
           />
         </div>
         <div className="accueil-hero__divider"></div>
+         
             <br></br><br></br>
           <img
             src="cpe-lyon.jpg"
@@ -194,7 +199,7 @@ function Accueil() {
         <div className="accueil-feature__content">
           <h2>J'ai des projets</h2>
           <h4 style={{ marginBottom: 'var(--spacing-md)', fontWeight: '500' }}>
-            Je travail actuellement sur ces projets (en équipe ou seul).
+            Je travaille actuellement sur ces projets (en équipe ou seul).
           </h4>
           <ul className="accueil-projects">
           {projects.map((project, idx) => (
@@ -227,6 +232,11 @@ function Accueil() {
             J'ai eu l'occasion de mettre en pratique dans plusieurs entreprises : 
           </h4>
           <ul className="accueil-projects">
+            <li>
+              L'école <span className="accueil-projects__strong">CPE Lyon</span>, ainsi que son partenaire
+              l'<span className="accueil-projects__strong">Institution des Chartreux</span>, sont des écoles
+              réputées pour leur exigence.
+            </li>
             <li>
             <span className="accueil-projects__strong">Advolis Orfis : </span> Stage de première année (5 semaines)
             </li>
