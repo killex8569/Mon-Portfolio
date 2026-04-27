@@ -132,6 +132,7 @@
   .accueil-hero__subtitle {
     color: var(--color-text-dark); /*Couleur du sous titre */
     font-size: 1.4rem;
+    text-transform: lowercase;
     line-height: 1.6;
     margin: 0;
   }
@@ -139,6 +140,7 @@
   .presentation {
     text-align: center;
     margin-block: 30px;
+    text-transform: lowercase;
 
   }
 

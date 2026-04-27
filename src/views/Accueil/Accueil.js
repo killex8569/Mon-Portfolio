@@ -16,25 +16,27 @@ function Accueil() {
   ];
 
   const DevSkills = [
-    'Développement web (react, vue.js)',
+    'Développement web (React, Vue.js)',
     'Infrastructures logicielles (Apache, Docker...)',
-    'Developpement logiciel/mobile (Java, C, react natif)',
+    'Developpement logiciel/mobile (Java, C, React natif)',
     'Scripting (Bash, Python)',
   ];
 
   const SkillsSYS = [
     'Supervision',
     'Virtualisation (Proxmox, Hyper-V, vSphere, VMware)',
-    'Wif (Ubiquiti)',
-    'Active Directory (Active Directory, Déploiement WDS MDT (via PXE), base de données SQL, Hardening AD)',
+    'Wifi (Ubiquiti)',
+    'Écosystème Active Directory (Active Directory, Déploiement WDS et MDT, base de données SQL, Hardening AD, pingcastle)',
     'Maîtrise de Linux (Ubuntu, Debian, Arch, Fedora, Alma, Kali linux, Alpine, NixOs)',
   ];
 
   const SkillsReseau = [
-    'Mise en place d\'infrastructures réseaux (VLAN, technologie Cisco',
+    'Mise en place d\'infrastructures réseaux (VLAN, VLSM, FLSM, TCP-IP, OSPF, RIP, STP, EtherChannel, LACP)',
     'Infrastructures physiques et logicielles',
-    'Sécurité des réseaux',
-    '',
+    'Sécurité des réseaux (VPN, RADIUS, IPSec)',
+    'Technologie Cisco (Switch, Packet tracer etc.)',
+    'NAT, DHCP, DNS, GNS3',
+    'Wireshark, nmap',
   ];
 
   const SkillCyber = [
@@ -42,7 +44,9 @@ function Accueil() {
     'RootMe',
     'TryHackMe',
     'Kali Linux',
+    'Labtainers',
     'Bonnes pratiques cyber',
+    'Parefeu (Opnsense, PFsense, WatchGuard, Stormshield)',
   ];
 
 
@@ -232,11 +236,6 @@ function Accueil() {
             J'ai eu l'occasion de mettre en pratique dans plusieurs entreprises : 
           </h4>
           <ul className="accueil-projects">
-            <li>
-              L'école <span className="accueil-projects__strong">CPE Lyon</span>, ainsi que son partenaire
-              l'<span className="accueil-projects__strong">Institution des Chartreux</span>, sont des écoles
-              réputées pour leur exigence.
-            </li>
             <li>
             <span className="accueil-projects__strong">Advolis Orfis : </span> Stage de première année (5 semaines)
             </li>

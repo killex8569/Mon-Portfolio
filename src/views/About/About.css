@@ -107,6 +107,11 @@
   margin-bottom: 10px;
 }
 
+.Github{
+  text-align: center;
+  margin-block: 30px;
+}
+
 @media screen and (min-width: 1000px) {
   .accueil-cv {
     display: flex;

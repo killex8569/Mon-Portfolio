@@ -1,4 +1,5 @@
 import React from 'react';
+import GithubActivity from '../../components/Github/Github';
 import './About.css';
 
 function About() {
@@ -58,8 +59,8 @@ function About() {
             </p>
             
 
-            </div>
-            <div className="accueil-cv">
+          </div>
+        <div className="accueil-cv">
           
           <a
             target="_blank"
@@ -74,7 +75,16 @@ function About() {
             </article>
           </a>
 
-          </div>
+        </div>
+
+        
+      <div className='Github'>
+      <GithubActivity
+        username="killex8569"
+        token={process.env.REACT_APP_GITHUB_TOKEN}
+      />
+      </div>
+
         </div>
       </section>
 

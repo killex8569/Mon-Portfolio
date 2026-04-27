@@ -1,0 +1,163 @@
+/* ═══════════════════════════════════════════
+   GITHUB ACTIVITY — contribution graph
+   S'intègre avec les variables CSS du portfolio
+═══════════════════════════════════════════ */
+
+/* Couleurs des niveaux — inspirées du thème sombre de GitHub
+   mais adaptées à la palette du portfolio */
+   :root {
+    --gh-l0: #e2e8f0;          /* vide  — color-bg-gray */
+    --gh-l1: #bfdbfe;          /* faible */
+    --gh-l2: #60a5fa;          /* moyen */
+    --gh-l3: #2563eb;          /* fort  — color-primary */
+    --gh-l4: #1e3a5f;          /* max   — color-secondary */
+  }
+  
+  .gh-activity {
+    background: #ffffff;
+    border: 1px solid var(--color-bg-gray);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+  
+  /* ── Header ─────────────────────────────── */
+  .gh-activity__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .gh-activity__total {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+  
+  .gh-activity__total strong {
+    color: var(--color-text-dark);
+    font-weight: 700;
+  }
+  
+  /* ── Graph layout ───────────────────────── */
+  .gh-activity__graph {
+    display: flex;
+    gap: 6px;
+    overflow: hidden;
+  }
+  
+  .gh-activity__scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex: 1;
+    /* Cache la scrollbar visuellement tout en restant scrollable */
+    scrollbar-width: none;
+  }
+  .gh-activity__scroll::-webkit-scrollbar { display: none; }
+  
+  /* ── Labels jours (colonne gauche) ─────── */
+  .gh-activity__days {
+    display: grid;
+    grid-template-rows: 20px repeat(7, 11px);
+    gap: 2px;
+    padding-top: 20px; /* aligne avec la grille (sous les mois) */
+    flex-shrink: 0;
+  }
+  
+  .gh-activity__days span {
+    font-size: 9px;
+    color: var(--color-text-muted);
+    line-height: 11px;
+    white-space: nowrap;
+    padding-right: 4px;
+  }
+  
+  /* ── Labels mois ────────────────────────── */
+  .gh-activity__months {
+    display: grid;
+    height: 20px;
+    margin-bottom: 2px;
+    min-width: max-content;
+  }
+  
+  .gh-activity__months span {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+  
+  /* ── Grille ─────────────────────────────── */
+  .gh-activity__grid {
+    display: flex;
+    gap: 2px;
+    min-width: max-content;
+  }
+  
+  .gh-activity__week {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  /* ── Cellule ────────────────────────────── */
+  .gh-activity__cell {
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    background: var(--gh-l0);
+    transition: transform 0.1s ease, filter 0.1s ease;
+    cursor: default;
+  }
+  
+  .gh-activity__cell:hover {
+    transform: scale(1.3);
+    filter: brightness(1.15);
+    z-index: 1;
+    position: relative;
+  }
+  
+  .gh-activity__cell--empty {
+    background: transparent !important;
+    pointer-events: none;
+  }
+  
+  /* ── Légende ────────────────────────────── */
+  .gh-activity__legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 12px;
+  }
+  
+  .gh-activity__legend span:not(.gh-activity__cell) {
+    font-size: 10px;
+    color: var(--color-text-muted);
+  }
+  
+  /* ── États ──────────────────────────────── */
+  .gh-activity--loading,
+  .gh-activity--error {
+    text-align: center;
+    padding: var(--spacing-md);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-bg-gray);
+    border-radius: var(--radius-md);
+    background: #fff;
+  }
+  
+  .gh-activity--error {
+    color: var(--color-danger);
+    border-color: rgba(239, 68, 68, 0.2);
+    background: rgba(239, 68, 68, 0.04);
+  }
+  
+  /* ── Responsive ─────────────────────────── */
+  @media (max-width: 640px) {
+    .gh-activity {
+      padding: var(--spacing-xs);
+    }
+  }
