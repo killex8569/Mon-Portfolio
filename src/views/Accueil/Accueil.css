@@ -131,7 +131,7 @@
   
   .accueil-hero__subtitle {
     color: var(--color-text-dark); /*Couleur du sous titre */
-    font-size: 1rem;
+    font-size: 1.4rem;
     line-height: 1.6;
     margin: 0;
   }

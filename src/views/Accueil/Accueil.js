@@ -103,7 +103,7 @@ function Accueil() {
       <section className="accueil-section">
       <div className="accueil-hero__glass">
       <div className="accueil-hero__title">
-          <h1>J'apprend dans ma formation : </h1>
+          <h1>J'ai des compétences dans : </h1>
           <TypeAnimation
             sequence={typeAnimationSequence}
             wrapper="h1"
@@ -112,7 +112,7 @@ function Accueil() {
           />
         </div>
         <div className="accueil-hero__divider"></div>
-          <p className="accueil-hero__subtitle">Actuellement en 3ème année d'école d'ingénieur</p>
+          
             <br></br><br></br>
           <img
             src="cpe-lyon.jpg"

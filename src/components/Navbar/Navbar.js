@@ -44,7 +44,9 @@ function Navbar() {
 
         {/* ── Desktop Menu ── */}
         <div className='menu'>
-          <div className='Title'>Alexandre Faubladier--Anette</div>
+          <div className='Title'><Link to="/" className={ActiveLink === -1 ? 'active-link' : ''} onClick={() => setActiveLink()}>
+            Alexandre Faubladier--Anette
+          </Link></div>
 
           <Link to="/" className={ActiveLink === 0 ? 'active-link' : ''} onClick={() => setActiveLink(0)}>
             Accueil
