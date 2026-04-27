@@ -16,16 +16,16 @@ function Accueil() {
   ];
 
   const DevSkills = [
-    'Développement web (react, vue.js)',
+    'Développement web (React, Vue.js)',
     'Infrastructures logicielles (Apache, Docker...)',
-    'Developpement logicielle/mobile (Java, C, react natif)',
+    'Developpement logicielle/mobile (Java, C, React natif)',
     'Scripting (Bash, Python)',
   ];
 
   const SkillsSYS = [
     'Supervision',
     'Virtualisation (Proxmox, Hyper-V, vSphere, VMware)',
-    'Wif (Ubiquiti)',
+    'Wifi (Ubiquiti)',
     'Active Directory (Active Directory, Déploiement WDS MDT (via PXE), base de donnée SQL, Hardening AD)',
     'Maîtrise de Linux (Ubuntu, Debian, Arch, Fedora, Alma, Kali linux, Alpine, NixOs)',
   ];
@@ -34,7 +34,8 @@ function Accueil() {
     'Mise en place d\'infrastructures réseaux (VLAN, technologie Cisco',
     'Infrastructures physiques et logicielles',
     'Sécurité des réseaux',
-    '',
+    'Cisco',
+    
   ];
 
   const SkillCyber = [
@@ -112,7 +113,6 @@ function Accueil() {
           />
         </div>
         <div className="accueil-hero__divider"></div>
-          
             <br></br><br></br>
           <img
             src="cpe-lyon.jpg"
@@ -227,11 +227,6 @@ function Accueil() {
             J'ai eu l'occasion de mettre en pratique dans plusieurs entreprises : 
           </h4>
           <ul className="accueil-projects">
-            <li>
-              L'école <span className="accueil-projects__strong">CPE Lyon</span>, ainsi que son partenaire
-              l'<span className="accueil-projects__strong">Institution des Chartreux</span>, sont des écoles
-              réputées pour leur exigence.
-            </li>
             <li>
             <span className="accueil-projects__strong">Advolis Orfis : </span> Stage de première année (5 semaines)
             </li>

@@ -111,7 +111,7 @@ const Competences = () => {
 
   let CertificationDictionnaryList = [
     "Cybersécurité", 
-    "Developpement", 
+    "Développement", 
     "Systèmes", 
     "Divers"
   ];
