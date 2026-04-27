@@ -112,6 +112,10 @@
   margin-block: 30px;
 }
 
+.Github-text, h2{
+  text-transform: none;
+}
+
 @media screen and (min-width: 1000px) {
   .accueil-cv {
     display: flex;

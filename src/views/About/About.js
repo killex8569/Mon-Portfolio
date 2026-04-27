@@ -79,6 +79,9 @@ function About() {
 
         
       <div className='Github'>
+        <div className='Github-text'>
+          <h2>Mon activité github sur cette année</h2>
+        </div>
       <GithubActivity
         username="killex8569"
         token={process.env.REACT_APP_GITHUB_TOKEN}

@@ -132,7 +132,7 @@
   .accueil-hero__subtitle {
     color: var(--color-text-dark); /*Couleur du sous titre */
     font-size: 1.4rem;
-    text-transform: lowercase;
+    text-transform: none;
     line-height: 1.6;
     margin: 0;
   }
@@ -270,6 +270,7 @@
     color: var(--color-secondary);
     position: relative;
     padding-bottom: var(--spacing-sm);
+    text-transform: uppercase;
   }
   
   .accueil-feature__content h2::after {
