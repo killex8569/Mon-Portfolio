@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './projects.css';
+// Ligne 5 — remplace par :
+import { projetsPerso as projects, projetsScolaires as projectSco, projetsPro, STATUS_LABELS } from '../../data/projets';
 
 function getAllTechs(arr) {
   return [...new Set(arr.flatMap(p => p.techs))].sort();
@@ -24,7 +26,7 @@ function ProjectGrid({ projects, statusClass, activeTechs }) {
           <div className="pg-card-header">
             <p className="pg-card-title">{project.name}</p>
             <span className={`pg-badge ${statusClass[project.status] || ''}`}>
-              {project.status}
+            {STATUS_LABELS[project.status] || project.status}
             </span>
           </div>
           <p className="pg-card-desc">{project.desc}</p>
@@ -48,179 +50,12 @@ function ProjectGrid({ projects, statusClass, activeTechs }) {
   );
 }
 
-const projects = [
-  {
-    name: 'Europeanize Yourself!',
-    desc: 'Document listant les alternatives européennes aux outils digitaux américains et asiatiques.',
-    url: 'https://github.com/valentinRyckaert/Europeanize-yourself',
-    slug : 'Europeanize-yourself',
-    status: 'En cours',
-    techs: ['3ème année', 'Markdown', 'GitHub', 'Veille'],
-  },
-  {
-    name: 'Kosmoz',
-    desc: 'Application permettant de découvrir notre galaxie et l\'Univers.',
-    url: 'https://github.com/killex8569/Kosmoz',
-    status: 'En construction',
-    techs: ['3ème année', 'Vue.js', 'JavaScript', 'Web'],
-  },
-  {
-    name: 'Mon Portfolio',
-    desc: 'Ce site que vous consultez actuellement.',
-    url: 'https://github.com/killex8569/Mon-Portfolio',
-    slug : 'portfolio',
-    status: 'En cours',
-    techs: ['3ème année', 'React', 'Web'],
-  },
-  {
-    name: 'Battleship',
-    desc: 'Une bataille navale client-serveur réalisée en Java avec un camarade de classe.',
-    url: 'https://github.com/killex8569/Battleship',
-    slug: 'battleship',
-    status: 'En cours',
-    techs: ['3ème année', 'Java', 'Socket', 'client', 'serveur', 'LibGDX'],
-  },
-  {
-    name: "L'algo en 27 exos",
-    desc: "Exercices pour apprendre l'algorithmie progressivement. Réaliser avec l'aide d'un camarade",
-    url: 'https://github.com/killex8569/algo-en-27-exos',
-    slug: 'algo',
-    status: 'En révision',
-    techs: ['3ème année', 'Python', 'Algorithmie', 'Java'],
-  },
-  {
-    name: "L'algo pour les pro",
-    desc: "Exercices pour apprendre l'algorithmie professionel. Réaliser avec l'aide d'un camarade",
-    url: 'https://github.com/killex8569/L-algo-pour-les-pro',
-    slug: 'algopourlespro',
-    status: 'En construction',
-    techs: ['3ème année', 'C', 'Algorithmie', 'Java'],
-  },
-  {
-    name: 'DonnezNousUnStage (DNSA)',
-    desc: 'Site réalisé avec un camarade pour aider à trouver une alternance ou un stage.',
-    url: 'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance',
-    slug: 'dnsa',
-    status: 'Terminé',
-    techs: ['3ème année', 'React', 'Web', 'CI/CD'],
-  },
-  {
-    name: 'Remake_Piment',
-    desc: 'Projet utilisant différentes technologies pour créer une application de gestion complète d\'une caserne de pompier.',
-    url: 'https://github.com/killex8569/Remake_Piment',
-    status: 'En construction',
-    techs: ['3ème année', 'PHP', 'React', 'MVC', 'DAO'],
-  },
-  {
-    name: 'HomeLab',
-    desc: 'Projet perso, l\'objectif était de mettre en place une infrastructure complète (Système, réseau, developpement). Ce repo reprend toutes les documentations que j\'ai créer',
-    url: 'https://github.com/killex8569/Documentation-Homelab',
-    slug: 'homelab',
-    status: 'En cours',
-    techs: ['3ème année', 'Markdown', 'Firewalling', 'Proxmox', 'Réseau', 'Système', 'WDS', 'MDT', 'PXE', 'Ansible', 'Terraform', 'Supervision', 'SNMP', 'Wifi', 'Schéma Réseau'],
-  },
-  {
-    name: 'Loup garou',
-    desc: 'remake du clélèbre jeu du loup garou, fait en Java, permet de jouer dans le CLI et en ligne (architecture client, serveur)²',
-    url: 'https://github.com/killex8569/Loup-garou',
-    status: 'En construction',
-    slug: 'loup-garou',
-    techs: ['3ème année', 'Java', 'client', 'serveur', 'CLI'],
-  },
-];
-
-const projectSco = [
-  {
-    name: 'TP Canpai',
-    desc: 'Canpai est un projet client serveur du jeu des batonets. Réaliser en C',
-    url: 'https://github.com/killex8569/canpai/',
-    slug: 'canpai',
-    status: 'Terminé',
-    techs: ['3ème année', 'C', 'Socket', 'client', 'serveur'],
-  },
-  {
-    name: 'Ansible',
-    desc: 'TP ansible réaliser lors de mon cycle d\'ingénieur (3ème année)',
-    slug: 'ansible',
-    status: 'Terminé',
-    techs: ['3ème année', 'Ansible'],
-  },
-  {
-    name: 'TP GLPI',
-    desc: 'Lors de la réalisation de ce TP, nous avions une consigne qui nous demandait de suivre le fil du TP. La documentation est par conséquent un peu plus scolaire que les autres.',
-    slug :'glpi',
-    status: 'Terminé',
-    techs: ['2ème année', 'GLPI', 'GitHub'],
-  },
-  {
-    name: 'figfactor',
-    desc: 'Projet de travail en commun à l\'echelle de 20 personnes répartie en 4 secteurs devans se conformer entre eux.',
-    slug: 'figfactor',
-    status: 'Terminé',
-    techs: ['1er année', 'Management', 'Cisco', 'Visio/Draw.io', 'Schéma Réseau', 'Réunion'],
-  },
-  {
-    name: 'Developpement de la présence en ligne',
-    desc: 'Tp réaliser en BTS SIO. L\'objectif était de créer et mettre en place une entreprise fictive (site, référencement, produit etc...) ',
-    slug: 'cms',
-    status: 'Terminé',
-    techs: ['1er année', 'SEO', 'Wordpress', 'E-mailling', 'Image de marque'],
-  },
-  {
-    name: 'OCS',
-    desc: 'TP réaliser en BTS SIO 2ème année. Ce TP consistant en l\'utilisation de GLPI et OCS.',
-    slug: 'ocs',
-    status: 'Terminé',
-    techs: ['2ème année', 'OCS', 'glpi', 'Docker', 'Réseau', 'Système'],
-  },
-  {
-    name: "Veille informationnelle",
-    desc: "Réaliser en deuxième année de BTS SIO, nous avions dû réaliser une veille informationnelle sur le sujet de notre choix.",
-    url: 'https://github.com/killex8569/algo-en-27-exos',
-    status: 'Terminé',
-    techs: ['2ème année', 'Veille', 'Documentation', 'Présentation'],
-  },
-  {
-    name: 'PPE 1',
-    desc: 'Mon premier PPE (Projet Personnalisé Encadré) s’est construit autour du déploiement d’OS WDS-MDT.',
-    slug: 'ppe1',
-    status: 'Terminé',
-    techs: ['2ème année', 'AD', 'WDS', 'MDT', 'BDD', 'SQL', 'PXE'],
-  },
-  {
-    name: 'PPE 2',
-    desc: 'Mon deuxième PPE s’oriente autour de la mise en place de la supervision de Zabbix et Grafana.',
-    slug: 'ppe2',
-    status: 'Terminé',
-    techs: ['2ème année', 'Supervision', 'Agents/Sondes', 'Réseau', 'SNMP'],
-  },
-
-];
-
-const projectPro = [
-  {
-    name: 'Stage 1er année',
-    desc: '',
-    url: '',
-    status: 'Terminé',
-    techs: ['1er année', 'Supervision', 'Documentation'],
-  },
-  {
-    name: 'Stage 2ème année',
-    desc: 'Mes tâches réaliser en stage de 2ème année de BTS',
-    url: '',
-    status: 'Terminé',
-    techs: ['2ème année', 'Supervision', 'Documentation'],
-  },
-  
-
-];
 
 const statusClass = {
-  'Terminé':       'pg-badge--done',
-  'En cours':      'pg-badge--wip',
-  'En révision':   'pg-badge--review',
-  'En construction': 'pg-badge--build',
+  'termine': 'pg-badge--done',
+  'en-cours': 'pg-badge--wip',
+  'en-revision': 'pg-badge--review',
+  'en-construction': 'pg-badge--build',
 };
 
 function Projets() {
@@ -288,7 +123,7 @@ function Projets() {
 
       <h1 className="pg-title">Mes projets en entreprise</h1>
       <h4 className="pg-title">Réalisés sur mon temps de stage ou d'alternance</h4>
-      <ProjectGrid projects={projectPro} statusClass={statusClass} activeTechs={activeTechs} />
+      <ProjectGrid projects={projetsPro} statusClass={statusClass} activeTechs={activeTechs} />
 
     </div>
   );

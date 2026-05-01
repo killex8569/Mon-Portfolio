@@ -4,12 +4,13 @@ export default function MonProjet() {
   return (
     <ProjectPage
       title="Algo En 27 exos"
-      subtitle="Ce projet à été réaliser en coopération avec un camarade à destination de notre promotion pour aider des personnes qui avais encore du mal dans la compréhension de l'algorithmie."
+      subtitle="Ce projet a été réalisé en coopération avec un camarade à destination de notre promotion pour aider les personnes qui avaient encore du mal avec la compréhension de l'algorithmie."
       status="en-revision"
       period="Feb 2026 - Aujourd'hui"
       tags={['C', 'Java', 'Algorithmie']}
-      description="Le repo de l'algo en 27 exos est une suite de documents qui suivent une progression linéaire basique, les premier exercices sont la pour nous introduire à l\algorithmie, les derniers seront utiles dans notre future métier en tant qu'ingénieur.'.
-      C'est la première étapes qui fournis les pré-requis et les bases pour comprendre la programmation."
+      description="Le repo de l'algo en 27 exos est une suite de documents qui suivent une progression linéaire basique. 
+      Les premiers exercices sont là pour nous introduire à l'algorithmie ; les derniers seront utiles dans notre futur métier d'ingénieur. 
+      C'est la première étape qui fournit les prérequis et les bases pour comprendre la programmation."
       highlights={[
         'Markdown avec expliquation des points techniques',
         'Apprentissage de l\'algorithmie',

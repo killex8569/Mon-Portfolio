@@ -4,17 +4,18 @@ export default function MonProjet() {
   return (
     <ProjectPage
       title="Algo pour les pro"
-      subtitle="Ce projet à été réaliser en coopération avec un camarade à destination de notre promotion pour aider des personnes qui avais encore du mal dans la compréhension de l'algorithmie."
+      subtitle="Ce projet a été réalisé en coopération avec un camarade à destination de notre promotion pour aider les personnes qui avaient encore du mal avec la compréhension de l'algorithmique."
       status="En cours"
       period="Feb 2026 - Aujourd'hui"
-      tags={['C', 'Java', 'Algorithmie']}
-      description="Projet réaliser à 4, l'objectif principal était de couvrir plusieurs notions, notament le client serveur en C (via socket, multithreading etc.),
-      l'UI ainsi qu'un protocole de communication.
-      Notre application utilise pour l'interface graphique GKT et nous permet de jouer au jeux des batonnets, le client peut choisir de retirer un ou plusieurs batonnets (entre 1 et 3)."
+      tags={['Java', 'C', 'Algorithmie', 'Avancé']}
+      description="L'algo pour les pros est un projet réalisé en collaboration avec un camarade. L'idée est de reprendre le principe de notre ancien repo. Ce nouveau projet va beaucoup plus loin que l'ancien ; nous y étudions notamment en profondeur certains sujets, algorithmes et méthodes"
       highlights={[
-        'Client UI (GKT',
-        'Serveur',
-        'Language C',
+        'Algorithmie pro',
+        'Manipulation de Java évolué',
+        'Manipulation C évolué',
+        'Réalisation de projet réelement formateurs',
+        
+
       ]}
       links={[
         { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },

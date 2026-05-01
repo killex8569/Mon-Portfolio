@@ -1,5 +1,7 @@
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
+import { accueilProjects } from '../../data/projets';
+
 import './Accueil.css';
 import { StatusDot } from '../../components/Legend/projectStatus';
 
@@ -51,50 +53,6 @@ function Accueil() {
 
 
 
-  const projects = [
-    {
-      name: 'DonnezNousUnStageOuUneAlternance',
-      desc: 'Site réalisé avec un camarade de classe pour nous aider à trouver une alternance / Stage',
-      url : '/projets/dnsa',
-      status: 'Terminé',
-    },
-    {
-      name: 'Europeanize Yourself!',
-      desc: 'Document listant les alternatives européennes aux outils digitaux américains et asiatiques',
-      url : '/projets/europeanize-yourself',
-      status: 'En cours',
-    },
-    {
-      name: 'L\'algo en 27 exos',
-      desc: 'Exercices pour apprendre l\'algorithmie',
-      url : '/projets/algo',
-      status:'En révision',
-    },
-    {
-      name: 'Kosmoz',
-      desc: 'Application permettant de découvrir notre galaxie et l\'Univers (Vue.js)',
-      url : '/projets/kosmoz',
-      status: 'En construction',
-    },
-    {
-      name: 'Mon-Portfolio',
-      desc: 'Ce site que vous consultez !',
-      url : '/projets/portfolio',
-      status: 'Terminé',
-    },
-    {
-      name: 'Battleship',
-      desc: 'Une bataille naval client serveur faite en Java avec l\'aide d\'un camarade de classe',
-      url : '/projets/battleship',
-      status: 'En cours',
-    },
-    {
-      name: 'l\'algo pour les pro',
-      desc: 'Un repo Github publique permettant d\'apprendre progressivement l\'algorithmie en partant de zéro, et en allant jusqu\'à des algorithmes plus complexes (ex: Dijkstra, A*, etc...)',
-      url : '/projets/algopourlespro',
-      status: 'En cours',
-    },
-  ];
 
   const typeAnimationSequence = despairPhrases.reduce((acc, phrase) => {
     acc.push(phrase, 2000);
@@ -206,22 +164,23 @@ function Accueil() {
             Je travaille actuellement sur ces projets (en équipe ou seul).
           </h4>
           <ul className="accueil-projects">
-          {projects.map((project, idx) => (
-            <li key={`project-${idx}`}>
-              <StatusDot status={project.status} />
-              <a
-                href={project.url}
-                rel="noopener noreferrer"
-                className="accueil-project-link"
-              >
-                {/* Ajout de la classe ici */}
-                <strong className="accueil-projects__strong">{project.name}</strong>
-              </a>
-              <div>{project.desc}</div>
-              
-            </li>
-          ))}
-          </ul>
+  {accueilProjects.map((project, idx) => (
+    <li key={`project-${idx}`}>
+      <StatusDot status={project.statusLabel} />
+      
+      {/* Ajout de la balise <a> au début */}
+      <a 
+        href={project.slug ? `/projets/${project.slug}` : project.url}
+        rel="noopener noreferrer"
+        className="accueil-project-link"
+      >
+        <strong className="accueil-projects__strong">{project.name}</strong>
+      </a>
+      
+      <div>{project.desc}</div>
+    </li>
+  ))}
+</ul>
         </div>
         <div className="accueil-feature__image">
         <Legend />
