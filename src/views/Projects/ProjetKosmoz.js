@@ -1,24 +1,25 @@
-import ProjectPage from '../../components/ProjectPage/ProjectPage';
+import ProjectPage from '../../components/ProjectPage/ProjectPage'; 
+import { getProjet, getNavigation } from '../../data/projets';
 
-export default function MonProjet() {
+export default function ProjetDNSA() {
+  const p = getProjet('kosmoz');
+  const { prev, next } = getNavigation('kosmoz');
+
   return (
     <ProjectPage
-      title="Kosmoz"
-      subtitle="Ce projet à été réaliser en coopération avec un camarade. Ce projet sera une application web permettant de découvrir et/ou d'apprendre des notions sur l'espace."
-      status="En construction"
-      period="Nov 2026 - Aujourd'hui"
-      tags={['Web', 'Vue.js', 'Astronomie']}
-      description="Kosmoz est une application web permettant de découvrir ou de redécouvrir la thématique de l'espace, avec des informations sur des systèmes solaires, des planètes, exoplanètes, des sondes, des découvertes majeurs ainsi que des informations plus globals."
-      highlights={[
-        'Interface en Vue.js',
-        'Open source',
-        'Astronomie',
-      ]}
+      title={p.name}
+      subtitle={p.desc}
+      status={p.status}
+      period={p.period}
+      tags={p.tags}
+      description={p.description}
+      highlights={p.highlights}
       links={[
-        { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
+        { label: 'Voir le site', href: p.siteUrl, primary: true },
+        { label: 'Code source',  href: p.url },
       ]}
-      prev={{ slug: 'europeanize-yourself', label: 'Europeanize Youtrself' }}
-      next={{slug: 'portfolio', label:'Mon Portfolio'}}
+      prev={prev}
+      next={next}
     />
   );
 }
