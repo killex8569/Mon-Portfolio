@@ -1,25 +1,25 @@
-import ProjectPage from '../../components/ProjectPage/ProjectPage';
+import ProjectPage from '../../components/ProjectPage/ProjectPage'; 
+import { getProjet, getNavigation } from '../../data/projets';
 
-export default function MonProjet() {
+export default function ProjetEY() {
+  const p = getProjet('europeanize-yourself');
+  const { prev, next } = getNavigation('europeanize-yourself');
+
   return (
     <ProjectPage
-      title="Europeanize Yourself"
-      subtitle="Ce projet à est en cours de réalisation en coopération avec un camarade et présente les alternatives (open source ou propriétaire) de solution logicielles européennes.
-      Ce document est réaliser et maintenu dans l'objectif et limiter / stopper notre dépendance aux produit américains et asiatiques en présentant des solutions robustes."
-      status="En cours"
-      period="Feb 2026 - Aujourd'hui"
-      tags={['Markdown', 'GitHub', 'veille']}
-      description="L'objectif principal de ce projet est de mettre en avant les solutions logiciels européennes et open sources, ."
-      highlights={[
-        'Veille sur les différentes technologies Européennes ou open sources',
-        'Souverainté des données',
-        'Open sources',
-      ]}
+      title={p.name}
+      subtitle={p.desc}
+      status={p.status}
+      period={p.period}
+      tags={p.tags}
+      description={p.description}
+      highlights={p.highlights}
       links={[
-        { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
+        { label: 'Voir le site', href: p.siteUrl, primary: true },
+        { label: 'Code source',  href: p.url },
       ]}
-      prev={{ slug: 'algo', label: 'Algo en 27 exos' }}
-      next={{slug: 'kosmoz', label:'Kosmoz'}}
+      prev={prev}
+      next={next}
     />
   );
 }

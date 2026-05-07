@@ -12,6 +12,8 @@ export default function ProjetDNSA() {
       status={p.status}
       period={p.period}
       tags={p.tags}
+      description={p.description}
+      highlights={p.highlights}
       links={[
         { label: 'Voir le site', href: p.siteUrl, primary: true },
         { label: 'Code source',  href: p.url },
