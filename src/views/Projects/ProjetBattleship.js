@@ -1,24 +1,24 @@
-import ProjectPage from '../../components/ProjectPage/ProjectPage';
+import ProjectPage from '../../components/ProjectPage/ProjectPage'; 
+import { getProjet, getNavigation } from '../../data/projets';
 
-export default function MonProjet() {
+export default function ProjetBattleShip() {
+  const p = getProjet('battleship');
+  const { prev, next } = getNavigation('battleship');
+
   return (
     <ProjectPage
-      title="Battleship"
-      subtitle="."
-      status="En cours"
-      period="Nov 2026 - Aujourd'hui"
-      tags={['Web', 'Vue.js', 'Astronomie']}
-      description="Kosmoz est une application web permettant de découvrir ou de redécouvrir la thématique de l'espace, avec des informations sur des systèmes solaires, des planètes, exoplanètes, des sondes, des découvertes majeurs ainsi que des informations plus globals."
-      highlights={[
-        'Interface en Vue.js',
-        'Open source',
-        'Astronomie',
-      ]}
+      title={p.name}
+      subtitle={p.desc}
+      status={p.status}
+      period={p.period}
+      tags={p.tags}
+      description={p.description}
+      highlights={p.highlights}
       links={[
-        { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: false },
+        { label: 'Code source',  href: p.url, primary: true },
       ]}
-      prev={{ slug: 'cms', label: 'Présence en ligne' }}
-      next={{slug: 'piment', label:'Piment'}}
+      prev={prev}
+      next={next}
     />
   );
 }

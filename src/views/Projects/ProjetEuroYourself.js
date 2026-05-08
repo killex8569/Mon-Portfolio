@@ -15,8 +15,7 @@ export default function ProjetEY() {
       description={p.description}
       highlights={p.highlights}
       links={[
-        { label: 'Voir le site', href: p.siteUrl, primary: true },
-        { label: 'Code source',  href: p.url },
+        { label: 'Code source',  href: p.url, primary: true },
       ]}
       prev={prev}
       next={next}
