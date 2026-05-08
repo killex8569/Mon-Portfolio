@@ -19,6 +19,7 @@ const Competences = () => {
   ];
 
   let skillsDictionnary = [
+    /*Web */
     { "React": 'logos/react.png', 
       "FastAPI": 'logos/fastapi.png', 
       "Vue.js": 'logos/vue.png', 
@@ -26,18 +27,18 @@ const Competences = () => {
       "Bootstrap": 'logos/bootstrap.png', 
       "Figma": 'logos/figma.png' 
     },
-
+    /*Programmation */
     { "Python": 'logos/python.png', 
       "Java": 'logos/java.png', 
       "C": 'logos/C.png', 
       "PHP": 'logos/php.png' 
     },
-
+    /*Base de donnée */
     { "MariaDB": 'logos/mariadb.png', 
       "PostgreSQL": 'logos/postgresql.png', 
       "MySQL": 'logos/mysql.svg' 
     },
-
+    /*Système/Réseau */
     { "Windows": 'logos/windows.png', 
       "Linux": 'logos/linux.png', 
       "Serveur Linux": 'logos/debian.png', 
@@ -55,6 +56,7 @@ const Competences = () => {
       "SNMP": '' 
     },
 
+    /*Virtualisation */
     { "Proxmox": 'logos/proxmox.svg', 
       "Hyper-V": 'logos/hyperv.svg', 
       "VMWare": 'logos/vmware.jpg', 
@@ -62,6 +64,7 @@ const Competences = () => {
       "Qemu/KVM": 'logos/QEMU.png' 
     },
 
+    /*Cyber */
     { "OPNSense": 'logos/opnsense.svg', 
       "Stormshield": 'logos/stormshield.jpg', 
       "Horodatage": '', "Chiffrement": '', 
@@ -71,25 +74,33 @@ const Competences = () => {
       "Labtainers": '' 
     },
 
+    /*DovOps */
     { "Docker": 'logos/docker.png', 
       "Github": 'logos/github.png', 
       "Gitlab": 'logos/gitlab.png', 
       "Apache": 'logos/apache.svg' 
     },
 
+    /*DLP/WebMarketing */
+
     { "WordPress": 'logos/wordpress.png', 
       "Référencement/SEO": '', 
       "E-mailing": '' 
     },
 
+    /*Soft Skill */
     { "Autoapprenissage": '', 
       "Travail en équipe": '', 
       "Conduite de projet": '',
     },
 
-    { "Anglais": '' 
-
+    /*Langues */
+    { "Anglais (B2)": '',
+      "Français (Natif)": ''
     },
+
+    /*Linux */
+
     { "Arch": 'logos/arch.svg', 
       "Fedora": 'logos/fedora.svg', 
       "Ubuntu": 'logos/ubuntu.svg', 
@@ -99,6 +110,9 @@ const Competences = () => {
       "Kali": 'logos/kali.svg', 
       "Alpine": 'logos/alpine-linux.png' 
     },
+
+      
+    /*Outils */
 
     { "Obsidian": 'logos/obsidian.png', 
       "Only office": 'logos/onlyoffice.png', 
@@ -157,7 +171,7 @@ const Competences = () => {
               <div className="col-md-6 col-sm p-3 competences-border">
                 <h5>Administrateur systèmes/réseaux</h5>
                 <h5>Ingénieur Cybersécurité</h5>
-                <h5>Analyste SOC</h5>
+                <h5>DevOps / Full stack</h5>
               </div>
             </div>
           </div>

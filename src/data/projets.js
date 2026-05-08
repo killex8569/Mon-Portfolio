@@ -211,48 +211,94 @@ export const PROJECTS_DATA = [
       highlights: ["Ansible", "Découverte playbook", "Déploiement", "Script"],
       scolaire:  true,
       inAccueil: false,
+      
     },
+    {
+      slug:      'cms',
+      name:      'TP CMS',
+      label:     'CMS',
+      desc:      'Utilisation de Wordpress avec référencement SEO permettant le développement de la présence en ligne.',
+      status:    'termine',
+      statusLabel: "Terminé",
+      description: "Ce TP réaliser lors de notre première année de BTS SIO nous à permis de mettre en production sur internet un site Wordpress que nous avions réaliser pendant plusieurs mois, l'idée était de créer et de mettre en 'vente' un produit ou service fictif (avec indication que ce site était juste pou un TP), puis de développer la présence en ligne de notre entreprise fictive, tout cela en passant par le référencement SEO, l'optimisation des textes, des mots clés, des sous-titres, des images, facilité la lecture de notre site par des crawler. A la fin de notre TP, le site devais apparaitre parmis les premiers résultat de google lors de sa recherche",
+      period:    '2025',
+      tags:      ['SEO', 'Wordpress', 'Référencement'],
+      techs:     ['1er année', 'Wordpress', 'SEO'],
+      highlights: ["SEO", "Découverte du référencement et optimisation", "Wordpress", "Déploiement"],
+      scolaire:  true,
+      inAccueil: false,
+    },
+    {
+      slug:      'figfactor',
+      name:      'FigFactor',
+      label:     'FigFactor',
+      desc:      'Un projet à l\'envergure d\'une classe devant simuler et géré une entreprise avec plusieurs sites (4).',
+      status:    'termine',
+      statusLabel: "Terminé",
+      description: "Ce projet divisait la classe en 4 groupe de 5 personnes, comprenant plusieurs métier (Chef de projet, techiciens, expert, commercial et DSI). L'objectif derrière ce projet était de nous préparer à communiquer avec les suppérieurs, à nous organiser et nous répartir le travail, ainsi les problématiques de travail et gestion d'équipe on été bénéfique et nécéssaire au bon déroulement du projet",
+      period:    '2024',
+      tags:      ['Cisco', 'Management', 'Réseau', 'Developpement Web'],
+      techs:     ['1er année', 'Cisco', 'Management', 'Réseau', 'Developpement Web'],
+      highlights: ['Cisco', 'Management', 'Réseau', 'Developpement Web', 'Réunion multiple réunions'],
+      scolaire:  true,
+      inAccueil: false,
+    },
+
+
+
     /*Projet PRO */
     {
-        slug:        'stage1',
-        name:        'Stage 1ère année',
-        label:       'Stage 1A',
-        desc:        '',
-        status:      'termine',
+        slug: 'stage1',
+        name: 'Stage 1ère année',
+        label: 'Stage 1A',
+        desc: '',
+        status: 'termine',
         statusLabel: 'Terminé',
-        url:         '',
-        tags:        [],
-        techs:       ['1er année', 'Supervision', 'Documentation'],
-        pro:         true,      // ← marque comme projet pro
-        inNavbar:    false,
-        inAccueil:   false,
+        url: '',
+        tags: [],
+        techs: ['1er année', 'Supervision', 'Documentation'],
+        pro: true,
+        inNavbar: false,
+        inAccueil: false,
       },
       {
-        slug:        'stage2',
-        name:        'Stage 2ème année',
-        label:       'Stage 2A',
-        desc:        'Mes tâches réalisées en stage de 2ème année de BTS.',
-        status:      'termine',
+        slug: 'stage2',
+        name: 'Stage 2ème année',
+        label: 'Stage 2A',
+        desc: 'Mes tâches réalisées en stage de 2ème année de BTS.',
+        status: 'termine',
         statusLabel: 'Terminé',
-        url:         '',
-        tags:        [],
-        techs:       ['2ème année', 'Supervision', 'Documentation'],
-        pro:         true,      // ← marque comme projet pro
-        inNavbar:    false,
-        inAccueil:   false,
+        url: '',
+        tags: [],
+        techs: ['2ème année', 'Supervision', 'Documentation'],
+        pro: true,      
+        inNavbar: false,
+        inAccueil: false,
       },
-    // … ajoute tes autres projets scolaires ici avec scolaire: true
+      {
+        slug: 'stage3',
+        name: 'Stage 3ème année',
+        label: 'Stage 3A',
+        desc: 'Mes tâches réalisées en stage de 3ème année en ICS.',
+        status: 'termine',
+        statusLabel: 'Terminé',
+        url: '',
+        tags: [],
+        techs: ['3ème année'],
+        pro: true,      
+        inNavbar: false,
+        inAccueil: false,
+      },
+    
   ];
   
-  /* ── Helpers ────────────────────────────────
-     Utilise ces fonctions dans tes composants
-  ─────────────────────────────────────────── */
+
 
   export const navbarProjects = PROJECTS_DATA.filter(p => p.inNavbar);
   
   export const accueilProjects = PROJECTS_DATA.filter(p => p.inAccueil);
   
-  export const projetsPerso = PROJECTS_DATA.filter(p => !p.scolaire);
+  export const projetsPerso = PROJECTS_DATA.filter(p => !p.scolaire && !p.pro); /*tout sauf scolaire et pro */
   
   export const projetsScolaires = PROJECTS_DATA.filter(p => p.scolaire);
 
@@ -260,10 +306,10 @@ export const PROJECTS_DATA = [
 
   
   
-  /** Récupère un projet par son slug (pour les pages individuelles) */
+  /* Récup un projet par son slug (pour les pages individuelles) */
   export const getProjet = (slug) => PROJECTS_DATA.find(p => p.slug === slug);
   
-  /** Récupère prev / next pour la navigation entre pages projet */
+  /* Récup prev / next pour la navigation entre pages projet */
   export const getNavigation = (slug) => {
     const idx = PROJECTS_DATA.findIndex(p => p.slug === slug);
     return {
