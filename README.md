@@ -1,4 +1,4 @@
-# Mon portfolio 2026
+# Mon portfolio
 Portfolio réaliser avec **React**
 
 
@@ -13,78 +13,26 @@ Voici le détails des pages :
 - **A propos** --> Mes informations de contacts (Github, LinkedIn, CV etc...)
 
 
+## Installation 
+
+une fois le code source télécharger : 
+
+```
+npm install 
+```
+
+Puis une fois les dépendances installer : 
+
+```
+npm start 
+```
+
+
+## Ajouts ou update 
 --> Ajouter les éléments suivants : 
 
-- Logiciels que j'ai utiliser (tous même les plus niche ou moins connu)
-- Langages de programmations
-- Frameworks que j'ai utiliser
-- Les technologies que je maitrises
-- Mon Parcours
-- Mes passions
-- Mes projets
+- Ajouter un mode nuit
 
-Ajouter un mode nuit
+- Passion (Paragraphe dans contact)
 
-ajouter les projets, une descriptions des modules etc...
-
-
-## A ajouter
-
-- Automatiser la récupération des technos ainsi que des status et les centraliser ²(tags, status) dans les view projet... (centralisation) actuellement il faut les copier coller
-
-
-
-
-
-### Ajouter un projet au portfolio
-
-#### 1. `Navbar.js` — déclarer le projet
-```js
-export const PROJECTS = [
-  { slug: 'portfolio', label: 'Portfolio', status: 'done' },
-  { slug: 'mon-projet', label: 'Mon Projet', status: 'in-progress' }, // ← ajouter
-];
-```
-**Statuts disponibles :** `done` · `in-progress` · `planned`
-
----
-
-#### 2. Créer la page — `src/views/Projects/MonProjet.js`
-```jsx
-import ProjectPage from '../../components/ProjectPage/ProjectPage';
-
-export default function MonProjet() {
-  return (
-    <ProjectPage
-      title="Mon Projet"
-      subtitle="Courte description."
-      status="in-progress"
-      period="Jan 2025 – aujourd'hui"
-      tags={['React', 'Node.js']}
-      description="Description longue du projet."
-      highlights={[
-        'Point clé 1',
-        'Point clé 2',
-      ]}
-      links={[
-        { label: 'GitHub', href: 'https://github.com/...', primary: true },
-      ]}
-      prev={{ slug: 'portfolio', label: 'Portfolio' }}
-      next={null}
-    />
-  );
-}
-```
-
----
-
-#### 3. `App.js` — ajouter la route
-```jsx
-import MonProjet from './views/Projects/MonProjet';
-
-<Route path="/projets/mon-projet" element={<MonProjet />} />
-```
-
----
-
-> Le slug doit être **identique** dans les 3 fichiers.
+- Ajouter le détails des modules (ajouté les derniers éléments)
