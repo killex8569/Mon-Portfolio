@@ -1,27 +1,25 @@
-import ProjectPage from '../../components/ProjectPage/ProjectPage';
+import ProjectPage from '../../components/ProjectPage/ProjectPage'; 
+import { getProjet, getNavigation } from '../../data/projets';
 
-export default function MonProjet() {
+export default function ProjetCanpai() {
+  const p = getProjet('canpai');
+  const { prev, next } = getNavigation('canpai');
+
   return (
     <ProjectPage
-      title="Canpai"
-      subtitle="Ce projet à été réaliser en groupe, l'objectif était de créer une architecture client serveur en C."
-      status="Termine"
-      period="Nov 2025 - Jan 2026"
-      tags={['C', 'Client', 'Serveur']}
-      description="Projet réaliser à 4, l'objectif principal était de couvrir plusieurs notions, notament le client serveur en C (via socket, multithreading etc.),
-      l'UI ainsi qu'un protocole de communication.
-      Notre application utilise pour l'interface graphique GKT et nous permet de jouer au jeux des batonnets, le client peut choisir de retirer un ou plusieurs batonnets (entre 1 et 3)."
-      highlights={[
-        'Client UI (GKT)',
-        'Serveur',
-        'Protocole réseau',        
-        'Language C',
-      ]}
+      title={p.name}
+      subtitle={p.desc}
+      status={p.status}
+      period={p.period}
+      tags={p.tags}
+      description={p.description}
+      highlights={p.highlights}
       links={[
-        { label: 'GitHub', href: 'https://github.com/killex8569/canpai', primary: true },
+        
+        { label: 'Code source',  href: p.url, primary: true},
       ]}
-      prev={{ slug: 'dnsa', label: 'DNSA' }}
-      next={{slug: 'homelab', label:'HomeLab'}}
+      prev={prev}
+      next={next}
     />
   );
 }
