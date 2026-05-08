@@ -30,6 +30,8 @@ import Piment from './views/Projects/ProjetPiment'
 import Ansible from './views/Projects/ProjetAnsible'
 import Stage1 from './views/Projects/ProjetStage'
 import Stage2 from './views/Projects/ProjetStage2'
+import Ocs from './views/Projects/ProjetOcs'
+import Glpi from './views/Projects/ProjetGlpi'
 
 function App() {
   return (
@@ -59,6 +61,8 @@ function App() {
           <Route path="/projets/ansible" element={<Ansible />}  />
           <Route path="/projets/stage1" element={<Stage1 />}  />
           <Route path="/projets/stage2" element={<Stage2 />}  />
+          <Route path="/projets/ocs" element={<Ocs />}  />
+          <Route path="/projets/glpi" element={<Glpi />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>

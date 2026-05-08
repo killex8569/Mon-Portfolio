@@ -9,7 +9,7 @@ function Parcours() {
       id: 1,
       title: "Master Ingénieur en Cybersécurité à CPE Lyon",
       date: "En ce moment (2025 - 2028)",
-      description: "Perfectionnement en cybersécurité, approfondissement des compétences en réseaux et développement, cours et travaux théoriques et pratiques, projets."
+      description: "Developpement de nos qualité de DevOps, perfectionnement en cybersécurité, approfondissement des compétences en réseaux et développement, cours et travaux théoriques et pratiques, projets."
     },
     
     {
