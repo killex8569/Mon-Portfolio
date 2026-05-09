@@ -162,6 +162,7 @@ const Competences = () => {
               <h5>Titulaire d'un BTS SIO option SISR obtenu à l'Institution des Chartreux, je poursuis actuellement mon cursus en cycle ingénieur à CPE Lyon.</h5>
               <h5>J'y consolide une expertise technique en développement logiciel (C, Python, Java et développement web full stack),</h5>
               <h5>en scripting et automatisation, en infrastructures et réseaux, en administration systèmes ainsi qu'en cybersécurité.</h5>
+              <h5>J'y apprend notamment à maitriser les outils et les technologies pour devenir devOps.</h5>
             </div>
           </div>
           <div className="col">
