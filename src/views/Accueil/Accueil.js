@@ -12,9 +12,9 @@ function Accueil() {
     'le Système',
     'le Réseau',
     'le Web',
-    'le Developpement Logiciel',
-    'le developpement Mobile',
-    'la Sécurité',
+    'le Developpement logiciel',
+    'le Developpement Mobile',
+    'la CyberSécurité',
   ];
 
   const DevSkills = [
