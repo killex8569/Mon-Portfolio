@@ -20,8 +20,12 @@ function Accueil() {
   const DevSkills = [
     'Développement web (React, Vue.js)',
     'Infrastructures logicielles (Apache, Docker...)',
-    'Developpement logiciel/mobile (Java, C, React natif)',
+    'Développement logiciel/mobile (Java, C, React natif)',
     'Scripting (Bash, Python)',
+    'CI/CD (utilisation)',
+    'Git/Github/Gitlab',
+    'Base de donnée (Mysql, Postgres, MariaDB)',
+    
   ];
 
   const SkillsSYS = [
@@ -30,6 +34,9 @@ function Accueil() {
     'Wifi (Ubiquiti)',
     'Écosystème Active Directory (Active Directory, Déploiement WDS et MDT, base de données SQL, Hardening AD, pingcastle)',
     'Maîtrise de Linux (Ubuntu, Debian, Arch, Fedora, Alma, Kali linux, Alpine, NixOs)',
+    'Ansible/Terraform (IaC)',
+    'Sauvegarde (Veeam)',
+
   ];
 
   const SkillsReseau = [
@@ -128,7 +135,7 @@ function Accueil() {
               </ul>
             </div>
             <div className="accueil-skill-card">
-              <h4>Developpement</h4>
+              <h4>Développement</h4>
               <ul>
                 {DevSkills.map((skill, idx) => (
                   <li key={`alexandre-skill-${idx}`}>{skill}</li>
