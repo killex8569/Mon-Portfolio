@@ -192,7 +192,7 @@
   
   .pg-filter-btn:hover {
     border-color: var(--color-primary);
-    color: var(--color-primary);
+    color: var(--color-nav-accent);
   }
   
   .pg-filter-btn--active {

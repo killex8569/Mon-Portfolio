@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './projects.css';
-// Ligne 5 — remplace par :
 import { projetsPerso as projects, projetsScolaires as projectSco, projetsPro, STATUS_LABELS } from '../../data/projets';
 
 function getAllTechs(arr) {
@@ -79,7 +78,6 @@ function Projets() {
   
   return (
     <div className="pg-container">
-
       <div className="pg-filter-box">
         <div className="pg-filter-header">
           <span className="pg-filter-label">Filtrer par technologie</span>
