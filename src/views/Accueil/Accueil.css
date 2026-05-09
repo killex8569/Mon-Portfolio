@@ -274,7 +274,7 @@
   }
   
   .accueil-feature__content h2::after {
-    content: ' !!';
+    /* content: ' !!';*/
     color: var(--color-accent);
     font-size: 1.3em;
   }
