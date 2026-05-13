@@ -32,6 +32,7 @@ import Stage1 from './views/Projects/ProjetStage'
 import Stage2 from './views/Projects/ProjetStage2'
 import Ocs from './views/Projects/ProjetOcs'
 import Glpi from './views/Projects/ProjetGlpi'
+import Galileo from './views/Projects/ProjetGalileo'
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
           <Route path="/projets/stage2" element={<Stage2 />}  />
           <Route path="/projets/ocs" element={<Ocs />}  />
           <Route path="/projets/glpi" element={<Glpi />}  />
+          <Route path="/projets/galileo" element={<Galileo />}  />
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>

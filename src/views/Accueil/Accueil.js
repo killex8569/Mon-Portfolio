@@ -58,9 +58,6 @@ function Accueil() {
     'Parefeu (Opnsense, PFsense, WatchGuard, Stormshield)',
   ];
 
-
-
-
   const typeAnimationSequence = despairPhrases.reduce((acc, phrase) => {
     acc.push(phrase, 2000);
     return acc;
