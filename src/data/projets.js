@@ -59,8 +59,8 @@ export const PROJECTS_DATA = [
       name:      'Mon Portfolio',
       label:     'Portfolio',
       desc:      'Ce site que vous consultez actuellement (nouvelle version).',
-      status:    'termine',
-      statusLabel: 'Terminé',
+      status:    'en-cours',
+      statusLabel: 'En cours',
       description: "Dans l'objectif d'apprendre une nouvelle technologie, ce portfolio est réaliser avec react, il utilise le CI/CD pour être déployer sur vercel. Ce site est responsible (compatible mobile, tablette et pc)",
       period:    '2024 – aujourd\'hui',
       url:       'https://github.com/killex8569/Mon-Portfolio',
@@ -334,6 +334,21 @@ export const PROJECTS_DATA = [
         inNavbar: false,
         inAccueil: false,
       },
+      // {
+      //   slug: 'alternance',
+      //   name: 'Alternance',
+      //   label: 'Alternance',
+      //   desc: 'Détails de mes missions lors de mon alternance (En cours).',
+      //   status: 'en-cours',
+      //   statusLabel: 'En cours',
+      //   url: '',
+      //   tags: [],
+      //   techs: ['4ème année', '5ème année', 'CI/CD', 'Automatisation', ''],
+      //   scolaire: false,
+      //   pro: true,      
+      //   inNavbar: true,
+      //   inAccueil: false,
+      // },
     
   ];
   
