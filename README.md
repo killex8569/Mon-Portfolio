@@ -1,5 +1,5 @@
 # Mon portfolio
-Portfolio réaliser avec **React**
+Portfolio réaliser avec **React**. Refactor without IA. All JS, CSS and HTML code will be code by hand.
 
 
 # Organisation 
