@@ -1,6 +1,20 @@
 import React from 'react';
 import GithubActivity from '../../components/Github/Github';
 import './About.css';
+import { TypeAnimation } from 'react-type-animation';
+
+const despairPhrases = [
+  'Administrateur système',
+  'ingénieur réseau',
+  'DevOps',
+  'Développeur web',
+  'Développeur logiciel',
+  
+];
+const typeAnimationSequence = despairPhrases.reduce((acc, phrase) => {
+  acc.push(phrase, 2000);
+  return acc;
+}, []);
 
 function About() {
 
@@ -23,7 +37,12 @@ function About() {
       <section className="about-section about-hero">
         <h1 className="about-hero-title">Contact</h1>
         <h3 className="about-hero-subtitle">
-          Toujours à la recherche d'un stagiaire / alternant ? 
+          Toujours à la recherche d'un <TypeAnimation 
+            sequence={typeAnimationSequence}
+            wrapper="h1"
+            speed={50}
+            repeat={Infinity}
+          />
         </h3>
       </section>
 

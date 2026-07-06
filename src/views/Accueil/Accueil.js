@@ -102,7 +102,7 @@ function Accueil() {
       <section className="accueil-section accueil-info-box">
           <div className="accueil-info-box__content">
             <h3>À l'école d'ingénieur CPE LYON</h3>
-            <h4>Je suis actuellement à la recherche d'un <span className="accueil-info-box__underline">stage</span> d'une durée de 2 mois (9 semaines) en france du <span className="accueil-info-box__underline">29 juin au 28 août 2026</span></h4>
+            <h4>Très grand passioné d'informatique <span className="accueil-info-box__underline">en développement, système et réseau</span>.</h4>
             {/* <h4>
               ainsi que d'une <span className="accueil-info-box__underline">alternance</span> de 2 ans (24 mois) 
               <span className="accueil-info-box__underline"> à partir de septembre 2026</span>
