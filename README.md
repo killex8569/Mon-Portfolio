@@ -1,38 +1,16 @@
-# Mon portfolio
-Portfolio réaliser avec **React**
+# React + Vite
 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-# Organisation 
+Currently, two official plugins are available:
 
-Voici le détails des pages : 
-- **Accueil** --> Présentation de ma formation, de moi, de mes projets, CV, Ce que je suis en train d'apprendre, Si je possède une alternance ou un stage ou pas en core
-- **Mes compétences** --> Présentation via un tableau mes compétences, 
-- **Mon projets** --> Présentation de mes principaux projets (github, scolaire et autres)
-- **Mes Certifications** --> Certifications obtenues (Afficher sous forme de tableau)
-- **Mon Parcours** --> Timeline de mon évolution (Bac --> Chartreux (BTS) --> CPE (Ingénieur))
-- **A propos** --> Mes informations de contacts (Github, LinkedIn, CV etc...)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
+## React Compiler
 
-## Installation 
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-une fois le code source télécharger : 
+## Expanding the ESLint configuration
 
-```
-npm install 
-```
-
-Puis une fois les dépendances installer : 
-
-```
-npm start 
-```
-
-
-## Ajouts ou update 
---> Ajouter les éléments suivants : 
-
-- Ajouter un mode nuit
-
-- Passion (Paragraphe dans contact)
-
-- Ajouter le détails des modules (ajouté les derniers éléments)
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
