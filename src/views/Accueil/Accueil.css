@@ -258,7 +258,8 @@
     margin-bottom: var(--spacing-xl);
     background: white;
     padding: var(--spacing-md);
-    border-top: 2px solid var(--color-primary);
+    border-radius: 0;
+    border-top: 1px solid var(--color-primary) /* ICI */
   }
   
   .accueil-feature__content {

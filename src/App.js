@@ -4,6 +4,7 @@ import './css/App.css'
 /*Component*/
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 /*Views */
 import Accueil from './views/Accueil/Accueil'
@@ -30,6 +31,7 @@ import Piment from './views/Projects/ProjetPiment'
 import Ansible from './views/Projects/ProjetAnsible'
 import Stage1 from './views/Projects/ProjetStage'
 import Stage2 from './views/Projects/ProjetStage2'
+import Stage3 from './views/Projects/ProjetStage3'
 import Ocs from './views/Projects/ProjetOcs'
 import Glpi from './views/Projects/ProjetGlpi'
 import Galileo from './views/Projects/ProjetGalileo'
@@ -39,6 +41,7 @@ function App() {
     <>
       <BrowserRouter>
         {/* Navigation */}
+        <ScrollToTop />
         <Navbar/>
         {/* Routes */}
         <Routes>
@@ -62,6 +65,7 @@ function App() {
           <Route path="/projets/ansible" element={<Ansible />}  />
           <Route path="/projets/stage1" element={<Stage1 />}  />
           <Route path="/projets/stage2" element={<Stage2 />}  />
+          <Route path="/projets/stage3" element={<Stage3 />}  />
           <Route path="/projets/ocs" element={<Ocs />}  />
           <Route path="/projets/glpi" element={<Glpi />}  />
           <Route path="/projets/galileo" element={<Galileo />}  />
