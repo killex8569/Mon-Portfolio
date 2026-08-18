@@ -1,0 +1,12 @@
+:root {
+  font-family: var(--font-base);
+}
+
+body {
+  font-size: medium;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

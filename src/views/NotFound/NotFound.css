@@ -1,0 +1,5 @@
+.content p{
+    color: var(--color-accent);
+    font-size: var(--font-5xl);
+    
+}

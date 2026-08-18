@@ -9,6 +9,7 @@ import Navbar from './component/Navbar/Navbar'
 
 // Views
 import Accueil from './views/Accueil/Accueil'
+import NotFound from './views/NotFound/NotFound'
 
 
 // Specific views
@@ -32,7 +33,7 @@ function App() {
       {/*...*/}
       {/*Page /contact*/}
 
-      <Route></Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
 
     {/*Footer*/}
