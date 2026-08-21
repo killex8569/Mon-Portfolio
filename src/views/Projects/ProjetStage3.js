@@ -1,9 +1,9 @@
 import ProjectPage from '../../components/ProjectPage/ProjectPage'; 
 import { getProjet, getNavigation } from '../../data/projets';
 
-export default function ProjetStage2() {
-  const p = getProjet('stage2');
-  const { prev, next } = getNavigation('stage2');
+export default function ProjetStage3() {
+  const p = getProjet('stage3');
+  const { prev, next } = getNavigation('stage3');
 
   return (
     <ProjectPage

@@ -11,7 +11,9 @@ Voici le détails des pages :
 - **Mes Certifications** --> Certifications obtenues (Afficher sous forme de tableau)
 - **Mon Parcours** --> Timeline de mon évolution (Bac --> Chartreux (BTS) --> CPE (Ingénieur))
 - **A propos** --> Mes informations de contacts (Github, LinkedIn, CV etc...)
-
+- **Blog / Nouveau** : Nouvelles informations sur mon parcours et mes projets
+- **404** : Not found (personnaliser)
+- **Easter egg** : A faire
 
 ## Installation 
 

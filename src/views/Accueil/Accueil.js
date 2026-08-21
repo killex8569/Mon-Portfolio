@@ -115,9 +115,6 @@ function Accueil() {
       <section className="accueil-alonetitle">
       </section>
 
-
-
-
       {/* FEATURE 1 - COMPÉTENCES */}
       <section className="accueil-section accueil-feature">
         <div className="accueil-feature__content">
