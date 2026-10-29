@@ -1,62 +1,73 @@
-/* NotFound.css */
-.nf-wrap {
-    min-height: calc(100vh - 70px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 1rem;
-  }
-  
-  .nf-card {
-    text-align: center;
-    max-width: 440px;
-    width: 100%;
-  }
-  
-  .nf-code {
-    font-size: 7rem;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--color-primary);
-    letter-spacing: -4px;
-    margin-bottom: 0.5rem;
-  }
-  
-  .nf-divider {
-    width: 48px;
-    height: 3px;
-    background: var(--color-nav-accent);
-    border-radius: 2px;
-    margin: 1rem auto;
-  }
-  
-  .nf-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.75rem;
-  }
-  
-  .nf-sub {
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-  
-  .nf-btn {
-    display: inline-block;
-    padding: 0.65rem 1.75rem;
-    background: var(--color-secondary);
-    color: var(--color-text-light);
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: var(--transition);
-  }
-  
-  .nf-btn:hover {
-    opacity: 0.85;
-  }
+.nf {
+  min-height: calc(100svh - var(--nav-h) - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* 404 avec léger effet de « glitch » */
+.nf__code {
+  position: relative;
+  font-size: clamp(6rem, 22vw, 13rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  color: var(--text);
+}
+
+.nf__code::before,
+.nf__code::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nf__code::before {
+  color: var(--primary);
+  mix-blend-mode: screen;
+  animation: glitch 3s steps(1) infinite;
+}
+
+.nf__code::after {
+  color: var(--accent);
+  mix-blend-mode: screen;
+  animation: glitch 3s steps(1) infinite reverse;
+}
+
+@keyframes glitch {
+  0%, 88%, 100% { transform: none; clip-path: none; opacity: 0; }
+  90% { transform: translate(-4px, 2px); clip-path: inset(10% 0 55% 0); opacity: 1; }
+  93% { transform: translate(4px, -2px); clip-path: inset(60% 0 10% 0); opacity: 1; }
+  96% { transform: translate(-2px, 0); clip-path: inset(30% 0 40% 0); opacity: 1; }
+}
+
+.nf__term {
+  width: min(640px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.nf__term .win { width: 100%; }
+
+.nf__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 170px;
+  padding: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+}
+
+.nf__line { overflow-wrap: anywhere; }
+
+.nf__out { display: flex; flex-direction: column; gap: 8px; }
+
+.nf__title { margin-top: 8px; font-size: 1.2rem; font-weight: 800; color: var(--text); }

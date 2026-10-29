@@ -1,0 +1,208 @@
+/* ── Filtres ─────────────────────────────── */
+.git-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 28px;
+}
+
+.git-filters__cmd { font-family: var(--font-mono); font-size: 0.84rem; }
+
+.git-filters__btns {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+}
+
+.git-filters__btn {
+  position: relative;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.git-filters__btn.is-active { color: #fff; }
+.git-filters__label { position: relative; z-index: 1; }
+
+.git-filters__btn .git-filters__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: var(--primary-strong);
+}
+
+/* ── Graphe ──────────────────────────────── */
+.graph {
+  --rail-x: 11px;
+  position: relative;
+  padding: 16px 0 8px;
+}
+
+.graph__rail {
+  position: absolute;
+  top: 0;
+  bottom: 18px;
+  left: var(--rail-x);
+  width: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.graph__fill {
+  width: 100%;
+  height: 100%;
+  transform-origin: top;
+  background: linear-gradient(180deg, var(--accent), var(--primary) 60%, var(--ansi-magenta));
+  box-shadow: 0 0 10px rgba(255, 181, 71, 0.6);
+}
+
+.graph__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.commit {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  column-gap: clamp(14px, 3vw, 28px);
+}
+
+.commit__node {
+  position: sticky;
+  top: calc(var(--nav-h) + 40px);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin-top: 6px;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--bg);
+  background: var(--primary);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 16px rgba(91, 140, 255, 0.6);
+}
+
+.commit--education .commit__node {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 16px rgba(255, 181, 71, 0.6);
+}
+
+.commit__node--current::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px solid var(--ansi-green);
+  animation: pulse 2.4s var(--ease-out) infinite;
+}
+
+.commit__wrap { min-width: 0; }
+.commit__win { max-width: 860px; }
+
+.commit__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+}
+
+.commit__refs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.commit__ref {
+  padding: 1px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-soft);
+}
+
+.commit__ref--head { color: var(--ansi-cyan); border-color: rgba(56, 189, 248, 0.45); background: rgba(56, 189, 248, 0.08); }
+.commit__ref--work { color: var(--ansi-green); border-color: rgba(74, 222, 128, 0.35); }
+.commit__ref--education { color: var(--accent); border-color: rgba(255, 181, 71, 0.35); }
+
+.commit__msg {
+  font-family: var(--font-mono);
+  font-size: clamp(1.02rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.commit__author {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.commit__author img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  object-fit: contain;
+  background: #fff;
+  padding: 1px;
+}
+
+.commit__diff {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(74, 222, 128, 0.04);
+  border-left: 2px solid rgba(74, 222, 128, 0.5);
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+.commit__link { margin-top: 6px; }
+
+.graph__root {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 22px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.graph__root-node {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px dashed var(--border-strong);
+  color: var(--text-dim);
+}
+
+@media (max-width: 560px) {
+  .commit { grid-template-columns: 24px 1fr; column-gap: 12px; }
+  .commit__body { padding: 14px; }
+}

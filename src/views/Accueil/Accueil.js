@@ -1,233 +1,253 @@
-import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
-import { accueilProjects } from '../../data/projets';
-
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useLang } from '../../i18n/LanguageContext';
+import { featuredProjects } from '../../data/projets';
+import { CONTACT, MARQUEE, asset } from '../../data/profil';
+import Reveal from '../../components/Reveal/Reveal';
+import Icon from '../../components/Icon/Icon';
+import CvMenu from '../../components/CvMenu/CvMenu';
+import Window from '../../components/Window/Window';
+import ProjectCard from '../../components/ProjectCard/ProjectCard';
+import Shell from '../../components/Shell/Shell';
+import { Prompt, TypeLoop } from '../../components/Term/Term';
+import { useTerminal } from '../../components/Shell/TerminalProvider';
 import './Accueil.css';
-import { StatusDot } from '../../components/Legend/projectStatus';
 
-import Legend from '../../components/Legend/legend'
+const EASE = [0.22, 0.61, 0.36, 1];
+const INTRO = ['whoami', 'neofetch'];
 
-function Accueil() {
-  const despairPhrases = [
-    'le Système',
-    'le Réseau',
-    'le Web',
-    'le Developpement logiciel',
-    'le Developpement Mobile',
-    'la CyberSécurité',
-  ];
+/* Une commande « typique » par domaine, affichée dans la fenêtre */
+const DOMAINS = [
+  { id: 'devops', icon: 'infinity', cmd: 'ansible-playbook site.yml --check' },
+  { id: 'dev', icon: 'code', cmd: 'gcc -Wall -O2 server.c -o server' },
+  { id: 'systems', icon: 'server', cmd: 'systemctl status zabbix-agent' },
+  { id: 'network', icon: 'shield', cmd: 'nmap -sV 10.0.10.0/24' },
+];
 
-  const DevSkills = [
-    'Développement web (React, Vue.js)',
-    'Infrastructures logicielles (Apache, Docker...)',
-    'Développement logiciel/mobile (Java, C, React natif)',
-    'Scripting (Bash, Python)',
-    'CI/CD (utilisation)',
-    'Git/Github/Gitlab',
-    'Base de donnée (Mysql, Postgres, MariaDB)',
-    
-  ];
+function Hero() {
+  const { t, tr } = useLang();
+  const terminal = useTerminal();
 
-  const SkillsSYS = [
-    'Supervision',
-    'Virtualisation (Proxmox, Hyper-V, vSphere, VMware)',
-    'Wifi (Ubiquiti)',
-    'Écosystème Active Directory (Active Directory, Déploiement WDS et MDT, base de données SQL, Hardening AD, pingcastle)',
-    'Maîtrise de Linux (Ubuntu, Debian, Arch, Fedora, Alma, Kali linux, Alpine, NixOs)',
-    'Ansible/Terraform (IaC)',
-    'Sauvegarde (Veeam)',
-
-  ];
-
-  const SkillsReseau = [
-    'Mise en place d\'infrastructures réseaux (VLAN, VLSM, FLSM, TCP-IP, OSPF, RIP, STP, EtherChannel, LACP)',
-    'Infrastructures physiques et logicielles',
-    'Sécurité des réseaux (VPN, RADIUS, IPSec)',
-    'Technologie Cisco (Switch, Packet tracer etc.)',
-    'NAT, DHCP, DNS, GNS3',
-    'Wireshark, nmap',
-  ];
-
-  const SkillCyber = [
-    'HackTheBox',
-    'RootMe',
-    'TryHackMe',
-    'Kali Linux',
-    'Labtainers',
-    'Bonnes pratiques cyber',
-    'Parefeu (Opnsense, PFsense, WatchGuard, Stormshield)',
-  ];
-
-  const typeAnimationSequence = despairPhrases.reduce((acc, phrase) => {
-    acc.push(phrase, 2000);
-    return acc;
-  }, []);
+  const item = (delay) => ({
+    initial: { opacity: 0, y: 18 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay, ease: EASE },
+  });
 
   return (
-    <div className="accueil-container">
-      {/* HERO SECTION */}
-      <section className="accueil-section">
-        <div className='presentation'>
-        <h1>Alexandre FAUBLADIER--Anette</h1>
-        <h2 className="accueil-hero__subtitle">Actuellement en 3ème année d'école d'ingénieur</h2>
-        </div>
-      <div className="accueil-hero__glass">
-      <div className="accueil-hero__title">
+    <section className="hero container">
+      <div className="hero__text">
+        <motion.p className="hero__boot" {...item(0.05)}>
+          <span className="c-dim">[</span>
+          <span className="c-green">  OK  </span>
+          <span className="c-dim">]</span> {t('home.boot')}
+        </motion.p>
 
-          <h1>J'ai des compétences dans : </h1>
-          <TypeAnimation
-            sequence={typeAnimationSequence}
-            wrapper="h1"
-            speed={50}
-            repeat={Infinity}
-          />
-        </div>
-        <div className="accueil-hero__divider"></div>
-         
-            <br></br><br></br>
-          <img
-            src="cpe-lyon.jpg"
-            alt="CPE Lyon"
-            className="accueil-info-box__logo"
-            style={{ marginRight: '150px' }}
+        <h1 className="hero__title">
+          <span className="hero__line">
+            <motion.span initial={{ y: '110%' }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.15, ease: EASE }}>
+              Alexandre
+            </motion.span>
+          </span>
+          <span className="hero__line">
+            <motion.span
+              className="text-gradient"
+              initial={{ y: '110%' }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.8, delay: 0.27, ease: EASE }}
+            >
+              Faubladier-Anette
+            </motion.span>
+          </span>
+        </h1>
 
-          />
-          <img
-            src="logo-chartreux.png"
-            alt="Institution des Chartreux"
-            className="accueil-info-box__logo"
-          />
-         
-                {/* INFO BOX - ÉCOLE */}
-      <section className="accueil-section accueil-info-box">
-          <div className="accueil-info-box__content">
-            <h3>À l'école d'ingénieur CPE LYON</h3>
-            <h4>Très grand passioné d'informatique <span className="accueil-info-box__underline">en développement, système et réseau</span>.</h4>
-            {/* <h4>
-              ainsi que d'une <span className="accueil-info-box__underline">alternance</span> de 2 ans (24 mois) 
-              <span className="accueil-info-box__underline"> à partir de septembre 2026</span>
-            </h4> */}
-        </div>
-      </section>
+        <motion.p className="hero__role" {...item(0.45)}>
+          <span className="c-amber">❯</span> <span className="c-muted">{t('home.buildPrefix')}</span>{' '}
+          <TypeLoop words={t('home.rotating')} className="hero__role-word" />
+        </motion.p>
+
+        <motion.p className="hero__intro" {...item(0.6)}>
+          {t('home.intro')}
+        </motion.p>
+
+        <motion.div className="hero__ctas" {...item(0.75)}>
+          <Link to="/projets" className="btn btn--primary">
+            <span className="btn__sigil">./</span>
+            {t('common.seeProjects')}
+            <Icon name="arrowRight" className="btn__arrow" />
+          </Link>
+          <CvMenu />
+          <div className="hero__socials">
+            <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" /></a>
+            <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+          </div>
+        </motion.div>
+
+        <motion.div className="hero__meta" {...item(0.9)}>
+          <span><Icon name="pin" /> {tr(CONTACT.location)}</span>
+          <span className="hero__meta-looking"><span className="pulse-dot pulse-dot--amber" /> {t('home.looking')}</span>
+        </motion.div>
       </div>
-      </section>
 
-      <section className="accueil-alonetitle">
-      </section>
-
-
-
-
-      {/* FEATURE 1 - COMPÉTENCES */}
-      <section className="accueil-section accueil-feature">
-        <div className="accueil-feature__content">
-          <h2>Mes <br className="responsive"/>compétences</h2>
-          <div className="accueil-skills">
-            <div className="accueil-skill-card">
-              <h4>Systèmes</h4>
-              <ul>
-                {SkillsSYS.map((skill, idx) => (
-                  <li key={`alexandre-skill-${idx}`}>{skill}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="accueil-skill-card">
-              <h4>Développement</h4>
-              <ul>
-                {DevSkills.map((skill, idx) => (
-                  <li key={`alexandre-skill-${idx}`}>{skill}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="accueil-skill-card">
-              <h4>Réseau</h4>
-              <ul>
-                {SkillsReseau.map((skill, idx) => (
-                  <li key={`alexandre-skill-${idx}`}>{skill}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="accueil-skill-card">
-              <h4>Cyber</h4>
-              <ul>
-                {SkillCyber.map((skill, idx) => (
-                  <li key={`alexandre-skill-${idx}`}>{skill}</li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURE 2 - MOTIVATION */}
-      <section className="accueil-section accueil-feature">
-        <div className="accueil-feature__content">
-          <h2>J'ai des projets</h2>
-          <h4 style={{ marginBottom: 'var(--spacing-md)', fontWeight: '500' }}>
-            Je travaille actuellement sur ces projets (en équipe ou seul).
-          </h4>
-          <ul className="accueil-projects">
-  {accueilProjects.map((project, idx) => (
-    <li key={`project-${idx}`}>
-      <StatusDot status={project.statusLabel} />
-      
-      {/* Ajout de la balise <a> au début */}
-      <a 
-        href={project.slug ? `/projets/${project.slug}` : project.url}
-        rel="noopener noreferrer"
-        className="accueil-project-link"
+      <motion.div
+        className="hero__term"
+        initial={{ opacity: 0, y: 30, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.35, ease: EASE }}
       >
-        <strong className="accueil-projects__strong">{project.name}</strong>
-      </a>
-      
-      <div>{project.desc}</div>
-    </li>
-  ))}
-</ul>
-        </div>
-        <div className="accueil-feature__image">
-        <Legend />
-        </div>
-      </section>
+        <Window active title="alexandre@portfolio: ~ — zsh" meta="1:zsh" className="hero__win">
+          <Shell intro={INTRO} />
+        </Window>
+        <button type="button" className="hero__term-hint" onClick={terminal.open}>
+          {t('shell.anywhere')} <kbd>Ctrl</kbd> <kbd>K</kbd>
+        </button>
+      </motion.div>
+    </section>
+  );
+}
 
-      {/* FEATURE 3 - TRAVAIL */}
-      <section className="accueil-section accueil-feature">
-        <div className="accueil-feature__content">
-          <h2>Mes Expériences</h2>
-          <h4 style={{ marginBottom: 'var(--spacing-md)' }}>
-            J'ai eu l'occasion de mettre en pratique dans plusieurs entreprises : 
-          </h4>
-          <ul className="accueil-projects">
-            <li>
-            <span className="accueil-projects__strong">Advolis Orfis : </span> Stage de première année (5 semaines)
-            </li>
-            <li>
-            <span className="accueil-projects__strong">Advolis Orfis : </span> Stage de deuxième année (8 semaines)
-            </li>
-          </ul>
-          <div className="accueil-cv">
-          
-          <a
-            target="_blank"
-            href="CV/CV_Alexandre.pdf"
-            className="accueil-cv-card"
-            rel="noopener noreferrer"
-          >
-            <article>
-              <h4 className="accueil-cv-card__title">
-                Mon CV
-              </h4>
-            </article>
-          </a>
-
-          </div>
-        </div>
-
-        
-      </section>
+function Marquee() {
+  const items = [...MARQUEE, ...MARQUEE];
+  return (
+    <div className="marquee" aria-hidden="true">
+      <div className="marquee__track">
+        {items.map((s, i) => (
+          <span className="marquee__item" key={`${s.name}-${i}`}>
+            <img src={asset(s.logo)} alt="" loading="lazy" />
+            {s.name}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
 
-export default Accueil;
+export default function Accueil() {
+  const { t } = useLang();
+  const now = t('home.now');
+  const domains = t('home.domains');
+
+  return (
+    <>
+      <Hero />
+      <Marquee />
+
+      {/* ── systemctl status ── */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <Prompt path="~" cmd="systemctl --user status alexandre" />
+            <Reveal as="h2">{t('home.nowTitle')}</Reveal>
+          </div>
+
+          <div className="units">
+            {now.map((u, i) => {
+              const waiting = i === 2;
+              return (
+                <Reveal key={u.unit} delay={i * 110} className="units__cell">
+                  <Window title={u.unit} meta="systemd" className={`unit ${waiting ? 'unit--waiting' : ''}`}>
+                    <span className="unit__body">
+                      <span className="unit__state">
+                        <span className={`unit__dot ${waiting ? 'c-amber' : 'c-green'}`}>●</span>
+                        <span className="c-muted">Active:</span>{' '}
+                        <span className={waiting ? 'c-amber' : 'c-green'}>{u.state}</span>
+                      </span>
+                      <span className="unit__since c-dim">{u.since}</span>
+                      <span className="unit__title">{u.title}</span>
+                      <span className="unit__text">{u.text}</span>
+                      {waiting && (
+                        <Link to="/about" className="link-arrow">
+                          {t('common.contactMe')}
+                          <Icon name="arrowRight" />
+                        </Link>
+                      )}
+                    </span>
+                  </Window>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Domaines ── */}
+      <section className="section section--tight">
+        <div className="container">
+          <div className="section-head section-head--row">
+            <div className="section-head">
+              <Prompt path="~" cmd="ls ~/domaines" />
+              <Reveal as="h2">{t('home.domainsTitle')}</Reveal>
+            </div>
+            <Link to="/competences" className="link-arrow">
+              cd competences
+              <Icon name="arrowRight" />
+            </Link>
+          </div>
+
+          <div className="domains">
+            {domains.map((d, i) => (
+              <Reveal key={d.title} delay={i * 90} animation="zoom">
+                <Window title={`~/domaines/${DOMAINS[i].id}`} meta={`0${i + 1}`} className="domain">
+                  <span className="domain__body">
+                    <span className="domain__icon"><Icon name={DOMAINS[i].icon} /></span>
+                    <span className="domain__title">{d.title}</span>
+                    <span className="domain__text">{d.text}</span>
+                    <code className="domain__cmd">
+                      <span className="c-green">$</span> {DOMAINS[i].cmd}
+                    </code>
+                  </span>
+                </Window>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Projets ── */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head section-head--row">
+            <div className="section-head">
+              <Prompt path="~" cmd="ls ~/projets --featured" />
+              <Reveal as="h2">{t('home.projectsTitle')}</Reveal>
+            </div>
+            <Link to="/projets" className="link-arrow">
+              cd projets
+              <Icon name="arrowRight" />
+            </Link>
+          </div>
+
+          <div className="home-projects">
+            {featuredProjects.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 90} className="home-projects__cell">
+                <ProjectCard project={p} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="section section--tight">
+        <div className="container">
+          <Reveal animation="zoom">
+            <Window active title="~/contact.sh" meta="bash" className="home-cta">
+              <span className="home-cta__body">
+                <Prompt path="~" cmd="./contact.sh" />
+                <span className="home-cta__title">{t('home.ctaTitle')}</span>
+                <span className="home-cta__text">{t('home.ctaText')}</span>
+                <span className="home-cta__actions">
+                  <a href={`mailto:${CONTACT.email}`} className="btn btn--accent">
+                    <Icon name="mail" />
+                    {t('common.contactMe')}
+                  </a>
+                  <CvMenu direction="up" />
+                </span>
+              </span>
+            </Window>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}

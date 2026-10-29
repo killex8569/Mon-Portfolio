@@ -1,134 +1,170 @@
-import React from 'react';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useLang } from '../../i18n/LanguageContext';
+import { CONTACT, CV, getAge } from '../../data/profil';
+import Reveal from '../../components/Reveal/Reveal';
+import Icon from '../../components/Icon/Icon';
+import Window from '../../components/Window/Window';
+import Neofetch from '../../components/Neofetch/Neofetch';
 import GithubActivity from '../../components/Github/Github';
+import { Prompt } from '../../components/Term/Term';
 import './About.css';
-import { TypeAnimation } from 'react-type-animation';
 
-const despairPhrases = [
-  'Administrateur système',
-  'ingénieur réseau',
-  'DevOps',
-  'Développeur web',
-  'Développeur logiciel',
-  
-];
-const typeAnimationSequence = despairPhrases.reduce((acc, phrase) => {
-  acc.push(phrase, 2000);
-  return acc;
-}, []);
+function CopyEmail() {
+  const { t } = useLang();
+  const [copied, setCopied] = useState(false);
 
-function About() {
-
-  const getAge = (dateString) => {
-    var today = new Date();
-    var birthDate = new Date(dateString);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-    {
-        age--;
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${CONTACT.email}`;
     }
-    return age;
-  }
+  };
 
   return (
-    <div className="about-container">
-
-      {/* HERO */}
-      <section className="about-section about-hero">
-        <h1 className="about-hero-title">Contact</h1>
-        <h3 className="about-hero-subtitle">
-          Toujours à la recherche d'un <TypeAnimation 
-            sequence={typeAnimationSequence}
-            wrapper="h1"
-            speed={50}
-            repeat={Infinity}
-          />
-        </h3>
-      </section>
-
-        {/* SECTION 1 - VALEURS */}
-        <section className="about-section about-values">
-        <h2>Mes contacts</h2>
-        <div className="about-values-grid">             
-            <div className="about-value-card">
-              <h4>Me contacter</h4>
-              <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
-                </svg>
-                <a rel="noreferrer" target="_blank" href="mailto:alexandre.faubladier.anette@gmail.com">alexandre.faubladier.anette@gmail.com</a>
-              </p>
-              <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
-                </svg>
-                <a rel="noreferrer" href="https://www.linkedin.com/in/alexandre-faubladier-anette-750967277/">Linkedin</a>
-              </p>
-              <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
-                  <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-                </svg>
-                <a href="https://portfolio.killex.xyz/">Portefolio</a>
-              </p>
-              <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">
-                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-              <a href="https://github.com/killex8569" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-            
-
-          </div>
-        <div className="accueil-cv">
-          
-          <a
-            target="_blank"
-            href="CV/CV_Alexandre.pdf"
-            className="accueil-cv-card"
-            rel="noopener noreferrer"
-          >
-            <article>
-              <h4 className="accueil-cv-card__title">
-                Mon CV
-              </h4>
-            </article>
-          </a>
-
-        </div>
-
-        
-      <div className='Github'>
-        <div className='Github-text'>
-          <h2>Mon activité github sur cette année</h2>
-        </div>
-      <GithubActivity
-        username="killex8569"
-        token={process.env.REACT_APP_GITHUB_TOKEN}
-      />
-      </div>
-
-        </div>
-      </section>
-
-     
-      <section className="about-section">
-        <div className="about-card">
-          <h2>Qui suis-je ?</h2>
-          <br/>
-          <h4>Alexandre</h4>
-          <p>
-            Je m'appelle Alexandre, j'ai {getAge("July 5, 2005 07:00:00")} ans et je suis Lyonnais. Je me suis pris de passion pour l'informatique lors de ma dernière année de lycée.
-            <br/>
-            Je suis travailleur, assidu et sérieux. Sur mon temps personnel, j'aime découvrir de nouvelles technologies et les utiliser.
-            <br/>
-            Actuellement en 3 ème année d'école d'ingénieur, je me perfectionne dans les domaines suivants : Réseau, Systèmes, Developpement logiciel, Cybersécurité.
-            <br/>
-            En-dehors de l'informatique, je suis un grand passionné de robotique, d'astronomie, de sport (football et sports de combat) ainsi que de musique.
-          </p>
-        </div>
-      </section>
-    </div>
+    <button type="button" className="btn btn--ghost btn--sm contact-copy" onClick={copy}>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={copied ? 'ok' : 'copy'}
+          className="contact-copy__inner"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.16 }}
+        >
+          <Icon name={copied ? 'check' : 'copy'} />
+          {copied ? t('common.copied') : t('common.copy')}
+        </motion.span>
+      </AnimatePresence>
+    </button>
   );
 }
 
-export default About;
+export default function About() {
+  const { t, tr } = useLang();
+  const age = getAge(CONTACT.birthDate);
+
+  const rows = [
+    { key: t('contact.phone'), value: CONTACT.phone, href: CONTACT.phoneHref, icon: 'phone' },
+    { key: t('contact.location'), value: tr(CONTACT.location), icon: 'pin' },
+    { key: 'linkedin', value: 'alexandre-faubladier-anette', href: CONTACT.linkedin, external: true, icon: 'linkedin' },
+    { key: 'github', value: `@${CONTACT.githubUser}`, href: CONTACT.github, external: true, icon: 'github' },
+  ];
+
+  return (
+    <div className="container contact">
+      <header className="page-hero">
+        <Prompt path="~/contact" cmd="cat contact.txt" />
+        <Reveal as="h1" className="page-hero__title" delay={80}>
+          {t('contact.title')}
+        </Reveal>
+        <Reveal as="p" className="lead" delay={160}>
+          {t('contact.intro')}
+        </Reveal>
+      </header>
+
+      {/* ── contact.txt + CV ── */}
+      <section className="contact__grid">
+        <Reveal className="contact__main-cell">
+          <Window active title="~/contact/contact.txt" meta="utf-8" className="contact__main">
+            <span className="contact__body">
+              <span className="contact__email-row">
+                <span className="contact__key">{t('contact.email')}</span>
+                <a href={`mailto:${CONTACT.email}`} className="contact__email">{CONTACT.email}</a>
+              </span>
+              <span className="contact__actions">
+                <a href={`mailto:${CONTACT.email}`} className="btn btn--primary btn--sm">
+                  <Icon name="mail" />
+                  {t('common.contactMe')}
+                </a>
+                <CopyEmail />
+              </span>
+
+              <span className="contact__rows">
+                {rows.map((r, i) => {
+                  const Tag = r.href ? 'a' : 'span';
+                  return (
+                    <Reveal as="span" key={r.key} delay={120 + i * 70} animation="left" className="contact__row-wrap">
+                      <Tag
+                        className={`contact__row ${r.href ? 'is-link' : ''}`}
+                        {...(r.href ? { href: r.href } : {})}
+                        {...(r.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      >
+                        <span className="contact__key"><Icon name={r.icon} />{r.key}</span>
+                        <span className="contact__value">{r.value}</span>
+                        {r.href && <Icon name="arrowUpRight" className="contact__arrow" />}
+                      </Tag>
+                    </Reveal>
+                  );
+                })}
+              </span>
+            </span>
+          </Window>
+        </Reveal>
+
+        <Reveal className="contact__side-cell" delay={140}>
+          <Window title="~/contact/cv/" meta="2 files" className="contact__cv">
+            <span className="contact__cv-body">
+              <Prompt path="~/contact" cmd="ls cv/" />
+              <span className="contact__cv-text">{t('contact.cvText')}</span>
+              {[
+                { code: 'fr', href: CV.fr, label: t('common.cvFr') },
+                { code: 'en', href: CV.en, label: t('common.cvEn') },
+              ].map((c) => (
+                <a key={c.code} href={c.href} target="_blank" rel="noopener noreferrer" className="contact__file">
+                  <span className="contact__file-icon">PDF</span>
+                  <span className="contact__file-name">
+                    <strong>cv_{c.code}.pdf</strong>
+                    <small>{c.label}</small>
+                  </span>
+                  <Icon name="download" />
+                </a>
+              ))}
+            </span>
+          </Window>
+        </Reveal>
+      </section>
+
+      {/* ── about.md ── */}
+      <section className="section about">
+        <Reveal className="about__fetch" animation="right">
+          <Window title="neofetch" meta="zsh" className="about__fetch-win">
+            <span className="about__fetch-body">
+              <Neofetch />
+            </span>
+          </Window>
+        </Reveal>
+
+        <Reveal className="about__text-cell" delay={120}>
+          <Window title="~/about.md" meta="markdown" className="about__text-win">
+            <span className="about__text">
+              <span className="about__h"><span className="c-amber">#</span> {t('contact.aboutTitle')}</span>
+              {t('contact.about')(age).map((p, i) => (
+                <span key={i} className={`about__p ${i === 0 ? 'about__p--lead' : ''}`}>{p}</span>
+              ))}
+            </span>
+          </Window>
+        </Reveal>
+      </section>
+
+      {/* ── GitHub ── */}
+      <Reveal>
+        <Window title="gh api /users/killex8569/contributions" meta="github" className="contact__github">
+          <span className="contact__github-body">
+            <span className="contact__github-head">
+              <span className="contact__github-title"><Icon name="github" />{t('contact.githubTitle')}</span>
+              <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" className="link-arrow">
+                @{CONTACT.githubUser}
+                <Icon name="arrowUpRight" />
+              </a>
+            </span>
+            <GithubActivity username={CONTACT.githubUser} />
+          </span>
+        </Window>
+      </Reveal>
+    </div>
+  );
+}

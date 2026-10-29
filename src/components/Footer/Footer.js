@@ -1,52 +1,92 @@
+import { Link, useLocation } from 'react-router-dom';
+import { useLang } from '../../i18n/LanguageContext';
+import { CONTACT } from '../../data/profil';
+import { WORKSPACES, workspaceIndex } from '../Navbar/Navbar';
+import Icon from '../Icon/Icon';
+import Reveal from '../Reveal/Reveal';
+import { Prompt } from '../Term/Term';
 import './Footer.css';
 
-const Footer = () => (
-    <footer class="footer-footer">
-        <div class="footer-container">
-            <div class="footer-row">
-                <div class="footer-col">
-                    <h4 className="footer-h4">Plan du site</h4>
-                    <ul className="footer-ul">
-                        <li><a target="_blank" rel="noreferrer" href="/">Accueil</a></li>
-                        <li><a target="_blank" rel="noreferrer" href="/competences">Compétences</a></li>
-                        <li><a target="_blank" rel="noreferrer" href="/projets">Projets</a></li>
-                        <li><a target="_blank" rel="noreferrer" href="/parcours">Mon parcours</a></li>
-                        <li><a target="_blank" rel="noreferrer" href="/about">A propos</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 className="footer-h4">Ce site est open-source !</h4>
-                    <ul className="footer-ul">
-                        <li><a target="_blank" rel="noreferrer" href="https://github.com/killex8569/Mon-Portfolio">Lien GitHub</a></li>
-                        <li><a target="_blank" rel="noreferrer" href="https://react.dev/">React</a></li>
-                        <li><a target="_blank" rel="noreferrer" href="https://vercel.com">Vercel</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 className="footer-h4">Parcours</h4>
-                    <ul className="footer-ul">
-                        <li><a target="_blank" rel="noreferrer" href="https://www.cpe.fr/">CPE Lyon</a></li>
-                        <li><a target="_blank" rel="noreferrer"href="https://www.leschartreux.com/">Institution des Chartreux</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 className="footer-h4">Me contacter</h4>
-                    <ul className="footer-ul">
-                        <li><a target="_blank" rel="noreferrer" href="mailto:alexandre.faubladier.anette@gmail.com">alexandre.faubladier.anette@gmail.com</a></li>                        
-                        <li><a target="_blank" rel="noreferrer" href="https://portfolio.killex.xyz">Portfolio Alexandre FA</a></li>
-                    </ul>
-                    <div class="social-links"> 
-                        <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/alexandre-faubladier-anette-750967277">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
-                            </svg>
-                            <span>Alexandre</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-);
+export default function Footer() {
+  const { t } = useLang();
+  const { pathname } = useLocation();
+  const current = workspaceIndex(pathname);
+  const year = new Date().getFullYear();
 
-export default Footer;
+  return (
+    <footer className="footer">
+      <div className="container">
+        {/* La page contact affiche déjà l'e-mail en grand */}
+        {pathname !== '/about' && (
+          <Reveal className="footer__cta">
+            <Prompt path="~" cmd={`mail -s "${t('footer.mailSubject')}" alexandre`} />
+            <a href={`mailto:${CONTACT.email}`} className="footer__mail">
+              <span className="text-gradient">{CONTACT.email}</span>
+              <Icon name="arrowUpRight" />
+            </a>
+          </Reveal>
+        )}
+
+        <div className="footer__grid">
+          <div className="footer__brand">
+            <Link to="/" className="footer__logo">AF</Link>
+            <p className="footer__name">{CONTACT.name}</p>
+            <p className="footer__tagline">{t('footer.tagline')}</p>
+            <div className="footer__socials">
+              <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon name="github" /></a>
+              <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+              <a href={`mailto:${CONTACT.email}`} aria-label="E-mail"><Icon name="mail" /></a>
+            </div>
+          </div>
+
+          <div className="footer__col">
+            <h4>~/</h4>
+            <ul>
+              {WORKSPACES.map((w) => (
+                <li key={w.to}><Link to={w.to}>{w.dir === '~' ? '~' : `${w.dir}/`} <span>{t(`nav.${w.key}`)}</span></Link></li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer__col">
+            <h4>/etc/{t('footer.education')}</h4>
+            <ul>
+              <li><a href="https://www.cpe.fr/" target="_blank" rel="noopener noreferrer">CPE Lyon</a></li>
+              <li><a href="https://www.leschartreux.com/" target="_blank" rel="noopener noreferrer">Institution des Chartreux</a></li>
+            </ul>
+          </div>
+
+          <div className="footer__col">
+            <h4>/usr/src</h4>
+            <ul>
+              <li><a href="https://github.com/killex8569/Mon-Portfolio" target="_blank" rel="noopener noreferrer">{t('footer.sourceCode')}</a></li>
+              <li><a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a></li>
+              <li><a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Barre d'état façon tmux */}
+      <div className="tmux">
+        <div className="tmux__inner">
+          <span className="tmux__session">[portfolio]</span>
+          <span className="tmux__windows">
+            {WORKSPACES.map((w, i) => (
+              <Link key={w.to} to={w.to} className={i === current ? 'is-active' : ''}>
+                {i}:{w.dir === '~' ? 'home' : w.dir}{i === current ? '*' : ''}
+              </Link>
+            ))}
+          </span>
+          <span className="tmux__right">
+            <span className="tmux__built">{t('footer.built')}</span>
+            <span className="tmux__host">© {year} alexandre@lyon</span>
+            <button type="button" className="tmux__top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label={t('footer.backToTop')}>
+              <Icon name="arrowUp" />
+            </button>
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -2,378 +2,584 @@
  * ═══════════════════════════════════════════
  *  SOURCE UNIQUE DE VÉRITÉ — Projets
  *  Modifier ici = mis à jour partout :
- *    Navbar, Accueil, Projects, pages projet
+ *    Navbar, Accueil, Projets, pages projet (/projets/:slug)
  * ═══════════════════════════════════════════
  *
- * Statuts disponibles :
- *   'termine'          → vert
- *   'en-cours'         → orange
- *   'en-construction'  → bleu
- *   'en-revision'      → violet
+ * Ajouter un projet = ajouter un objet dans PROJECTS_DATA. C'est tout :
+ * la route /projets/<slug> est générée automatiquement.
+ *
+ * Champs :
+ *   slug        identifiant d'URL (unique)
+ *   name        nom affiché (string ou { fr, en })
+ *   label       nom court (menu déroulant de la Navbar)
+ *   category    'perso' | 'scolaire' | 'pro'
+ *   status      'termine' | 'en-cours' | 'en-construction' | 'en-revision'
+ *   period      { fr, en } ou string
+ *   desc        résumé court (cartes)                       { fr, en }
+ *   description texte long (page projet)                    { fr, en }
+ *   highlights  points clés                                 { fr: [], en: [] }
+ *   techs       technos / mots-clés (filtres + badges). Les libellés français
+ *               sont traduits via translations.en.techLabels
+ *   url         dépôt GitHub (optionnel)
+ *   siteUrl     site en ligne (optionnel)
+ *   screenshots captures dans /public (optionnel)
+ *   inNavbar    affiché dans le menu déroulant « Projets »
+ *   featured    mis en avant sur l'accueil
  */
-export const STATUS_LABELS = {
-    'termine':         'Terminé',
-    'en-cours':        'En cours',
-    'en-construction': 'En construction',
-    'en-revision':     'En révision',
-  };
+
+export const STATUS_ORDER = ['termine', 'en-cours', 'en-revision', 'en-construction'];
 
 export const PROJECTS_DATA = [
+  /* ── Perso ─────────────────────────────── */
+  {
+    slug: 'dnsa',
+    name: 'DonnezNousUnStageOuUneAlternance',
+    label: 'DNSA',
+    category: 'perso',
+    status: 'termine',
+    period: { fr: 'Fév 2024 – Avr 2024', en: 'Feb 2024 – Apr 2024' },
+    desc: {
+      fr: 'Site vitrine réalisé avec un camarade pour trouver une alternance ou un stage.',
+      en: 'Showcase website built with a classmate to land an apprenticeship or internship.',
+    },
+    description: {
+      fr: "Dans le cadre de nos recherches d'alternance, nous avons créé avec un camarade un site vitrine qui nous présente (portfolio commun). Le développement se fait sur GitHub, l'hébergement sur Vercel, et chaque nouvelle version est déployée automatiquement grâce à une chaîne CI/CD.",
+      en: 'While looking for an apprenticeship, a classmate and I built a showcase website presenting both of us (a shared portfolio). Development happens on GitHub, hosting on Vercel, and every new version is deployed automatically through a CI/CD pipeline.',
+    },
+    highlights: {
+      fr: ['Chaîne CI/CD avec déploiement continu sur Vercel', 'Application React avec React Router', 'Gestion de projet à deux', 'Workflow Git (branches, pull requests)'],
+      en: ['CI/CD pipeline with continuous deployment on Vercel', 'React app with React Router', 'Two-person project management', 'Git workflow (branches, pull requests)'],
+    },
+    techs: ['React', 'React Router', 'CI/CD', 'Vercel', "Travail d'équipe", '3ème année'],
+    url: 'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance',
+    siteUrl: 'https://donneznousunstageouunealternance.vercel.app/',
+    inNavbar: true,
+    featured: true,
+  },
+  {
+    slug: 'homelab',
+    name: 'HomeLab',
+    label: 'HomeLab',
+    category: 'perso',
+    status: 'en-cours',
+    period: { fr: '2024 – aujourd’hui', en: '2024 – present' },
+    desc: {
+      fr: 'Infrastructure personnelle complète (système, réseau, développement), entièrement documentée.',
+      en: 'A complete personal infrastructure (systems, networking, development), fully documented.',
+    },
+    description: {
+      fr: "Ce dépôt rassemble toute la documentation de mon infrastructure personnelle. Pour chaque logiciel, il décrit l'installation, l'utilisation, la configuration, la sécurisation (bonnes pratiques) et parfois la personnalisation. C'est mon terrain de jeu pour tester en conditions réelles ce que j'apprends en cours et en entreprise.",
+      en: 'This repository gathers all the documentation of my personal infrastructure. For each piece of software it covers installation, usage, configuration, hardening (best practices) and sometimes customization. It is my playground to test, in real conditions, what I learn at school and at work.',
+    },
+    highlights: {
+      fr: [
+        'Supervision avec Zabbix et Grafana',
+        'Alertes par webhook (Discord et Teams)',
+        'Déploiement automatisé avec Ansible et Terraform (anciennement WDS et MDT)',
+        "Active Directory complet (GPO, forêt, domaine, comptes) mis à disposition de camarades",
+        "Serveur VPN avec restriction des accès selon le niveau de privilèges",
+        'Partages réseau, cloud privé et VPS',
+        'Traefik, Nginx et OPNsense pour sécuriser les services exposés',
+      ],
+      en: [
+        'Monitoring with Zabbix and Grafana',
+        'Webhook alerts (Discord and Teams)',
+        'Automated deployment with Ansible and Terraform (formerly WDS and MDT)',
+        'Full Active Directory (GPOs, forest, domain, accounts) shared with classmates',
+        'VPN server with privilege-based access restrictions',
+        'Network shares, private cloud and VPS',
+        'Traefik, Nginx and OPNsense to secure exposed services',
+      ],
+    },
+    techs: ['Proxmox', 'Ansible', 'Terraform', 'Zabbix', 'OPNsense', 'Traefik', 'Réseau', 'Système', 'Markdown'],
+    url: 'https://github.com/killex8569/Documentation-Homelab',
+    inNavbar: true,
+    featured: true,
+  },
+  {
+    slug: 'portfolio',
+    name: { fr: 'Mon portfolio', en: 'My portfolio' },
+    label: 'Portfolio',
+    category: 'perso',
+    status: 'en-cours',
+    period: { fr: '2024 – aujourd’hui', en: '2024 – present' },
+    desc: {
+      fr: 'Le site que vous êtes en train de consulter, entièrement repensé.',
+      en: "The website you're browsing right now, completely redesigned.",
+    },
+    description: {
+      fr: "Ce portfolio est né de l'envie d'apprendre React. Il est déployé en continu sur Vercel et fonctionne sur mobile, tablette et ordinateur. Cette nouvelle version adopte un thème Linux : fenêtres façon tiling WM, terminal interactif (avec de vraies commandes), animations fluides et site bilingue.",
+      en: 'This portfolio started as a way to learn React. It is continuously deployed on Vercel and works on mobile, tablet and desktop. This new version goes full Linux: tiling-WM windows, an interactive terminal (with real commands), smooth animations and a bilingual site.',
+    },
+    highlights: {
+      fr: [
+        'SPA React avec React Router (navigation sans rechargement)',
+        'Terminal interactif : système de fichiers virtuel, historique, complétion Tab',
+        'Animations et transitions de pages avec Framer Motion',
+        'Site bilingue français / anglais',
+        'Données centralisées : un projet = une entrée dans un fichier',
+        'Déploiement continu (CI/CD) sur Vercel',
+      ],
+      en: [
+        'React SPA with React Router (no page reloads)',
+        'Interactive terminal: virtual filesystem, history, Tab completion',
+        'Animations and page transitions with Framer Motion',
+        'Bilingual site, French and English',
+        'Centralized data: one project = one entry in a file',
+        'Continuous deployment (CI/CD) on Vercel',
+      ],
+    },
+    techs: ['React', 'Framer Motion', 'CI/CD', 'Vercel'],
+    url: 'https://github.com/killex8569/Mon-Portfolio',
+    inNavbar: true,
+    featured: false,
+  },
+  {
+    slug: 'galileo',
+    name: 'Galiléo',
+    label: 'Galiléo',
+    category: 'perso',
+    status: 'en-cours',
+    period: '2026',
+    desc: {
+      fr: 'Coupe de France de robotique avec Galiléo, le club de robotique de CPE Lyon.',
+      en: 'French robotics cup with Galiléo, the CPE Lyon robotics club.',
+    },
+    description: {
+      fr: "Participation à la Coupe de France de robotique avec le club Galiléo. La compétition se déroule à La Roche-sur-Yon, sur plusieurs jours. J'y ai manipulé du C et du C++ ainsi que tout ce qui touche à l'électronique, et nous avons utilisé ROS 2 en équipe, une plateforme de développement pour la robotique.",
+      en: 'Taking part in the French robotics cup with the Galiléo club. The competition takes place over several days in La Roche-sur-Yon. I worked with C and C++ and everything related to electronics, and as a team we used ROS 2, a development platform for robotics.',
+    },
+    highlights: {
+      fr: ['Communication entre cartes ESP32', 'Protocole ESP-NOW', 'C et C++ embarqués', 'Middleware ROS 2', 'Compétition nationale en équipe'],
+      en: ['Communication between ESP32 boards', 'ESP-NOW protocol', 'Embedded C and C++', 'ROS 2 middleware', 'National team competition'],
+    },
+    techs: ['C', 'C++', 'ESP32', 'ROS2', 'Robotique', 'Compétition', "Travail d'équipe"],
+    inNavbar: true,
+    featured: true,
+  },
+  {
+    slug: 'kosmoz',
+    name: 'Kosmoz',
+    label: 'Kosmoz',
+    category: 'perso',
+    status: 'en-construction',
+    period: { fr: '2025 – aujourd’hui', en: '2025 – present' },
+    desc: {
+      fr: "Application web pour découvrir notre galaxie et l'Univers.",
+      en: 'A web app to explore our galaxy and the Universe.',
+    },
+    description: {
+      fr: "Kosmoz est une application web pour découvrir ou redécouvrir l'espace : systèmes solaires, planètes, exoplanètes, sondes, grandes découvertes et informations plus générales sur l'Univers.",
+      en: 'Kosmoz is a web app to discover (or rediscover) space: solar systems, planets, exoplanets, probes, major discoveries and more general facts about the Universe.',
+    },
+    highlights: {
+      fr: ['Interface en Vue.js', 'Projet open source', 'Vulgarisation astronomique', "Développement en équipe"],
+      en: ['Vue.js interface', 'Open source project', 'Astronomy for everyone', 'Team development'],
+    },
+    techs: ['Vue.js', 'JavaScript', "Travail d'équipe", '3ème année'],
+    url: 'https://github.com/killex8569/Kosmoz',
+    inNavbar: true,
+    featured: false,
+  },
+  {
+    slug: 'battleship',
+    name: 'Battleship',
+    label: 'Battleship',
+    category: 'perso',
+    status: 'en-cours',
+    period: '2025',
+    desc: {
+      fr: 'Bataille navale client-serveur en Java, réalisée avec un camarade.',
+      en: 'Client-server battleship game in Java, built with a classmate.',
+    },
+    description: {
+      fr: "Bataille navale en réseau développée en Java avec un camarade de classe. Un serveur gère les parties et synchronise les joueurs via des sockets, tandis que le client affiche le jeu grâce au framework LibGDX.",
+      en: 'A networked battleship game developed in Java with a classmate. A server manages games and keeps players in sync over sockets, while the client renders the game with the LibGDX framework.',
+    },
+    highlights: {
+      fr: ['Architecture client-serveur', 'Communication par sockets', 'Interface graphique avec LibGDX', 'Travail en binôme avec Git'],
+      en: ['Client-server architecture', 'Socket communication', 'Graphical interface with LibGDX', 'Pair work with Git'],
+    },
+    techs: ['Java', 'Socket', 'LibGDX', 'Client-serveur', "Travail d'équipe", '3ème année'],
+    url: 'https://github.com/killex8569/Battleship',
+    inNavbar: true,
+    featured: false,
+  },
+  {
+    slug: 'loup-garou',
+    name: { fr: 'Loup-Garou', en: 'Werewolf' },
+    label: 'Loup-Garou',
+    category: 'perso',
+    status: 'en-construction',
+    period: '2025',
+    desc: {
+      fr: 'Le célèbre jeu du Loup-Garou en Java, en ligne de commande et en réseau.',
+      en: 'The famous Werewolf party game in Java, command-line and online.',
+    },
+    description: {
+      fr: "Remake client-serveur en Java du jeu du Loup-Garou. Le client permet au joueur de recevoir un rôle et de jouer avec. Le serveur gère la partie : qui joue, dans quel ordre, quels joueurs sont encore en vie et quels objets ils possèdent (potions, etc.).",
+      en: 'A client-server remake of the Werewolf game in Java. The client lets players receive a role and play it. The server runs the game: who plays, in which order, which players are still alive and which items they hold (potions, etc.).',
+    },
+    highlights: {
+      fr: ['Client-serveur en Java', 'Moteur de jeu côté serveur', 'Interface en ligne de commande'],
+      en: ['Client-server in Java', 'Server-side game engine', 'Command-line interface'],
+    },
+    techs: ['Java', 'Client-serveur', 'CLI', '3ème année'],
+    url: 'https://github.com/killex8569/Loup-garou',
+    inNavbar: false,
+    featured: false,
+  },
+  {
+    slug: 'algopourlespro',
+    name: "L'algo pour les pros",
+    label: "L'algo pour les pros",
+    category: 'perso',
+    status: 'en-cours',
+    period: { fr: '2025 – aujourd’hui', en: '2025 – present' },
+    desc: {
+      fr: "Dépôt public pour apprendre l'algorithmie, des bases jusqu'aux algorithmes complexes.",
+      en: 'A public repository to learn algorithms, from the basics to complex ones.',
+    },
+    description: {
+      fr: "Un projet mené avec un camarade, dans la continuité de notre précédent dépôt. Celui-ci va beaucoup plus loin : nous y étudions en profondeur certains sujets, algorithmes et méthodes.",
+      en: 'A project run with a classmate, following up on our previous repository. This one goes much further: we study some topics, algorithms and methods in depth.',
+    },
+    highlights: {
+      fr: ['Algorithmes avancés', 'Java approfondi', 'C approfondi', 'Exercices vraiment formateurs'],
+      en: ['Advanced algorithms', 'In-depth Java', 'In-depth C', 'Hands-on exercises'],
+    },
+    techs: ['C', 'Java', 'Algorithmie', "Travail d'équipe", '3ème année'],
+    url: 'https://github.com/killex8569/L-algo-pour-les-pro',
+    inNavbar: true,
+    featured: false,
+  },
+  {
+    slug: 'algo',
+    name: "L'algo en 27 exos",
+    label: 'Algo 27 exos',
+    category: 'perso',
+    status: 'en-revision',
+    period: '2024',
+    desc: {
+      fr: "27 exercices pour apprendre l'algorithmie progressivement.",
+      en: '27 exercises to learn algorithms step by step.',
+    },
+    description: {
+      fr: "Une suite d'exercices à la progression linéaire. Les premiers introduisent l'algorithmie, les derniers seront utiles dans notre futur métier d'ingénieur. C'est la première marche pour acquérir les bases de la programmation.",
+      en: 'A series of exercises with a linear progression. The first ones introduce algorithms, the last ones will be useful in our future engineering jobs. It is the first step to learn the basics of programming.',
+    },
+    highlights: {
+      fr: ['Explications techniques en Markdown', "Initiation à l'algorithmie", 'Java et introduction à la POO', 'Langage C'],
+      en: ['Technical explanations in Markdown', 'Introduction to algorithms', 'Java and an introduction to OOP', 'C language'],
+    },
+    techs: ['Python', 'Java', 'Algorithmie', "Travail d'équipe", '3ème année'],
+    url: 'https://github.com/killex8569/algo-en-27-exos',
+    inNavbar: false,
+    featured: false,
+  },
+  {
+    slug: 'europeanize-yourself',
+    name: 'Europeanize Yourself!',
+    label: 'Europeanize Yourself',
+    category: 'perso',
+    status: 'en-cours',
+    period: { fr: '2025 – aujourd’hui', en: '2025 – present' },
+    desc: {
+      fr: 'Liste des alternatives européennes aux outils numériques américains et asiatiques.',
+      en: 'A list of European alternatives to American and Asian digital tools.',
+    },
+    description: {
+      fr: "L'objectif est de mettre en avant les solutions logicielles européennes et open source, pour reprendre la main sur nos données et nos outils.",
+      en: 'The goal is to showcase European and open-source software, to take back control of our data and our tools.',
+    },
+    highlights: {
+      fr: ['Veille sur les technologies européennes et open source', 'Souveraineté des données', 'Projet collaboratif'],
+      en: ['Watch on European and open-source technologies', 'Data sovereignty', 'Collaborative project'],
+    },
+    techs: ['Markdown', 'GitHub', 'Veille', "Travail d'équipe"],
+    url: 'https://github.com/valentinRyckaert/Europeanize-yourself',
+    inNavbar: true,
+    featured: false,
+  },
 
-    /* ── Perso ─────────────────────────────── */
-    {
-      slug:      'dnsa',
-      name:      'DonnezNousUnStageOuUneAlternance (DNSA)',
-      label:     'DNSA',                          // label court pour la Navbar
-      desc:      'Site réalisé avec un camarade pour aider à trouver une alternance ou un stage.',
-      status:    'termine',
-      statusLabel: 'Terminé',
-      description : "Dans le cadre de nos recherches d'alternance avec mon camarade, nous avons créer un site vitrine nous présentant (portfolio), nous l'avons déployer en utilisant vercel pour l'hébergement, github pour le développement. Nous utilisons du CI/CD pour le déploiement des dernières versions",                     // label affiché dans les badges/listes
-      period:    'Fév 2024 – Avr 2024',
-      url:       'https://github.com/killex8569/DonnezNousUnStageOuUneAlternance',
-      siteUrl:   'https://donneznousunstageouunealternance.vercel.app/',
-      tags:      ['React', 'Portfolio commun', 'React Router', 'Responsive Design', 'CI/CD'],
-      techs:     ['3ème année', 'React', 'Web', 'CI/CD', 'Travail d\'équipe'],
-      highlights: ["CI/CD", "React", "Gestion de projet", "Git workflow"],
-      inNavbar:  true,
-      inAccueil: true,
+  /* ── Scolaires ──────────────────────────── */
+  {
+    slug: 'piment',
+    name: 'Piment',
+    label: 'Piment',
+    category: 'scolaire',
+    status: 'en-construction',
+    period: '2025',
+    desc: {
+      fr: "Application web de gestion de casernes de pompiers, avec CI/CD et déploiement sur vSphere.",
+      en: 'Fire station management web app, with CI/CD and deployment on vSphere.',
     },
-    {
-      slug:      'europeanize-yourself',
-      name:      'Europeanize Yourself!',
-      label:     'Europeanize Yourself',
-      desc:      'Document listant les alternatives européennes aux outils digitaux américains et asiatiques.',
-      status:    'en-cours',
-      statusLabel: 'En cours',
-      description: "L'objectif principal de ce projet est de mettre en avant les solutions logiciels européennes et open sources, .",
-      period:    '2025 – aujourd\'hui',
-      url:       'https://github.com/valentinRyckaert/Europeanize-yourself',
-      tags:      ['Markdown', 'GitHub', 'Veille'],
-      techs:     ['3ème année', 'Markdown', 'GitHub', 'Veille', 'Travail d\'équipe'],
-      highlights: ["Veille sur les différentes technologies Européennes ou open sources", "Souverainté des données", "Open source"],
-      inNavbar:  true,
-      inAccueil: true,
+    description: {
+      fr: "Refonte d'une application de gestion de casernes et de pompiers. Le back-end est écrit en PHP selon une architecture MVC avec une couche DAO pour l'accès aux données. Le projet est hébergé sur GitLab : une chaîne CI/CD construit l'application et la déploie sur une machine virtuelle servie par Apache et hébergée sur vSphere.",
+      en: 'A rebuild of a fire station and firefighter management application. The back end is written in PHP following an MVC architecture, with a DAO layer for data access. The project lives on GitLab: a CI/CD pipeline builds the app and deploys it to a virtual machine served by Apache and hosted on vSphere.',
     },
-    {
-      slug:      'portfolio',
-      name:      'Mon Portfolio',
-      label:     'Portfolio',
-      desc:      'Ce site que vous consultez actuellement (nouvelle version).',
-      status:    'en-cours',
-      statusLabel: 'En cours',
-      description: "Dans l'objectif d'apprendre une nouvelle technologie, ce portfolio est réaliser avec react, il utilise le CI/CD pour être déployer sur vercel. Ce site est responsible (compatible mobile, tablette et pc)",
-      period:    '2024 – aujourd\'hui',
-      url:       'https://github.com/killex8569/Mon-Portfolio',
-      tags:      ['React', 'CSS', 'React Router', 'Responsive Design', 'CI/CD'],
-      techs:     ['3ème année', 'React', 'Web', 'CI/CD'],
-      highlights: ["Architecture SPA avec React Router v6 (navigation sans rechargement)", "Design system cohérent via des variables CSS globales", "Composants réutilisables : Navbar, Timeline, CompetencesTable…", "Entièrement responsive — mobile, tablette, desktop", "Déployé en continu via GitHub Pages / Vercel (CI/CD)"],
-      inNavbar:  true,
-      inAccueil: true,
+    highlights: {
+      fr: ['Architecture MVC + DAO en PHP', 'Pipeline CI/CD GitLab', 'Déploiement sur VM vSphere (Apache)', 'Base de données relationnelle'],
+      en: ['MVC + DAO architecture in PHP', 'GitLab CI/CD pipeline', 'Deployment to a vSphere VM (Apache)', 'Relational database'],
     },
-    {
-      slug:      'kosmoz',
-      name:      'Kosmoz',
-      label:     'Kosmoz',
-      desc:      'Application permettant de découvrir notre galaxie et l\'Univers.',
-      status:    'en-construction',
-      statusLabel: 'En construction',
-      description: "Kosmoz est une application web permettant de découvrir ou de redécouvrir la thématique de l'espace, avec des informations sur des systèmes solaires, des planètes, exoplanètes, des sondes, des découvertes majeurs ainsi que des informations plus globals.",
-      period:    '2025 – aujourd\'hui',
-      url:       'https://github.com/killex8569/Kosmoz',
-      tags:      ['Vue.js', 'JavaScript', 'Web'],
-      techs:     ['3ème année', 'Vue.js', 'JavaScript', 'Web', 'Travail d\'équipe'],
-      highlights: ["Interface en Vue.js", "Open source", "Astronomie"],
-      inNavbar:  true,
-      inAccueil: true,
+    techs: ['PHP', 'MVC', 'DAO', 'GitLab', 'CI/CD', 'Apache', 'vSphere', '3ème année'],
+    url: 'https://github.com/killex8569/Remake_Piment',
+    screenshots: ['/logos/piment-login.png', '/logos/piment-gitlab.png', '/logos/piment-ci-cd-1.png', '/logos/piment-ci-cd-2.png', '/logos/piment-apache.png'],
+    inNavbar: true,
+    featured: true,
+  },
+  {
+    slug: 'canpai',
+    name: 'Canpai',
+    label: 'Canpai',
+    category: 'scolaire',
+    status: 'termine',
+    period: '2025',
+    desc: {
+      fr: 'Application client-serveur en C avec interface graphique GTK.',
+      en: 'Client-server application in C with a GTK graphical interface.',
     },
-    {
-      slug:      'homelab',
-      name:      'HomeLab',
-      label:     'HomeLab',
-      desc:      'Infrastructure complète (Système, réseau, développement) documentée.',
-      status:    'en-cours',
-      statusLabel: 'En cours',
-      description: "Ce repo github reprend toutes les documentation que je suis en train de réaliser sur la mise en place d'une infrastructure personnel, il décrit les logiciels, leurs méthodes d'installation, d'utilisation, de sécurisation (bonnes pratiques), de configuration ainsi parfois de personnalisation.",
-      period:    '2024 – aujourd\'hui',
-      url:       'https://github.com/killex8569/Documentation-Homelab',
-      tags:      ['Proxmox', 'Réseau', 'Système', 'Ansible', 'Terraform'],
-      techs:     ['3ème année', 'Markdown', 'Firewalling', 'Proxmox', 'Réseau', 'Système'],
-      highlights: ["Supervision (Zabbix Grafana)", "Alertes via webhook (Discord et teams)", "Déploiement automatique (Ansible et terraform), anciennement des tests avec WDS et MDT", "Structure d'un AD complet (GPO, Forêt, domaine, comptes, gestion utilisateur etc...) mis à disposition pour certains de mes camarades", "Serveur VPN avec restriction des accès selon le niveau de privilèges", "Partages réseau", "Mise en production de services", "Cloud privée, VPS", "Utilisation de technologies tels que Traefik, Nginx, Opnsense permettant de garantir un niveau de sécurité"],
-      inNavbar:  true,
-      inAccueil: false,
+    description: {
+      fr: "Projet d'équipe en C : une application client-serveur communiquant par sockets, avec une interface graphique réalisée en GTK côté client.",
+      en: 'A team project in C: a client-server application communicating over sockets, with a GTK graphical interface on the client side.',
     },
-    {
-      slug:      'battleship',
-      name:      'Battleship',
-      label:     'Battleship',
-      desc:      'Une bataille navale client-serveur réalisée en Java avec un camarade de classe.',
-      status:    'en-cours',
-      statusLabel: 'En cours',
-      description: "Kosmoz est une application web permettant de découvrir ou de redécouvrir la thématique de l'espace, avec des informations sur des systèmes solaires, des planètes, exoplanètes, des sondes, des découvertes majeurs ainsi que des informations plus globals.",
-      period:    '2025',
-      url:       'https://github.com/killex8569/Battleship',
-      tags:      ['Java', 'Socket', 'LibGDX'],
-      techs:     ['3ème année', 'Java', 'Socket', 'client', 'serveur', 'LibGDX', 'Travail d\'équipe'],
-      highlights: ["Interface en Vue.js", "Open source", "Git workflow", "Astronomie"],
-      inNavbar:  true,
-      inAccueil: true,
+    highlights: {
+      fr: ['Interface graphique GTK', 'Client-serveur en C', 'Programmation réseau (sockets)', 'Gestion de projet en équipe'],
+      en: ['GTK graphical interface', 'Client-server in C', 'Network programming (sockets)', 'Team project management'],
     },
-    {
-      slug:      'algo',
-      name:      "L'algo en 27 exos",
-      label:     'Algo 27 exos',
-      desc:      "Exercices pour apprendre l'algorithmie progressivement.",
-      status:    'en-revision',
-      statusLabel: 'En révision',
-      description: "Le repo de l'algo en 27 exos est une suite de documents qui suivent une progression linéaire basique. Les premiers exercices sont là pour nous introduire à l'algorithmie ; les derniers seront utiles dans notre futur métier d'ingénieur. C'est la première étape qui fournit les prérequis et les bases pour comprendre la programmation",
-      period:    '2024',
-      url:       'https://github.com/killex8569/algo-en-27-exos',
-      tags:      ['Python', 'Java', 'Algorithmie'],
-      techs:     ['3ème année', 'Python', 'Algorithmie', 'Java', 'Travail d\'équipe'],
-      highlights: ["Markdown avec expliquation des points techniques", "Apprentissage de l'algorithmie", "Language Java", "Introduction à la POO", "Language C"],
-      inNavbar:  false,
-      inAccueil: true,
+    techs: ['C', 'GTK', 'Socket', 'Client-serveur', "Travail d'équipe", '3ème année'],
+    inNavbar: true,
+    featured: false,
+  },
+  {
+    slug: 'ansible',
+    name: { fr: 'TP Ansible', en: 'Ansible lab' },
+    label: 'Ansible',
+    category: 'scolaire',
+    status: 'termine',
+    period: '2025',
+    desc: {
+      fr: "Prise en main d'Ansible pour automatiser la préparation de machines.",
+      en: 'Getting started with Ansible to automate machine provisioning.',
     },
-    {
-      slug:      'algopourlespro',
-      name:      "L'algo pour les pro",
-      label:     "L'algo pour les pros",
-      desc:      "Repo public pour apprendre l'algorithmie de zéro jusqu'aux algorithmes complexes.",
-      status:    'en-cours',
-      statusLabel: 'En cours',
-      description: "L'algo pour les pros est un projet réalisé en collaboration avec un camarade. L'idée est de reprendre le principe de notre ancien repo. Ce nouveau projet va beaucoup plus loin que l'ancien ; nous y étudions notamment en profondeur certains sujets, algorithmes et méthodes",
-      period:    '2025 – aujourd\'hui',
-      url:       'https://github.com/killex8569/L-algo-pour-les-pro',
-      tags:      ['C', 'Java', 'Algorithmie'],
-      techs:     ['3ème année', 'C', 'Algorithmie', 'Java', 'Travail d\'équipe'],
-      highlights: ["Algorithmie pro", "Manipulation de Java évolué", "Manipulation C évolué", "Réalisation de projet réelement formateurs"],
-      inNavbar:  true,
-      inAccueil: true,
+    description: {
+      fr: "Ce TP, réalisé dans le module d'administration Linux, nous a fait découvrir Ansible : écrire des playbooks, installer des paquets, partager des fichiers, préparer des machines et déployer des scripts.",
+      en: 'This lab, part of the Linux administration module, introduced us to Ansible: writing playbooks, installing packages, sharing files, provisioning machines and deploying scripts.',
     },
-    {
-      slug:      'piment',
-      name:      'Remake_Piment',
-      label:     'Piment',
-      desc:      'Application de gestion complète d\'une caserne de pompier.',
-      status:    'en-construction',
-      statusLabel: "En construction",
-      description: "Kosmoz est une application web permettant de découvrir ou de redécouvrir la thématique de l'espace, avec des informations sur des systèmes solaires, des planètes, exoplanètes, des sondes, des découvertes majeurs ainsi que des informations plus globals",
-      period:    '2025',
-      url:       'https://github.com/killex8569/Remake_Piment',
-      tags:      ['PHP', 'React', 'MVC', 'DAO'],
-      techs:     ['3ème année', 'PHP', 'React', 'MVC', 'DAO'],
-      highlights: ["Architecture MVC", "PHP", "BDD"],
-      inNavbar:  true,
-      inAccueil: false,
+    highlights: {
+      fr: ['Écriture de playbooks', 'Installation de paquets à distance', 'Préparation de machines', 'Déploiement de scripts'],
+      en: ['Writing playbooks', 'Remote package installation', 'Machine provisioning', 'Script deployment'],
     },
-    {
-      slug: 'loup-garou',
-      name: 'Loup Garou',
-      label: 'Loup Garou',
-      desc: 'Remake du célèbre jeu du loup garou en Java (CLI + en ligne).',
-      description : 'Remake en client serveur en java du jeu du loup garou, ce projet comprend le code client (qui vas permettre au joueur d\'obtenir un rôle et de jouer avec ce rôle), ainsi que le code coté serveur (qui joue quoi, dans quel ordre, quels sont les joueurs restant ainsi que lesobjets des joueurs (potions, etc...))',
-      status: 'en-construction',
-      period: '2025',
-      url: 'https://github.com/killex8569/Loup-garou',
-      tags: ['Java', 'client', 'serveur', 'CLI'],
-      techs: ['3ème année', 'Java', 'client', 'serveur', 'CLI'],
-      inNavbar: false,
-      inAccueil: false,
+    techs: ['Ansible', 'Linux', 'Déploiement', 'Automatisation', '3ème année'],
+    inNavbar: false,
+    featured: false,
+  },
+  {
+    slug: 'glpi',
+    name: 'GLPI',
+    label: 'GLPI',
+    category: 'scolaire',
+    status: 'termine',
+    period: '2024',
+    desc: {
+      fr: "Installer, configurer et optimiser GLPI, l'outil de gestion de parc et de ticketing.",
+      en: 'Installing, configuring and optimizing GLPI, the IT asset management and ticketing tool.',
     },
-    {
-      slug: 'galileo',
-      label: 'Galiléo',
-      name: 'Galiléo',
-      desc: 'Participation à la coupe de France de robotique avec le club de CPE Lyon.',
-      description : 'Participation à la coupe de france de robotique avec le cub "Galiléo". Cette compétition à lieux à la roche sur Yon, nous avons du nous déplacer sur plusieurs jours pour pouvoirs participer, nous avons réaliser plusieurs projets. J\'ai notamment pu manipuler du C, C++ ainsi que tout ce qui touche au domaine de l\'éléctronique. Nous avons en équipe aussi utiliser ROS 2 qui est une platforme/outils de développement pour de la robotique.',
-      status: 'en-cours',
-      period: '2026',
-      tags: ['Robotique', 'Compétition', 'Coupe de France', 'C'],
-      techs: ['3ème année', 'Robotique', 'Compétition', 'C', 'C++', 'ESP 32', 'ROS2'],
-      highlights: ['Manipulation et communication via ESP 32', 'Utilisation du framework ESP 32 Now', 'Robotique', 'Manipulation du langage C et C++ incluant des frameworks type ESP 32 Now', 'Utilisation du middleware ROS'],
-      inNavbar:  true,
-      inAccueil: false,
+    description: {
+      fr: "Un TP avancé sur GLPI : connexion à d'autres canaux pour créer des tickets (e-mail, Teams, Discord, Slack…), création d'une arborescence et de permissions, liaison avec un annuaire LDAP, installation et sécurisation des modules.",
+      en: 'An advanced GLPI lab: connecting other channels to create tickets (email, Teams, Discord, Slack…), building an entity tree and permissions, linking to an LDAP directory, installing and securing plugins.',
     },
-  
-    /* ── Scolaires ──────────────────────────── */
-    {
-      slug:      'canpai',
-      name:      'TP Canpai',
-      label:     'Canpai',
-      desc:      'Projet client-serveur avec interface graphique GTK, réalisé en C.',
-      status:    'termine',
-      statusLabel: "Terminé",
-      description: "Kosmoz est une application web permettant de découvrir ou de redécouvrir la thématique de l'espace, avec des informations sur des systèmes solaires, des planètes, exoplanètes, des sondes, des découvertes majeurs ainsi que des informations plus globals",
-      period:    '2025',
-      tags:      ['C', 'Socket', 'client', 'serveur'],
-      techs:     ['3ème année', 'C', 'Socket', 'client', 'serveur', 'Travail d\'équipe'],
-      highlights: ["GTK", "Client serveur en C", "Langage C", "Gestion de projet"],
-      scolaire:  true,
-      inNavbar:  true,
-      inAccueil: false,
+    highlights: {
+      fr: ['Création de tickets multi-canal', 'Liaison LDAP', 'Arborescence et permissions', 'Installation et sécurisation des plugins PHP', 'Documentation'],
+      en: ['Multi-channel ticket creation', 'LDAP integration', 'Entities and permissions', 'Installing and securing PHP plugins', 'Documentation'],
     },
-    {
-      slug:      'ansible',
-      name:      'TP Ansible',
-      label:     'Ansible',
-      desc:      'Manipulation et découverte d\'Ansible.',
-      status:    'termine',
-      statusLabel: "Terminé",
-      description: "Ce TP avais pour but de nouvs faire découvrir Ansible, comment créer des playbook, installer des paquets, partager des fichiers, préparer des machines, déployer des scripts, etc. Réaliser dans le cadre de notre module d'administration Linux lors de notre Bac+3",
-      period:    '2025',
-      tags:      ['Ansible', 'Script', 'Déploiement'],
-      techs:     ['3ème année', 'Ansible', 'Script', 'Déploiement'],
-      highlights: ["Ansible", "Découverte playbook", "Déploiement", "Script"],
-      scolaire:  true,
-      inAccueil: false,
-      
+    techs: ['GLPI', 'LDAP', 'PHP', 'Documentation', '2ème année'],
+    screenshots: Array.from({ length: 11 }, (_, i) => `/logos/glpi-${i + 1}.png`),
+    inNavbar: false,
+    featured: false,
+  },
+  {
+    slug: 'ocs',
+    name: 'OCS Inventory',
+    label: 'OCS',
+    category: 'scolaire',
+    status: 'termine',
+    period: '2024',
+    desc: {
+      fr: "Le « TP de la mort » : OCS Inventory et GLPI sur un parc Windows, macOS et Debian.",
+      en: 'The "lab of doom": OCS Inventory and GLPI across a Windows, macOS and Debian fleet.',
     },
-    {
-      slug:      'cms',
-      name:      'TP CMS',
-      label:     'CMS',
-      desc:      'Utilisation de Wordpress avec référencement SEO permettant le développement de la présence en ligne.',
-      status:    'termine',
-      statusLabel: "Terminé",
-      description: "Ce TP réaliser lors de notre première année de BTS SIO nous à permis de mettre en production sur internet un site Wordpress que nous avions réaliser pendant plusieurs mois, l'idée était de créer et de mettre en 'vente' un produit ou service fictif (avec indication que ce site était juste pou un TP), puis de développer la présence en ligne de notre entreprise fictive, tout cela en passant par le référencement SEO, l'optimisation des textes, des mots clés, des sous-titres, des images, facilité la lecture de notre site par des crawler. A la fin de notre TP, le site devais apparaitre parmis les premiers résultat de google lors de sa recherche",
-      period:    '2025',
-      tags:      ['SEO', 'Wordpress', 'Référencement'],
-      techs:     ['1er année', 'Wordpress', 'SEO'],
-      highlights: ["SEO", "Découverte du référencement et optimisation", "Wordpress", "Déploiement"],
-      scolaire:  true,
-      inAccueil: false,
+    description: {
+      fr: "Surnommé « le TP de la mort » par les anciennes promotions, ce TP s'étalait sur plusieurs semaines, en équipe. Il fallait faire fonctionner OCS Inventory avec GLPI en utilisant obligatoirement trois machines : un Windows 7, un macOS et une Debian. Avec mon équipe, nous l'avons mené jusqu'au bout.",
+      en: 'Nicknamed "the lab of doom" by previous classes, this team lab spanned several weeks. The goal was to get OCS Inventory working with GLPI using three mandatory machines: Windows 7, macOS and Debian. My team and I took it all the way.',
     },
-    {
-      slug:      'figfactor',
-      name:      'FigFactor',
-      label:     'FigFactor',
-      desc:      'Un projet à l\'envergure d\'une classe devant simuler et géré une entreprise avec plusieurs sites (4).',
-      status:    'termine',
-      statusLabel: "Terminé",
-      description: "Ce projet divisait la classe en 4 groupe de 5 personnes, comprenant plusieurs métier (Chef de projet, techiciens, expert, commercial et DSI). L'objectif derrière ce projet était de nous préparer à communiquer avec les suppérieurs, à nous organiser et nous répartir le travail, ainsi les problématiques de travail et gestion d'équipe on été bénéfique et nécéssaire au bon déroulement du projet",
-      period:    '2024',
-      tags:      ['Cisco', 'Management', 'Réseau', 'Developpement Web'],
-      techs:     ['1er année', 'Cisco', 'Management', 'Réseau', 'Developpement Web'],
-      highlights: ['Cisco', 'Management', 'Réseau', 'Developpement Web', 'Réunion multiple réunions'],
-      scolaire:  true,
-      inAccueil: false,
+    highlights: {
+      fr: ['Inventaire automatique multi-OS', 'Remontée OCS → GLPI', 'Windows, macOS et Linux', 'Travail en équipe sur plusieurs semaines'],
+      en: ['Automated multi-OS inventory', 'OCS → GLPI sync', 'Windows, macOS and Linux', 'Multi-week team work'],
     },
-    {
-      slug:      'ocs',
-      name:      'OCS',
-      label:     'Ocs',
-      desc:      'Le TP OCS (Surnomé le "TP de la mort" par les anciennes promo) était un tp que nous devions réaliser sur OCS, GLPI en utilisant plusieurs machines.',
-      status:    'termine',
-      statusLabel: "Terminé",
-      description: "Le tp OCS était réaprti sur plusieurs semaines et en équipe, nous devions nous occuper de faire fonctionner OCS. Pour cela, nous devions utiliser obligatoirement 3 machines, une Windows 7, un MacOS ainsi qu'un Debian. Au final, nous avions avec mon équipe réussi à terminer le tp et à réaliser ces éléments.",
-      period:    '2024',
-      tags:      ['OCS', 'Management', 'Réseau', 'GLPI', 'MacOs', 'Linux', 'Windows'],
-      techs:     ['2ème année', 'OCS', 'Management', 'Réseau', 'GLPI', 'MacOs', 'Linux', 'Windows'],
-      highlights: ['OCS', 'Management', 'Réseau', 'GLPI', 'MacOs', 'Linux', 'Windows'],
-      scolaire:  true,
-      inAccueil: false,
+    techs: ['OCS', 'GLPI', 'Windows', 'macOS', 'Linux', 'Réseau', '2ème année'],
+    screenshots: ['/logos/ocs-ws.png', '/logos/ocs-glpi.png', '/logos/ocs-extention.png', '/logos/ocs-location.png'],
+    inNavbar: false,
+    featured: false,
+  },
+  {
+    slug: 'figfactor',
+    name: 'FigFactor',
+    label: 'FigFactor',
+    category: 'scolaire',
+    status: 'termine',
+    period: '2024',
+    desc: {
+      fr: "Simulation d'une entreprise multi-sites (4 sites) à l'échelle d'une classe entière.",
+      en: 'Simulating a multi-site company (4 sites) at the scale of a whole class.',
     },
-    {
-      slug:      'glpi',
-      name:      'Glpi',
-      label:     'Glpi',
-      desc:      'TP sur GLPI nous apprenant à l\'installer, l\'utiliser et l\'optimiser. Découverte et mise en pratique de cette outils de ticketing',
-      status:    'termine',
-      statusLabel: "Terminé",
-      description: "Le TP GLPI nous indiquait ce que nous devions mettre en place, il était demander de réaliser des tâches avancer sur ce dernier comme sa liaison avec un autre moyen de communication pour créer des ticket (mails, teams, discord, slack, etc.). Nous étions charger de créer une arborescence, des permissions, de le liée avec LDAP, etc.",
-      period:    '2024',
-      tags:      ['GLPI', 'Documentation', 'PHP'],
-      techs:     ['2ème année', 'GLPI', 'Documentation', 'PHP'],
-      highlights: ['GLPI', 'Documentation', 'PHP (Installation, sécurisation, modules/plugin)'],
-      scolaire:  true,
-      inAccueil: false,
+    description: {
+      fr: "La classe était divisée en 4 groupes de 5 personnes, avec des rôles différents : chef de projet, techniciens, expert, commercial et DSI. Le but : apprendre à communiquer avec la hiérarchie, à s'organiser et à se répartir le travail. Les problématiques de gestion d'équipe ont été aussi formatrices que la partie technique.",
+      en: 'The class was split into 4 groups of 5, each with different roles: project manager, technicians, expert, sales and CIO. The goal: learn to communicate with management, organize ourselves and share the work. Team management challenges were as formative as the technical part.',
     },
+    highlights: {
+      fr: ['Infrastructure réseau Cisco', 'Rôles et hiérarchie en entreprise', 'Développement web', 'Nombreuses réunions et soutenances'],
+      en: ['Cisco network infrastructure', 'Company roles and hierarchy', 'Web development', 'Many meetings and presentations'],
+    },
+    techs: ['Cisco', 'Réseau', 'Développement web', 'Gestion de projet', '1ère année'],
+    inNavbar: false,
+    featured: false,
+  },
+  {
+    slug: 'cms',
+    name: { fr: 'TP CMS', en: 'CMS lab' },
+    label: 'CMS',
+    category: 'scolaire',
+    status: 'termine',
+    period: '2024',
+    desc: {
+      fr: 'Site WordPress optimisé pour le référencement (SEO), jusqu’en tête des résultats Google.',
+      en: 'A WordPress site optimized for SEO, all the way to the top of Google results.',
+    },
+    description: {
+      fr: "Réalisé en première année de BTS SIO : nous avons mis en ligne un site WordPress construit pendant plusieurs mois, pour « vendre » un produit ou service fictif. Il fallait ensuite développer la présence en ligne de l'entreprise grâce au SEO : textes, mots-clés, titres, images et lisibilité pour les robots d'indexation. À la fin, le site devait apparaître parmi les premiers résultats Google.",
+      en: 'Built during the first year of my IT diploma: we published a WordPress site developed over several months to "sell" a fictional product or service. We then had to grow the company\'s online presence through SEO: copywriting, keywords, headings, images and crawler readability. By the end, the site had to rank among the top Google results.',
+    },
+    highlights: {
+      fr: ['Référencement naturel (SEO)', 'Optimisation du contenu', 'WordPress', 'Mise en production'],
+      en: ['Search engine optimization (SEO)', 'Content optimization', 'WordPress', 'Production deployment'],
+    },
+    techs: ['WordPress', 'SEO', 'Référencement', '1ère année'],
+    inNavbar: false,
+    featured: false,
+  },
 
+  /* ── Pro ────────────────────────────────── */
+  {
+    slug: 'alternance',
+    name: { fr: 'Alternance — Alstom', en: 'Apprenticeship — Alstom' },
+    label: 'Alstom',
+    category: 'pro',
+    status: 'en-cours',
+    period: { fr: 'Sept. 2026 – août 2028', en: 'Sep 2026 – Aug 2028' },
+    desc: {
+      fr: 'Apprenti ingénieur logiciel : pipelines CI/CD et tests automatisés.',
+      en: 'Software engineering apprentice: CI/CD pipelines and automated testing.',
+    },
+    description: {
+      fr: "Alternance de deux ans chez Alstom en tant qu'apprenti ingénieur logiciel, en parallèle de mon cycle ingénieur à CPE Lyon. Je conçois et maintiens des pipelines CI/CD et je développe des tests automatisés avec Robot Framework.",
+      en: 'A two-year apprenticeship at Alstom as a software engineering apprentice, alongside my engineering studies at CPE Lyon. I build and maintain CI/CD pipelines and develop automated tests with Robot Framework.',
+    },
+    highlights: {
+      fr: ['Conception et maintenance de pipelines CI/CD', 'Tests automatisés avec Robot Framework', 'Environnement industriel exigeant'],
+      en: ['Building and maintaining CI/CD pipelines', 'Automated testing with Robot Framework', 'Demanding industrial environment'],
+    },
+    techs: ['CI/CD', 'Robot Framework', 'Automatisation', 'Tests'],
+    inNavbar: true,
+    featured: false,
+  },
+  {
+    slug: 'stage3',
+    name: { fr: 'Stage — DriveSchool', en: 'Internship — DriveSchool' },
+    label: 'DriveSchool',
+    category: 'pro',
+    status: 'termine',
+    period: { fr: 'Juin – août 2026', en: 'Jun – Aug 2026' },
+    desc: {
+      fr: 'Développeur web : refonte du site, SEO et présence en ligne.',
+      en: 'Web developer: website redesign, SEO and online presence.',
+    },
+    description: {
+      fr: "Stage de fin de troisième année en tant que développeur web. J'ai refait entièrement le site de l'entreprise, amélioré son référencement naturel et développé sa présence en ligne.",
+      en: 'End-of-third-year internship as a web developer. I fully redesigned and rebuilt the company website, improved its search rankings and grew its online presence.',
+    },
+    highlights: {
+      fr: ['Refonte complète du site web', 'Amélioration du référencement naturel (SEO)', "Développement de la présence en ligne de l'entreprise"],
+      en: ['Full website redesign and rebuild', 'On-page SEO improvements', "Grew the company's online presence"],
+    },
+    techs: ['Développement web', 'SEO', '3ème année'],
+    inNavbar: false,
+    featured: false,
+  },
+  {
+    slug: 'stage2',
+    name: { fr: 'Stage 2 — Advolis Orfis', en: 'Internship 2 — Advolis Orfis' },
+    label: 'Stage 2A',
+    category: 'pro',
+    status: 'termine',
+    period: { fr: 'Mars – avril 2025 · 8 semaines', en: 'Mar – Apr 2025 · 8 weeks' },
+    desc: {
+      fr: 'Technicien systèmes et réseaux : supervision, ticketing, PCA/PRA et cartographie réseau.',
+      en: 'IT systems & networks technician: monitoring, ticketing, BCP/DRP and network mapping.',
+    },
+    description: {
+      fr: "Second stage de BTS chez Advolis Orfis, à Lyon. J'ai amélioré les outils internes de supervision et de ticketing, participé à l'élaboration du PCA/PRA, cartographié le réseau de l'entreprise et réalisé des interventions chez les clients.",
+      en: 'Second internship of my IT diploma at Advolis Orfis in Lyon. I improved the internal monitoring and ticketing tools, contributed to the BCP/DRP, mapped the company network and handled on-site client interventions.',
+    },
+    highlights: {
+      fr: ['Amélioration de la supervision et du ticketing', 'Participation au PCA/PRA', 'Cartographie du réseau', 'Réunions et présentations de projets', 'Interventions sur site client'],
+      en: ['Improved monitoring and ticketing', 'Contributed to the BCP/DRP', 'Network mapping', 'Project meetings and presentations', 'On-site client interventions'],
+    },
+    techs: ['Supervision', 'GLPI', 'Réseau', 'Documentation', '2ème année'],
+    screenshots: ['/logos/pca-pra.png'],
+    inNavbar: false,
+    featured: false,
+  },
+  {
+    slug: 'stage1',
+    name: { fr: 'Stage 1 — Advolis Orfis', en: 'Internship 1 — Advolis Orfis' },
+    label: 'Stage 1A',
+    category: 'pro',
+    status: 'termine',
+    period: { fr: 'Juin – juillet 2024 · 5 semaines', en: 'Jun – Jul 2024 · 5 weeks' },
+    desc: {
+      fr: 'Technicien systèmes et réseaux : mise en place de la supervision Zabbix.',
+      en: 'IT systems & networks technician: rolling out Zabbix monitoring.',
+    },
+    description: {
+      fr: "Premier stage de BTS chez Advolis Orfis. J'ai installé et configuré une solution de supervision réseau (Zabbix), déployé des logiciels en interne et rédigé la documentation technique associée.",
+      en: 'First internship of my IT diploma at Advolis Orfis. I installed and configured a network monitoring solution (Zabbix), deployed software internally and wrote the related technical documentation.',
+    },
+    highlights: {
+      fr: ['Installation et configuration de Zabbix', 'Déploiement de logiciels en interne', 'Rédaction de documentation interne', 'Support utilisateurs'],
+      en: ['Zabbix installation and configuration', 'Internal software deployment', 'Internal documentation', 'User support'],
+    },
+    techs: ['Zabbix', 'Supervision', 'Documentation', 'Support', '1ère année'],
+    inNavbar: false,
+    featured: false,
+  },
+];
 
+export const navbarProjects = PROJECTS_DATA.filter((p) => p.inNavbar);
+export const featuredProjects = PROJECTS_DATA.filter((p) => p.featured);
+export const projetsPerso = PROJECTS_DATA.filter((p) => p.category === 'perso');
+export const projetsScolaires = PROJECTS_DATA.filter((p) => p.category === 'scolaire');
+export const projetsPro = PROJECTS_DATA.filter((p) => p.category === 'pro');
 
-    /*Projet PRO */
-    {
-        slug: 'stage1',
-        name: 'Stage 1ère année',
-        label: 'Stage 1A',
-        desc: '',
-        status: 'termine',
-        statusLabel: 'Terminé',
-        url: '',
-        tags: [],
-        techs: ['1er année', 'Supervision', 'Documentation'],
-        pro: true,
-        inNavbar: false,
-        inAccueil: false,
-      },
-      {
-        slug: 'stage2',
-        name: 'Stage 2ème année',
-        label: 'Stage 2A',
-        desc: 'Mes tâches réalisées en stage de 2ème année de BTS.',
-        status: 'termine',
-        statusLabel: 'Terminé',
-        url: '',
-        tags: [],
-        techs: ['2ème année', 'Supervision', 'Documentation'],
-        pro: true,      
-        inNavbar: false,
-        inAccueil: false,
-      },
-      {
-        slug: 'stage3',
-        name: 'Stage 3ème année',
-        label: 'Stage 3A',
-        desc: 'Mes tâches réalisées en stage de 3ème année en ICS.',
-        status: 'termine',
-        statusLabel: 'Terminé',
-        url: '',
-        tags: [],
-        techs: ['3ème année'],
-        pro: true,      
-        inNavbar: false,
-        inAccueil: false,
-      },
-      // {
-      //   slug: 'alternance',
-      //   name: 'Alternance',
-      //   label: 'Alternance',
-      //   desc: 'Détails de mes missions lors de mon alternance (En cours).',
-      //   status: 'en-cours',
-      //   statusLabel: 'En cours',
-      //   url: '',
-      //   tags: [],
-      //   techs: ['4ème année', '5ème année', 'CI/CD', 'Automatisation', ''],
-      //   scolaire: false,
-      //   pro: true,      
-      //   inNavbar: true,
-      //   inAccueil: false,
-      // },
-    
-  ];
-  
+/* Récupère un projet par son slug (insensible à la casse) */
+export const getProjet = (slug = '') =>
+  PROJECTS_DATA.find((p) => p.slug.toLowerCase() === slug.toLowerCase());
 
-
-  export const navbarProjects = PROJECTS_DATA.filter(p => p.inNavbar);
-  
-  export const accueilProjects = PROJECTS_DATA.filter(p => p.inAccueil);
-  
-  export const projetsPerso = PROJECTS_DATA.filter(p => !p.scolaire && !p.pro); /*tout sauf scolaire et pro */
-  
-  export const projetsScolaires = PROJECTS_DATA.filter(p => p.scolaire);
-
-  export const projetsPro = PROJECTS_DATA.filter(p => p.pro === true);
-
-  
-  
-  /* Récup un projet par son slug (pour les pages individuelles) */
-  export const getProjet = (slug) => PROJECTS_DATA.find(p => p.slug === slug);
-  
-  /* Récup prev / next pour la navigation entre pages projet */
-  export const getNavigation = (slug) => {
-    const idx = PROJECTS_DATA.findIndex(p => p.slug === slug);
-    return {
-      prev: idx > 0 ? PROJECTS_DATA[idx - 1] : null,
-      next: idx < PROJECTS_DATA.length - 1 ? PROJECTS_DATA[idx + 1] : null,
-    };
+/* Projet précédent / suivant pour la navigation entre pages projet */
+export const getNavigation = (slug) => {
+  const idx = PROJECTS_DATA.findIndex((p) => p.slug === slug);
+  return {
+    prev: idx > 0 ? PROJECTS_DATA[idx - 1] : null,
+    next: idx >= 0 && idx < PROJECTS_DATA.length - 1 ? PROJECTS_DATA[idx + 1] : null,
   };
+};

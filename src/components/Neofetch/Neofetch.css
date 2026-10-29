@@ -1,0 +1,30 @@
+.neofetch {
+  display: flex;
+  gap: clamp(14px, 3vw, 28px);
+  align-items: flex-start;
+  font-family: var(--font-mono);
+  font-size: inherit;
+  line-height: 1.55;
+}
+
+.neofetch__logo {
+  margin: 0;
+  font: inherit;
+  line-height: 1.25;
+  color: var(--accent);
+  text-shadow: 0 0 18px rgba(255, 181, 71, 0.35);
+  flex-shrink: 0;
+}
+
+.neofetch__info { min-width: 0; }
+.neofetch__info p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.neofetch__key { color: var(--primary); font-weight: 700; }
+
+.neofetch__colors { display: flex; gap: 0; margin-top: 8px; }
+.neofetch__colors span { width: 22px; height: 14px; }
+
+@media (max-width: 520px) {
+  .neofetch { flex-direction: column; gap: 10px; }
+  .neofetch__info p { white-space: normal; }
+}

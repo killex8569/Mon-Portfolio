@@ -1,77 +1,70 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './css/App.css'
+import { useEffect, useMemo, useRef } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
+import { LanguageProvider } from './i18n/LanguageContext';
 
-/*Component*/
-import Navbar from './components/Navbar/Navbar'
+/* Composants */
+import Navbar, { workspaceIndex } from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import Background from './components/Background/Background';
+import { TerminalProvider } from './components/Shell/TerminalProvider';
+import { PageTransition, ScrollProgress } from './components/Motion/Motion';
 
-/*Views */
-import Accueil from './views/Accueil/Accueil'
+/* Vues */
+import Accueil from './views/Accueil/Accueil';
 import Competences from './views/Competences/Competences';
+import Projets from './views/Projects/projects';
+import ProjectDetail from './views/Projects/ProjectDetail';
+import Parcours from './views/Parcours/Parcours';
 import About from './views/About/About';
 import NotFound from './views/not_found/not_found';
-import Parcours from './views/Parcours/Parcours';
-import Projets from './views/Projects/projects';
 
-/*Projet détails de la page */
-import ProjetDnsa from './views/Projects/ProjetDNSA'
-import Canpai from './views/Projects/ProjetCanpai'
-import Homelab from './views/Projects/ProjetHomelab'
-import Algopourlespro from './views/Projects/ProjetAlgopro'
-import Algo from './views/Projects/ProjetAlgo'
-import EuroYourself from './views/Projects/ProjetEuroYourself'
-import Figfactor from './views/Projects/ProjetFigfactor'
-import Portfolio from './views/Projects/ProjetPortfolio'
-import Kosmoz from './views/Projects/ProjetKosmoz'
-import Battleship from './views/Projects/ProjetBattleship'
-import Cms from './views/Projects/ProjetCms'
-import LoupGarou from './views/Projects/ProjetLoupGarou'
-import Piment from './views/Projects/ProjetPiment'
-import Ansible from './views/Projects/ProjetAnsible'
-import Stage1 from './views/Projects/ProjetStage'
-import Stage2 from './views/Projects/ProjetStage2'
-import Ocs from './views/Projects/ProjetOcs'
-import Glpi from './views/Projects/ProjetGlpi'
-import Galileo from './views/Projects/ProjetGalileo'
+function AnimatedRoutes() {
+  const location = useLocation();
+  const index = workspaceIndex(location.pathname);
+  const prevIndex = useRef(index);
+
+  // Sens de la transition : vers un espace de numéro plus élevé → la page part à gauche
+  // (recalculé à chaque changement d'URL : d'un projet à l'autre, dir = 0)
+  const { pathname } = location;
+  const dir = useMemo(() => (pathname ? Math.sign(index - prevIndex.current) : 0), [index, pathname]);
+  useEffect(() => {
+    prevIndex.current = index;
+  }, [index, pathname]);
+
+  const page = (el) => <PageTransition dir={dir}>{el}</PageTransition>;
+
+  return (
+    // On remonte en haut une fois l'ancienne page sortie, pour éviter un saut visible
+    <AnimatePresence mode="wait" custom={dir} onExitComplete={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={page(<Accueil />)} />
+        <Route path="/competences" element={page(<Competences />)} />
+        <Route path="/projets" element={page(<Projets />)} />
+        <Route path="/projets/:slug" element={page(<ProjectDetail />)} />
+        <Route path="/parcours" element={page(<Parcours />)} />
+        <Route path="/about" element={page(<About />)} />
+        <Route path="*" element={page(<NotFound />)} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        {/* Navigation */}
-        <Navbar/>
-        {/* Routes */}
-        <Routes>
-          <Route path="/" element={<Accueil />} />
-          <Route path="/competences" element={<Competences />} />
-          <Route path="/parcours" element={<Parcours/>} />
-          <Route path="/projets" element={<Projets/>} />
-          <Route path="/projets/dnsa" element={<ProjetDnsa />}  />
-          <Route path="/projets/canpai" element={<Canpai />}  />
-          <Route path="/projets/homelab" element={<Homelab />}  />
-          <Route path="/projets/algo" element={<Algo />}  />
-          <Route path="/projets/algopourlespro" element={<Algopourlespro />}  />
-          <Route path="/projets/figfactor" element={<Figfactor />}  />
-          <Route path="/projets/Europeanize-yourself" element={<EuroYourself />}  />
-          <Route path="/projets/portfolio" element={<Portfolio />}  />
-          <Route path="/projets/kosmoz" element={<Kosmoz />}  />
-          <Route path="/projets/piment" element={<Piment />}  />
-          <Route path="/projets/loup-garou" element={<LoupGarou />}  />
-          <Route path="/projets/cms" element={<Cms />}  />
-          <Route path="/projets/battleship" element={<Battleship />}  />
-          <Route path="/projets/ansible" element={<Ansible />}  />
-          <Route path="/projets/stage1" element={<Stage1 />}  />
-          <Route path="/projets/stage2" element={<Stage2 />}  />
-          <Route path="/projets/ocs" element={<Ocs />}  />
-          <Route path="/projets/glpi" element={<Glpi />}  />
-          <Route path="/projets/galileo" element={<Galileo />}  />
-          <Route path="/about" element={<About/>}/>
-          <Route path="*" element={<NotFound/>} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-      
-    </>
+    <LanguageProvider>
+      <MotionConfig reducedMotion="user">
+        <BrowserRouter>
+          <TerminalProvider>
+            <ScrollProgress />
+            <Background />
+            <Navbar />
+            <AnimatedRoutes />
+            <Footer />
+          </TerminalProvider>
+        </BrowserRouter>
+      </MotionConfig>
+    </LanguageProvider>
   );
 }
 

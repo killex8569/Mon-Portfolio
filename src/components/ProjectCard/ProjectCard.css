@@ -1,0 +1,74 @@
+/* ── Statut ───────────────────────────────── */
+.status-badge {
+  --c: var(--status-termine);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  white-space: pre;
+  color: var(--text-soft);
+}
+
+.status-badge__tag { color: var(--text-dim); }
+.status-badge__tag b { color: var(--c); font-weight: 700; }
+.status-badge__label { white-space: nowrap; }
+
+.status-badge--termine { --c: var(--status-termine); }
+.status-badge--en-cours { --c: var(--status-en-cours); }
+.status-badge--en-construction { --c: var(--status-en-construction); }
+.status-badge--en-revision { --c: var(--status-en-revision); }
+
+/* ── Carte projet ─────────────────────────── */
+.project-card { height: 100%; }
+.project-card:hover { transform: translateY(-3px); }
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  padding: 18px 18px 16px;
+}
+
+.project-card__title {
+  font-family: var(--font-mono);
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.project-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.project-card__techs { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.project-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.project-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.project-card__cta svg { width: 14px; height: 14px; transition: transform 0.25s var(--ease-out); }
+.project-card:hover .project-card__cta svg { transform: translateX(3px); }
+.project-card:hover .project-card__cta { color: var(--accent); }

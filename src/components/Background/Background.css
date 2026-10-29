@@ -1,0 +1,43 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Lueurs douces en haut de page */
+.bg__glow-top {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 45% at 15% -5%, rgba(58, 109, 255, 0.16), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 95% 10%, rgba(255, 181, 71, 0.08), transparent 70%);
+}
+
+/* Grille de points */
+.bg__dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(140, 160, 200, 0.16) 1px, transparent 1.2px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 20%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 20%, #000 30%, transparent 85%);
+}
+
+/* Halo curseur : il « allume » la grille autour de la souris */
+.bg__glow {
+  --cx: -999px;
+  --cy: -999px;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(420px circle at var(--cx) var(--cy), rgba(91, 140, 255, 0.07), transparent 60%);
+}
+
+/* Lignes de balayage (très discrètes) */
+.bg__scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 3px);
+}

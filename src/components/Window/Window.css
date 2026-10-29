@@ -1,0 +1,121 @@
+/* Angle animable pour la bordure dégradée (Chrome, Edge, Safari, Firefox 128+) */
+@property --win-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.win {
+  --mx: 50%;
+  --my: 0%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: var(--radius);
+  background: rgba(10, 13, 19, 0.82);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  isolation: isolate;
+  color: inherit;
+  text-align: left;
+  transition: border-color 0.3s, transform 0.35s var(--ease-out), box-shadow 0.35s;
+}
+
+/* Bordure active : dégradé qui tourne (col.active_border de Hyprland) */
+.win::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--win-angle), #5b8cff, #8b6cff, #ffb547, #5b8cff);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+  animation: win-spin 6s linear infinite;
+}
+
+/* Halo intérieur qui suit la souris */
+.win::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(91, 140, 255, 0.09), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s;
+  pointer-events: none;
+}
+
+.win:hover::before,
+.win:focus-within::before,
+.win--active::before { opacity: 1; }
+
+.win:hover::after,
+.win:focus-within::after { opacity: 1; }
+
+.win--active { box-shadow: 0 0 40px -16px rgba(91, 140, 255, 0.55); }
+
+@keyframes win-spin {
+  to { --win-angle: 360deg; }
+}
+
+/* Barre de titre */
+.win__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 32px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.win__tag {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  background: var(--border-strong);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.win:hover .win__tag,
+.win--active .win__tag {
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(255, 181, 71, 0.7);
+}
+
+.win__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-soft);
+}
+
+.win__meta {
+  margin-left: auto;
+  padding-left: 12px;
+  color: var(--text-dim);
+}
+
+.win__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .win::before { animation: none; }
+}

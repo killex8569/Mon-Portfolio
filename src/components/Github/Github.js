@@ -1,122 +1,99 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useLang } from '../../i18n/LanguageContext';
 import './Github.css';
 
-const LEVEL_COLORS = ['var(--gh-l0)', 'var(--gh-l1)', 'var(--gh-l2)', 'var(--gh-l3)', 'var(--gh-l4)'];
-const MONTHS = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'];
-const DAYS   = ['', 'Lun', '', 'Mer', '', 'Ven', ''];
+/**
+ * Calendrier de contributions GitHub des 12 derniers mois.
+ * Utilise l'API publique github-contributions-api.jogruber.de : pas de token
+ * à embarquer dans le bundle (un token REACT_APP_* serait visible par tous).
+ */
+const API = (user) => `https://github-contributions-api.jogruber.de/v4/${user}?y=last`;
 
-export default function GithubActivity({ username, token }) {
-  const [weeks, setWeeks]       = useState([]);
-  const [total, setTotal]       = useState(0);
-  const [loading, setLoading]   = useState(true);
-  const [error, setError]       = useState(null);
+function toWeeks(days) {
+  if (!days.length) return [];
+  const weeks = [];
+  // La première semaine commence un dimanche : on complète avec des cases vides
+  let week = Array(new Date(days[0].date).getDay()).fill(null);
+  days.forEach((day) => {
+    week.push(day);
+    if (week.length === 7) {
+      weeks.push(week);
+      week = [];
+    }
+  });
+  if (week.length) weeks.push(week);
+  return weeks;
+}
+
+export default function GithubActivity({ username }) {
+  const { t } = useLang();
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!username || !token) {
-      setError('username et token requis.');
-      setLoading(false);
-      return;
-    }
-
-    const query = `{
-      user(login: "${username}") {
-        contributionsCollection {
-          contributionCalendar {
-            totalContributions
-            weeks {
-              contributionDays {
-                date
-                contributionCount
-                contributionLevel
-              }
-            }
-          }
-        }
-      }
-    }`;
-
-    fetch('https://api.github.com/graphql', {
-      method: 'POST',
-      headers: {
-        'Authorization': `bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    })
-      .then(r => r.json())
-      .then(data => {
-        if (data.errors) throw new Error(data.errors[0].message);
-        const cal = data.data.user.contributionsCollection.contributionCalendar;
-        setTotal(cal.totalContributions);
-        setWeeks(cal.weeks);
-        setLoading(false);
+    const controller = new AbortController();
+    fetch(API(username), { signal: controller.signal })
+      .then((r) => {
+        if (!r.ok) throw new Error(r.statusText);
+        return r.json();
       })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
+      .then(setData)
+      .catch((err) => {
+        if (err.name !== 'AbortError') setError(true);
       });
-  }, [username, token]);
+    return () => controller.abort();
+  }, [username]);
 
-  // Calcule les labels de mois à partir des semaines
-  const monthLabels = (() => {
-    const labels = [];
-    let lastMonth = -1;
-    weeks.forEach((week, i) => {
-      const month = new Date(week.contributionDays[0].date).getMonth();
-      if (month !== lastMonth) {
-        labels.push({ index: i, label: MONTHS[month] });
-        lastMonth = month;
+  const weeks = useMemo(() => toWeeks(data?.contributions ?? []), [data]);
+  const months = t('months');
+
+  const monthLabels = useMemo(() => {
+    let last = -1;
+    const labels = weeks.map((week) => {
+      const first = week.find(Boolean);
+      const m = first ? new Date(first.date).getMonth() : last;
+      if (m !== last) {
+        last = m;
+        return months[m];
       }
+      return '';
     });
+    // Mois de départ incomplet : on retire son libellé s'il chevauche le suivant
+    const next = labels.findIndex((l, i) => i > 0 && l);
+    if (next > 0 && next < 3) labels[0] = '';
     return labels;
-  })();
+  }, [weeks, months]);
 
-  const levelFromString = (level) => {
-    const map = { NONE: 0, FIRST_QUARTILE: 1, SECOND_QUARTILE: 2, THIRD_QUARTILE: 3, FOURTH_QUARTILE: 4 };
-    return map[level] ?? 0;
-  };
+  if (error) return <p className="gh gh--state">{t('contact.githubError')}</p>;
+  if (!data) return <p className="gh gh--state gh--loading">{t('contact.githubLoading')}</p>;
 
-  if (loading) return <div className="gh-activity gh-activity--loading">Chargement…</div>;
-  if (error)   return <div className="gh-activity gh-activity--error">Erreur : {error}</div>;
+  const total = data.total?.lastYear ?? data.contributions.reduce((s, d) => s + d.count, 0);
 
   return (
-    <div className="gh-activity">
-      <div className="gh-activity__header">
-        <span className="gh-activity__total">
-          <strong>{total}</strong> contributions cette année
-        </span>
-      </div>
+    <div className="gh">
+      <p className="gh__total">
+        <strong className="text-gradient">{total}</strong> {t('contact.githubTotal')}
+      </p>
 
-      <div className="gh-activity__graph">
-        {/* Labels jours */}
-        <div className="gh-activity__days">
-          {DAYS.map((d, i) => <span key={i}>{d}</span>)}
-        </div>
-
-        <div className="gh-activity__scroll">
-          {/* Labels mois */}
-          <div className="gh-activity__months" style={{ gridTemplateColumns: `repeat(${weeks.length}, 1fr)` }}>
-            {weeks.map((_, i) => {
-              const label = monthLabels.find(m => m.index === i);
-              return <span key={i}>{label ? label.label : ''}</span>;
-            })}
+      <div className="gh__scroll">
+        <div className="gh__calendar" style={{ '--weeks': weeks.length }}>
+          <div className="gh__months">
+            {monthLabels.map((m, i) => <span key={i}>{m}</span>)}
           </div>
-
-          {/* Grille */}
-          <div className="gh-activity__grid">
+          <div className="gh__grid">
             {weeks.map((week, wi) => (
-              <div key={wi} className="gh-activity__week">
+              <div className="gh__week" key={wi}>
                 {Array.from({ length: 7 }).map((_, di) => {
-                  const day = week.contributionDays[di];
-                  if (!day) return <span key={di} className="gh-activity__cell gh-activity__cell--empty" />;
-                  const level = levelFromString(day.contributionLevel);
-                  return (
+                  const day = week[di];
+                  return day ? (
                     <span
                       key={di}
-                      className="gh-activity__cell"
-                      style={{ background: LEVEL_COLORS[level] }}
-                      title={`${day.date} — ${day.contributionCount} contribution${day.contributionCount !== 1 ? 's' : ''}`}
+                      className={`gh__cell gh__cell--${day.level}`}
+                      title={`${day.date} — ${day.count}`}
+                      style={{ animationDelay: `${wi * 12}ms` }}
                     />
+                  ) : (
+                    <span key={di} className="gh__cell gh__cell--empty" />
                   );
                 })}
               </div>
@@ -125,13 +102,10 @@ export default function GithubActivity({ username, token }) {
         </div>
       </div>
 
-      {/* Légende */}
-      <div className="gh-activity__legend">
-        <span>Moins</span>
-        {LEVEL_COLORS.map((c, i) => (
-          <span key={i} className="gh-activity__cell" style={{ background: c }} />
-        ))}
-        <span>Plus</span>
+      <div className="gh__legend">
+        <span>{t('contact.less')}</span>
+        {[0, 1, 2, 3, 4].map((l) => <span key={l} className={`gh__cell gh__cell--${l}`} />)}
+        <span>{t('contact.more')}</span>
       </div>
     </div>
   );

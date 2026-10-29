@@ -1,0 +1,11 @@
+.prompt {
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.2vw, 0.9rem);
+  color: var(--text);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.prompt-sign { white-space: nowrap; }
+
+.prompt__cmd { color: var(--text); }
